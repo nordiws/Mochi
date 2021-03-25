@@ -20,6 +20,7 @@ app.use(express.json());
 // Declarando e inicializando o view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 app.get('/', router);
 
 // Levantando o servidor
