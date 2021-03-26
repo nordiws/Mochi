@@ -1,10 +1,9 @@
 import APIconnection from "./APIconnections.js";
 
-
+// Importa o JSON dos estados
 const statesData = () => {
-    //const data = {};
     APIconnection.getAllStates().then((response) => {
-        console.log(response);
+        console.log(response); // logica de tratamento dos dados
     }).catch(err => {
         console.log(err);
     })
