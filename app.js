@@ -4,10 +4,12 @@ import path from "path";
 import cors from "cors";
 import router from "./routes/router.js"
 import mongoose from "mongoose";
+import ApiController from "./controller/ApiController.js"
 
 //Importando a pasta local
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { stringify } from "querystring";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Configurando dotenv
@@ -45,6 +47,8 @@ mongoose.connect(
 );
 const { connection } = mongoose;
 connection.once('open', () => console.log('Conectado ao MongoDB'));
+
+ApiController.statesData();
 
 // Levantando o servidor
 const PORT = process.env.PORT || 3000;
