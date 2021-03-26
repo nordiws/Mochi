@@ -1,4 +1,4 @@
-import http from '../routes/http-apiConnection.js';
+import http from './http-apiConnection.js';
 
 const getAllStates = async () => {
     return http.get('/states');
