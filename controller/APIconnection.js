@@ -1,6 +1,6 @@
 import http from '../routes/http-apiConnection.js';
 
-const getAllStates = () => {
+const getAllStates = async () => {
     return http.get('/states');
 }
 

@@ -1,12 +1,9 @@
-import { getAllStates } from "./APIconnection.js";
+import APIconnection from "./APIconnection.js";
 
 
 const statesData = async () => {
-    try {
-        const data = await getAllStates;
-        return data;
-    } catch (err) {
-        console.log(err);
-    }
+    APIconnection.getAllStates.then({ data })
 }
 
+
+export default { statesData };
