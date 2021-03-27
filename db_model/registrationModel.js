@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 //Modelagem dos dados no DB
-const registrationSquema = mongoose.Schema({
+let schema = mongoose.Schema({
     guardian_name: {
         type: String,
         require: true,
@@ -11,11 +11,11 @@ const registrationSquema = mongoose.Schema({
         require: true,
     },
     cpf: {
-        type: Number,
+        type: String,
         require: true,
     },
     phone_number: {
-        type: Number,
+        type: String,
         require: true,
     },
     lastModified: {
@@ -34,8 +34,16 @@ const registrationSquema = mongoose.Schema({
         type: String,
         require: true,
     },
+    number: {
+        type: String,
+        require: true,
+    },
     city: {
         type: String,
+        require: true,
+    },
+    city_id: {
+        type: Number,
         require: true,
     },
     state: {
@@ -55,31 +63,27 @@ const registrationSquema = mongoose.Schema({
         require: false,
     },
     chld_grade: {
-        type: Number,
+        type: String,
         require: false,
     },
     school_name: {
         type: String,
         require: true,
     },
-    school_city: {
+    school_address: {
         type: String,
-        require: true,
+        require: false,
     },
-    school_state: {
-        type: String,
-        require: true,
-    },
-    school_adress: {
+    school_add_number: {
         type: String,
         require: false,
     },
     school_cep: {
-        type: Number,
+        type: String,
         require: false,
     }
 });
 
-const registrationModel = mongoose.model('registration', registrationSquema, 'registration');
+const registrationModel = mongoose.model('mochi', schema, 'mochi');
 
-export default { registrationModel };
+export default registrationModel;
