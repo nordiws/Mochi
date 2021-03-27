@@ -70,6 +70,10 @@ let schema = mongoose.Schema({
         type: String,
         require: true,
     },
+    school_id: {
+        type: Number,
+        require: true,
+    },
     school_address: {
         type: String,
         require: false,
