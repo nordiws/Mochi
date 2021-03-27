@@ -26,6 +26,10 @@ app.set('view engine', 'ejs');
 
 // Configurando arquivos estáticos - static
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', router);
+
+// Configurando arquivos estáticos - static
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', router);
 
