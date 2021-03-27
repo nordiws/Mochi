@@ -53,4 +53,5 @@ const schoolsData = (city) => {
     })
 }
 
+
 export default { statesData, citiesData, schoolsData };

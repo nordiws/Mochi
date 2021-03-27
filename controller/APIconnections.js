@@ -27,4 +27,5 @@ const getAllSchools = (city) => {
     return data;
 }
 
+
 export default { getAllStates, getAllCities, getAllSchools };
