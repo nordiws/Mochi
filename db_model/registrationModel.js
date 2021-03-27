@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+//Modelagem dos dados no DB
 const registrationSquema = mongoose.Schema({
     guardian_name: {
         type: String,
@@ -17,17 +18,17 @@ const registrationSquema = mongoose.Schema({
         type: Number,
         require: true,
     },
-    chld_name: {
+    lastModified: {
+        type: Date,
+        default: Date.now,
+    },
+    donation: {
+        type: Boolean,
+        default: false,
+    },
+    cep: {
         type: String,
         require: true,
-    },
-    chld_age: {
-        type: Number,
-        require: false,
-    },
-    chld_grade: {
-        type: Number,
-        require: false,
     },
     street: {
         type: String,
@@ -41,11 +42,23 @@ const registrationSquema = mongoose.Schema({
         type: String,
         require: true,
     },
-    cep: {
+    chld_name: {
         type: String,
         require: true,
     },
-    school_state: {
+    chld_nickname: {
+        type: String,
+        require: false,
+    },
+    chld_age: {
+        type: Number,
+        require: false,
+    },
+    chld_grade: {
+        type: Number,
+        require: false,
+    },
+    school_name: {
         type: String,
         require: true,
     },
@@ -53,14 +66,18 @@ const registrationSquema = mongoose.Schema({
         type: String,
         require: true,
     },
-    school_name: {
+    school_state: {
         type: String,
         require: true,
     },
-    lastModified: {
-        type: Date,
-        default: Date.now,
+    school_adress: {
+        type: String,
+        require: false,
     },
+    school_cep: {
+        type: Number,
+        require: false,
+    }
 });
 
 const registrationModel = mongoose.model('registration', registrationSquema, 'registration');

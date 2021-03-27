@@ -19,6 +19,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.bodyParser());
 
 // Declarando e inicializando o view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -47,8 +48,6 @@ mongoose.connect(
 );
 const { connection } = mongoose;
 connection.once('open', () => console.log('Conectado ao MongoDB'));
-
-ApiController.statesData();
 
 // Levantando o servidor
 const PORT = process.env.PORT || 3000;
