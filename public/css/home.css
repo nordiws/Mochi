@@ -1,5 +1,6 @@
 .nav-wrapper {
-  background: #FAFAFA;
+  background: #fafafa;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -7,5 +8,78 @@
 }
 
 #logo-image {
-    height: 53px;
+  height: 53px;
+}
+
+.search-bar {
+  background-color: #fafafa;
+}
+
+.main-banner-left {
+    width: 100%;
+    height: 100%;
+  }
+
+.main-banner-right {
+  display: flex;
+  justify-content: center;
+  height: 513px;
+}
+
+.materials-label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 131px 0px 0px 45px;
+}
+
+.materials-label h1 {
+  font-family: Inter;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+  color: #34495e;
+}
+
+.materials-label h1 span {
+  display: block;
+  font-weight: 500;
+}
+
+.city-search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 45px;
+  top: 313px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-left: 45px;
+  width: 571px;
+  height: 77px;
+}
+
+#search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#city {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  height: 50px;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-left: 10px;
+  background: #fafafa;
+  background-color: #fcfcfc;
+  border: 0 !important;
 }
