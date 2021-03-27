@@ -1,27 +1,53 @@
-import APIconnection from "./APIconnections.js";
+import APIconnection from "./ApiConnections.js";
 
 // Importa o JSON dos estados
 const statesData = () => {
     APIconnection.getAllStates().then((response) => {
-        //console.log(response); // logica de tratamento dos dados
+        const states = response.map(state => {
+            const { id, name } = state;
+            return {
+                id,
+                name
+            }
+        })
+        return states;
     }).catch(err => {
         console.log(err);
     })
 }
 
 // Importa o JSON das cidades
-const citiesData = () => {
-    APIconnection.getAllCities().then((response) => {
-        //console.log(response); // logica de tratamento dos dados
+const citiesData = (state) => {
+    APIconnection.getAllCities(state).then((response) => {
+        const cities = response.map(city => {
+            const { id, name, state } = city;
+            return {
+                id,
+                name,
+                stateID: state.id,
+            }
+        })
+        return cities;
     }).catch(err => {
         console.log(err);
     })
 }
 
 // Importa o JSON das escolas
-const schoolsData = () => {
-    APIconnection.getAllSchools().then((response) => {
-        //console.log(response); // logica de tratamento dos dados
+const schoolsData = (city) => {
+    APIconnection.getAllSchools(city).then((response) => {
+        const schools = response.map(school => {
+            const { id, name, location } = school;
+            return {
+                id,
+                name,
+                street: location.street,
+                number: location.number,
+                cep: location.cep
+            }
+        })
+        console.log(schools);
+        return schools;
     }).catch(err => {
         console.log(err);
     })
