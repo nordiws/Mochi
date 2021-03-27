@@ -1,5 +1,5 @@
 import express from "express";
-import { saveFrom } from "../controller/DBController.js";
+import dbController from "../controller/DBController.js";
 const router = express.Router();
 
 // View Model index route (frontend)
@@ -12,7 +12,7 @@ router.get('/', (req, res, send) => {
 
 // View model form submit route (front to back)
 router.post('/cadastro', (req, res) => {
-    saveFrom(req.body);
+    dbController.saveForm(req.body);
 })
 
 export default router;

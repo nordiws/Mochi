@@ -5,11 +5,11 @@ import cors from "cors";
 import router from "./routes/router.js"
 import mongoose from "mongoose";
 import ApiController from "./controller/ApiController.js"
+import bodyParser from "body-parser";
 
 //Importando a pasta local
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { stringify } from "querystring";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Configurando dotenv
@@ -19,7 +19,6 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.bodyParser());
 
 // Declarando e inicializando o view engine
 app.set('views', path.join(__dirname, 'views'));

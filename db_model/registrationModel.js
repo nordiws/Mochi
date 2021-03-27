@@ -82,4 +82,4 @@ const registrationSquema = mongoose.Schema({
 
 const registrationModel = mongoose.model('registration', registrationSquema, 'registration');
 
-export { registrationModel };
+export default { registrationModel };

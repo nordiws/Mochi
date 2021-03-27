@@ -11,4 +11,4 @@ const saveForm = async (formData) => {
     }
 }
 
-export default saveForm;
+export default { saveForm };
