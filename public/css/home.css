@@ -1,3 +1,8 @@
+body {
+    margin: 0 auto;
+    max-width: 1460px;
+    max-height: 522px;
+}
 .nav-wrapper {
   background: #fafafa;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
