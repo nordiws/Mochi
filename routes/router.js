@@ -4,7 +4,7 @@ const router = express.Router();
 
 // View Model index route (frontend)
 router.get('/', (req, res, send) => {
-    res.render('teste', {
+    res.render('index', {
         title: "Mochi",
         version: "0.0.1"
     });
