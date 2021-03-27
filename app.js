@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
 import router from "./routes/router.js"
+import mongoose from "mongoose";
+import ApiController from "./controller/ApiController.js"
+import bodyParser from "body-parser";
 
 //Importando a pasta local
 import { dirname } from 'path';
@@ -23,9 +26,31 @@ app.set('view engine', 'ejs');
 
 // Configurando arquivos estáticos - static
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', router);
 
-app.get('/', router);
+// Configurando arquivos estáticos - static
+app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', router);
+
+// Conexão ao banco de dados
+const { DB_CONNECTION } = process.env;
+console.log('Iniciando conexão ao MongoDB...');
+mongoose.connect(
+    DB_CONNECTION,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+    },
+    (err) => {
+        if (err) {
+            console.error(`Erro na conexão ao MongoDB - ${err}`);
+        }
+    }
+);
+const { connection } = mongoose;
+connection.once('open', () => console.log('Conectado ao MongoDB'));
 // Levantando o servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
