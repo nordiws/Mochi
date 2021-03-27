@@ -26,6 +26,10 @@ app.set('view engine', 'ejs');
 
 // Configurando arquivos estáticos - static
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', router);
+
+// Configurando arquivos estáticos - static
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', router);
 
@@ -47,7 +51,6 @@ mongoose.connect(
 );
 const { connection } = mongoose;
 connection.once('open', () => console.log('Conectado ao MongoDB'));
-
 // Levantando o servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
