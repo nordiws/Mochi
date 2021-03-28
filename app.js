@@ -55,14 +55,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor iniciado na porta ${PORT}`);
 });
-
-const fetchMaterials = async () => {
-    try {
-        const data = await apiMaterials.materialsData();
-        console.log(data);
-    } catch (e) {
-        console.log(e);
-    }
-}
-
-fetchMaterials();
