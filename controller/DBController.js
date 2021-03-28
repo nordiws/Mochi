@@ -11,4 +11,24 @@ const saveForm = async (formData) => {
     }
 }
 
-export default { saveForm };
+// Importando dados da base de dados
+const getAllKidsByCity = async (city) => {
+    try {
+        const fechData = await registrationModel.find({ city_id: city });
+        const allKids = fechData.map(kid => {
+            const { _id, chld_name, chld_nickname, chld_grade } = kid;
+            return {
+                _id,
+                chld_name,
+                chld_nickname,
+                chld_grade
+            }
+        });
+        console.log(allKids);
+        return allKids;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export default { saveForm, getAllKidsByCity };
