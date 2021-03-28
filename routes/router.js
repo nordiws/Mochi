@@ -5,7 +5,7 @@ import materials from "../controller/ApiMaterialsController.js";
 
 // View Model index route (frontend)
 router.get('/', (req, res, send) => {
-    res.render('home/index', {
+    res.render('index', {
         title: "Mochi",
         version: "0.0.1",
         materials: [
@@ -36,15 +36,15 @@ router.post('/cadastro', (req, res) => {
 
 router.get('/cadastro', async (req, res) => {
 
-  try {
-      res.render('cadastro', {
-          materials: await materials.materialsData(),
-          title: "Mochi",
-          version: "0.0.1"
-      });
-  } catch(err) {
-     res.status(400).json(err)
-  }
+    try {
+        res.render('cadastro', {
+            materials: await materials.materialsData(),
+            title: "Mochi",
+            version: "0.0.1"
+        });
+    } catch (err) {
+        res.status(400).json(err)
+    }
 })
 
 
