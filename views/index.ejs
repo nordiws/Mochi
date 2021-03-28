@@ -1,44 +1,40 @@
 <%- include("./partials/head.ejs") %>
-<%- include("./partials/header.ejs") %>
+    <%- include("./partials/header.ejs") %>
 
 
-    <section id="main-content" class="grey lighten-1">
-        <div class="container">
-            <div class="grey lighten-1">
+        <section id="main-content" class="grey lighten-1">
+            <div class="container">
                 <div class="row">
-                    <div class="main-banner-left col l6">
+                    <div class="main-banner-left col l6 s12">
                         <div class="materials-label">
                             <h1>Doe materiais escolares <span>na sua região </span></h1>
-                            </div>
+                        </div>
                         <div class="city-search-bar">
                             <input placeholder="Digite o nome da sua cidade..." id="city" type="text">
-                            <button id="search-button" class="btn waves-effect waves-light" type="submit"
-                                    name="action">
-                                    <i class="material-icons">search</i>
+                            <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">
+                                <i class="material-icons">search</i>
                             </button>
                         </div>
                     </div>
-
-                    <div class="main-banner-right col l6">
+                    <div class="main-banner-right col l6 s12">
                         <img class="responsive-img" src="assets/main-banner.png" alt="Mochi Logo" />
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="container">
+        <section class="container">
 
-        <h1 class="my blue-grey-text"><b>Escolas com maior necessidade de doações:</b></h1>
+            <h1 class="my blue-grey-text"><b>Escolas com maior necessidade de doações:</b></h1>
 
-        <div class="row">
-             <!--Add cards-->
-            <%- include("./components/cards.ejs") %>
-            <%- include("./components/cards.ejs") %>
-            <%- include("./components/cards.ejs") %>
-        </div>
+            <div class="row">
+                <!--Add cards-->
+                <%- include("./components/cards.ejs") %>
+                    <%- include("./components/cards.ejs") %>
+                        <%- include("./components/cards.ejs") %>
+            </div>
 
-    </section>
+        </section>
 
 
-<%- include("./partials/footer.ejs") %>
+        <%- include("./partials/footer.ejs") %>
