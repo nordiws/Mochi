@@ -10,7 +10,7 @@ const materialsData = async () => {
   }
 }
 
-// Selecionando os produtos pelos codigos
+// Filtrando os produtos pelos codigos
 const selectedMaterialsData = async (selection) => {
   try {
     const response = await ApiMaterialsConnection.getAllMaterials();

@@ -91,7 +91,7 @@ let schema = mongoose.Schema({
         require: true,
     }]
 });
-
+// Criando o modelo
 const registrationModel = mongoose.model('mochi', schema, 'mochi');
 
 export default registrationModel;
