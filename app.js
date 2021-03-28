@@ -4,6 +4,7 @@ import path from "path";
 import cors from "cors";
 import router from "./routes/router.js"
 import mongoose from "mongoose";
+import apiMaterials from "./controller/ApiMaterialsController.js"
 
 //Importando a pasta local
 import { dirname } from 'path';
@@ -54,3 +55,14 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor iniciado na porta ${PORT}`);
 });
+
+const fetchMaterials = async () => {
+    try {
+        const data = await apiMaterials.materialsData();
+        console.log(data);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+fetchMaterials();

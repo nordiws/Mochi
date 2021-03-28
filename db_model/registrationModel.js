@@ -85,7 +85,11 @@ let schema = mongoose.Schema({
     school_cep: {
         type: String,
         require: false,
-    }
+    },
+    products_list: [{
+        type: String,
+        require: true,
+    }]
 });
 
 const registrationModel = mongoose.model('mochi', schema, 'mochi');

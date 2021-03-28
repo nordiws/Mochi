@@ -7,7 +7,7 @@ import materials from "../controller/ApiMaterialsController.js";
 router.get('/', (req, res, send) => {
     res.render('home/index', {
         title: "Mochi",
-        version: "0.0.1",
+        version: "1.0.0",
         materials: [
             {
                 title: "Caderno universitário capa dura",
@@ -33,19 +33,16 @@ router.post('/cadastro', (req, res) => {
     dbController.saveForm(req.body);
 })
 
-
 router.get('/cadastro', async (req, res) => {
-
-  try {
-      res.render('cadastro', {
-          materials: await materials.materialsData(),
-          title: "Mochi",
-          version: "0.0.1"
-      });
-  } catch(err) {
-     res.status(400).json(err)
-  }
+    try {
+        res.render('cadastro', {
+            materials: await materials.materialsData(),
+            title: "Mochi",
+            version: "0.0.1"
+        });
+    } catch (err) {
+        res.status(400).json(err)
+    }
 })
-
 
 export default router;
