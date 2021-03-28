@@ -11,4 +11,34 @@ const saveForm = async (formData) => {
     }
 }
 
-export default { saveForm };
+// Importando dados da base de dados
+const getAllStudentsByCity = async (city) => {
+    try {
+        const fechData = await registrationModel.find({ city_id: city });
+        const allStudents = fechData.map(kid => {
+            const { _id, std_name, std_nickname, std_grade } = kid;
+            return {
+                _id,
+                std_name,
+                std_nickname,
+                std_grade
+            }
+        });
+        console.log(allStudents);
+        return allStudents;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const getStudentById = async (id) => {
+    try {
+        const fechData = await registrationModel.findById({ _id: id });
+        console.log(fechData);
+        return fechData;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export default { saveForm, getAllStudentsByCity, getStudentById };

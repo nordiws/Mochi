@@ -1,4 +1,4 @@
-import APIconnection from "./ApiConnections.js";
+import APIconnection from "./ApiSchoolsConnections.js";
 
 // Importa o JSON dos estados
 const statesData = () => {

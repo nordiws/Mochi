@@ -50,19 +50,19 @@ let schema = mongoose.Schema({
         type: String,
         require: true,
     },
-    chld_name: {
+    std_name: {
         type: String,
         require: true,
     },
-    chld_nickname: {
+    std_nickname: {
         type: String,
         require: false,
     },
-    chld_age: {
+    std_age: {
         type: Number,
         require: false,
     },
-    chld_grade: {
+    std_grade: {
         type: String,
         require: false,
     },
@@ -85,7 +85,11 @@ let schema = mongoose.Schema({
     school_cep: {
         type: String,
         require: false,
-    }
+    },
+    products_list: [{
+        type: String,
+        require: true,
+    }]
 });
 
 const registrationModel = mongoose.model('mochi', schema, 'mochi');
