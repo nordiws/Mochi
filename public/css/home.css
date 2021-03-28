@@ -1,15 +1,6 @@
-.nav-wrapper {
-  background: #fafafa;
+header {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12),
     0px 1px 5px rgba(0, 0, 0, 0.2);
-}
-
-.logo {
-  padding: 9px 0px 8px 45px;
-}
-
-#logo-image {
-  height: 53px;
 }
 
 .search-bar {
@@ -25,7 +16,6 @@
 }
 
 .materials-label h1 {
-  font-family: "Inter";
   font-weight: bold;
   font-size: 40px;
   line-height: 48px;
@@ -46,8 +36,7 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   margin-left: 45px;
-  width: 571px;
-  height: 77px;
+  max-width: 100%;
 }
 
 #search-button {
@@ -70,10 +59,6 @@
   background: #fafafa;
   background-color: #fcfcfc;
   border: 0 !important;
-}
-
-.mochi-footer {
-  margin-left: 45px;
 }
 
 .footer-icons {
