@@ -4,7 +4,6 @@ import path from "path";
 import cors from "cors";
 import router from "./routes/router.js"
 import mongoose from "mongoose";
-import dbController from "./controller/DBController.js";
 
 //Importando a pasta local
 import { dirname } from 'path';
