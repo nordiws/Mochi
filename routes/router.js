@@ -1,10 +1,9 @@
 import express from "express";
 import dbController from "../controller/DBController.js";
+const router = express.Router();
 import materials from "../controller/ApiMaterialsController.js";
 import ApiSchoolsController from "../controller/ApiSchoolsController.js"
 
-// Configuração do roteador
-const router = express.Router();
 
 // View Model index route (frontend)
 router.get('/', async (req, res, send) => {
@@ -21,7 +20,7 @@ router.get('/', async (req, res, send) => {
 })
 
 // View model form submit route (front to back)
-router.get('/cadastro', async (req, res, send) => {
+router.get('/cadastro', async (req, res) => {
     try {
         res.render('cadastro', {
             materials: await materials.materialsData(),
@@ -33,7 +32,7 @@ router.get('/cadastro', async (req, res, send) => {
     }
 })
 
-router.post('/cadastro', (req, res, send) => {
+router.post('/cadastro', (req, res) => {
     dbController.saveForm(req.body);
 })
 
