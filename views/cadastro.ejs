@@ -24,7 +24,6 @@
     <h1 class="center-align"><b>Teste - Mochi 🎒</b></h1>
 
 
-        <p>    <%= JSON.stringify(materials) %> </p>
     <h5 class="center-align">
 
 
@@ -32,35 +31,29 @@
         <div class="row">
             <div class="col s8">
                 <ul class="collection">
-                    <li class="collection-item avatar">
-                        <img src="https://img.kalunga.com.br/fotosdeprodutos/139100d.jpg" alt="" class="circle">
-                        <h6><b>Caderno universitário capa dura</b></h6>
-                        <p>R$ 9,90</p>
-                        <label class="secondary-content">
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </li>
 
-                    <li class="collection-item avatar">
-                        <img src="https://img.kalunga.com.br/fotosdeprodutos/410675d.jpg" alt="" class="circle">
-                        <h6><b>Lápis preto técnico </b></h6>
-                        <p>R$ 15,60</p>
-                        <label class="secondary-content">
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </li>
+                  <% if (materials.length) {
+                    %>
+                      <% materials.forEach((material) => {
+                        %>
 
-                    <li class="collection-item avatar">
-                        <img src="https://img.kalunga.com.br/fotosdeprodutos/178534d.jpg" alt="" class="circle">
-                        <h6><b>Caneta esferográfica</b></h6>
-                        <p>R$ 4,80</p>
-                        <label class="secondary-content">
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </li>
+
+                          <li class="collection-item avatar">
+                              <img src="<%= material.image %>" alt="" class="circle">
+                              <h6><b><%= material.Grupo %></b></h6>
+                              <p>R$ <%= material.PrecoVenda %></p>
+                              <label class="secondary-content">
+                                  <input type="checkbox" />
+                                  <span></span>
+                              </label>
+                          </li>
+
+
+                        <%
+                      }) %>
+                    <%
+                  } %>
+
                 </ul>
             </div>
         </div>
