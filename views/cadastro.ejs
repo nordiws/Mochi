@@ -24,7 +24,6 @@
     <h1 class="center-align"><b>Teste - Mochi 🎒</b></h1>
 
 
-        <p>    <%= JSON.stringify(materials) %> </p>
     <h5 class="center-align">
 
 
@@ -32,17 +31,29 @@
         <div class="row">
             <div class="col s8">
                 <ul class="collection">
-                    <% for(var i=0; i<materials.length; i++) {%>
-                    <li class="collection-item avatar">
-                        <img src="<%= materials[0].image %>" alt="" class="circle">
-                        <h6><b><%= materials[i].title %></b></h6>
-                        <p><%= materials[i].price %></p>
-                        <label class="secondary-content">
-                            <input type="checkbox" />
-                            <span></span>
-                        </label>
-                    </li>
-                    <% } %>
+
+                  <% if (materials.length) {
+                    %>
+                      <% materials.forEach((material) => {
+                        %>
+
+
+                          <li class="collection-item avatar">
+                              <img src="<%= material.image %>" alt="" class="circle">
+                              <h6><b><%= material.Grupo %></b></h6>
+                              <p>R$ <%= material.PrecoVenda %></p>
+                              <label class="secondary-content">
+                                  <input type="checkbox" />
+                                  <span></span>
+                              </label>
+                          </li>
+
+
+                        <%
+                      }) %>
+                    <%
+                  } %>
+
                 </ul>
             </div>
         </div>
