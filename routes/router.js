@@ -2,7 +2,7 @@ import express from "express";
 import dbController from "../controller/DBController.js";
 const router = express.Router();
 import materials from "../controller/ApiMaterialsController.js";
-import ApiSchoolsController from "./controller/ApiSchoolsController.js"
+import ApiSchoolsController from "../controller/ApiSchoolsController.js"
 
 
 // View Model index route (frontend)
