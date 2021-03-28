@@ -50,19 +50,19 @@ let schema = mongoose.Schema({
         type: String,
         require: true,
     },
-    chld_name: {
+    std_name: {
         type: String,
         require: true,
     },
-    chld_nickname: {
+    std_nickname: {
         type: String,
         require: false,
     },
-    chld_age: {
+    std_age: {
         type: Number,
         require: false,
     },
-    chld_grade: {
+    std_grade: {
         type: String,
         require: false,
     },
