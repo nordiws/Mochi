@@ -9,7 +9,7 @@ import ApiSchoolsController from "../controller/ApiSchoolsController.js"
 router.get('/', async (req, res, send) => {
     try {
         const statesData = await ApiSchoolsController.statesData();
-        res.render('home/index', {
+        res.render('index', {
             title: "Mochi",
             version: "1.0.0",
             states: statesData,
