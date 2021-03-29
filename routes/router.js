@@ -4,6 +4,8 @@ const router = express.Router();
 import materials from "../controller/ApiMaterialsController.js";
 import ApiSchoolsController from "../controller/ApiSchoolsController.js";
 import guardian from "../db_model/form/Guardian.js";
+import school from "../db_model/form/School.js";
+import student from "../db_model/form/Student.js";
 
 
 // View Model index route (frontend)
@@ -28,7 +30,7 @@ router.get('/cadastro', async (req, res) => {
       title: "Mochi",
       version: "0.0.1",
       action: "/cadastro",
-      fields: guardian
+      fields: [guardian, student, school]
     });
   } catch (err) {
     res.status(400).json(err)

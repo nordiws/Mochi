@@ -6,14 +6,14 @@ school.push({
   name: "school_state",
   placeholder: "",
   type: "text",
-  label: "Estado da Escola",
+  label: "Estado da Escola"
 });
 
 school.push({
   name: "school_city",
   placeholder: "",
   type: "text",
-  label: "Cidade",
+  label: "Cidade"
 });
 
 school.push({
