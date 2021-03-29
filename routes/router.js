@@ -1,12 +1,13 @@
 import express from "express";
 import db from "../controller/DB.js";
-const router = express.Router();
 import materials from "../controller/ApiMaterials.js";
 import ApiSchools from "../controller/ApiSchools.js";
 import guardian from "../model/form/Guardian.js";
 import school from "../model/form/School.js";
 import student from "../model/form/Student.js";
 
+// Instanciando o roteador
+const router = express.Router();
 
 // View Model index route (frontend)
 router.get('/', async (req, res, send) => {
@@ -22,8 +23,30 @@ router.get('/', async (req, res, send) => {
   }
 })
 
-router.get('/escolas', (req, res) => {
-  res.render('schools', {title: "Escolas"});
+// View Model pagina listagem de escolas
+router.get('/escolas', async (req, res) => {
+  try {
+    const schoolsData = await ApiSchools.schoolsData(req.body);
+    res.render('schools', {
+      title: "Mochi - Escolas",
+      schools: schoolsData
+    });
+  } catch (error) {
+    res.status(400).json(err)
+  }
+})
+
+//View Model pagina listagem de alunos
+router.get('/alunos', async (req, res) => {
+  try {
+    const studentData = await db.getAllStudentsByCity(req.body);
+    res.render('students', {
+      title: "Mochi - Alunos",
+      students: studentData
+    });
+  } catch (error) {
+    res.status(400).json(err)
+  }
 })
 
 // View model form submit route (front to back)
@@ -31,8 +54,7 @@ router.get('/cadastro', async (req, res) => {
   try {
     res.render('cadastro', {
       materials: await materials.materialsData(),
-      title: "Mochi",
-      version: "0.0.1",
+      title: "Mochi - Cadastro",
       action: "/cadastro",
       fields: [guardian, student, school]
     });
@@ -42,7 +64,7 @@ router.get('/cadastro', async (req, res) => {
 })
 
 router.post('/cadastro', (req, res) => {
-    db.saveForm(req.body);
+  db.saveForm(req.body);
 })
 
 export default router;
