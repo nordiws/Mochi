@@ -1,7 +1,7 @@
-header {
+/*header {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12),
     0px 1px 5px rgba(0, 0, 0, 0.2);
-}
+}*/
 
 .search-bar {
   background-color: #fafafa;
@@ -71,3 +71,16 @@ header {
 .my {
   margin: 50px 0;
 }
+
+.btn-align-center {
+  display: block;
+  margin: 15px auto 0 auto;
+}
+
+.icon-center{
+    vertical-align: bottom !important;
+}
+
+.text-medium { font-weight: 500; font-size: 28px;}
+.text-semibold { font-weight: 600; }
+.text-bold { font-weight: 700; }
