@@ -50,7 +50,7 @@ router.get('/alunos', async (req, res) => {
 })
 
 // View model form submit route (front to back)
-router.get('/register', async (req, res) => {
+router.get('/cadastro', async (req, res) => {
   try {
     res.render('register', {
       materials: await materials.materialsData(),
