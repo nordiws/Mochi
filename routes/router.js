@@ -26,6 +26,10 @@ router.get('/escolas', (req, res) => {
   res.render('schools', {title: "Escolas"});
 })
 
+router.get('/alunos', (req, res) => {
+  res.render('students', {title: "Alunos"});
+})
+
 // View model form submit route (front to back)
 router.get('/cadastro', async (req, res) => {
   try {
