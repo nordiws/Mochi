@@ -18,7 +18,7 @@ const api = axios.create({
 });
 
 const api_materials = axios.create({
-    baseURL: 'https://young-mountain-02170.herokuapp.com',
+    baseURL: 'https://young-mountain-02170.herokuapp.com/api/',
     headers: {
         'Accept': 'application/json, text/javascript, /; q=0.01',
         'Accept-Language': 'pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3',
