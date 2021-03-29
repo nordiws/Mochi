@@ -4,7 +4,6 @@ import path from "path";
 import cors from "cors";
 import router from "./routes/router.js"
 import mongoose from "mongoose";
-import apiMaterials from "./controller/ApiMaterialsController.js"
 
 //Importando a pasta local
 import { dirname } from 'path';
@@ -25,11 +24,6 @@ app.set('view engine', 'ejs');
 
 // Configurando arquivos estáticos - static
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', router);
-
-// Configurando arquivos estáticos - static
-app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', router);
 
 // Conexão ao banco de dados

@@ -1,6 +1,6 @@
 import APIconnection from "./ApiSchoolsConnections.js";
 
-// Importa o JSON dos estados
+// Filtra os dados da API de escolas para enviar ao front / Estados
 const statesData = () => {
     APIconnection.getAllStates().then((response) => {
         const states = response.map(state => {
@@ -16,7 +16,7 @@ const statesData = () => {
     })
 }
 
-// Importa o JSON das cidades
+// Filtra os dados da API de escolas para enviar ao front / Cidades
 const citiesData = (state) => {
     APIconnection.getAllCities(state).then((response) => {
         const cities = response.map(city => {
@@ -33,7 +33,7 @@ const citiesData = (state) => {
     })
 }
 
-// Importa o JSON das escolas
+// Filtra os dados da API de escolas para enviar ao front / Escolas
 const schoolsData = (city) => {
     APIconnection.getAllSchools(city).then((response) => {
         const schools = response.map(school => {
@@ -52,6 +52,5 @@ const schoolsData = (city) => {
         console.log(err);
     })
 }
-
 
 export default { statesData, citiesData, schoolsData };

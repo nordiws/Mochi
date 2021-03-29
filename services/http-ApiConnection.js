@@ -17,7 +17,6 @@ const api = axios.create({
     },
 });
 
-
 const api_materials = axios.create({
     baseURL: 'https://young-mountain-02170.herokuapp.com/api/',
     headers: {
@@ -29,7 +28,4 @@ const api_materials = axios.create({
     },
 });
 
-
-
-
-export default {api, api_materials};
+export default { api, api_materials };

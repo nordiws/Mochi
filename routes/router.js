@@ -21,10 +21,6 @@ router.get('/', async (req, res, send) => {
 })
 
 // View model form submit route (front to back)
-router.post('/cadastro', (req, res) => {
-  dbController.saveForm(req.body);
-})
-
 router.get('/cadastro', async (req, res) => {
   try {
     res.render('cadastro', {
@@ -37,6 +33,10 @@ router.get('/cadastro', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
+})
+
+router.post('/cadastro', (req, res) => {
+    dbController.saveForm(req.body);
 })
 
 export default router;
