@@ -62,7 +62,7 @@ router.get('/cadastro', async (req, res) => {
   }
 })
 
-router.post('/register', (req, res) => {
+router.post('/cadastro', (req, res) => {
     db.saveForm(req.body);
 })
 
