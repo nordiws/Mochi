@@ -71,3 +71,12 @@ header {
 .my {
   margin: 50px 0;
 }
+
+.btn-align-center {
+  display: block;
+  margin: 15px auto 0 auto;
+}
+
+.icon-center{
+    vertical-align: bottom !important;
+}
