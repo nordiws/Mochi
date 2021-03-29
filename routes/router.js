@@ -1,17 +1,17 @@
 import express from "express";
-import dbController from "../controller/DBController.js";
+import db from "../controller/DB.js";
 const router = express.Router();
-import materials from "../controller/ApiMaterialsController.js";
-import ApiSchoolsController from "../controller/ApiSchoolsController.js";
-import guardian from "../db_model/form/Guardian.js";
-import school from "../db_model/form/School.js";
-import student from "../db_model/form/Student.js";
+import materials from "../controller/ApiMaterials.js";
+import ApiSchools from "../controller/ApiSchools.js";
+import guardian from "../model/form/Guardian.js";
+import school from "../model/form/School.js";
+import student from "../model/form/Student.js";
 
 
 // View Model index route (frontend)
 router.get('/', async (req, res, send) => {
   try {
-    const statesData = await ApiSchoolsController.statesData();
+    const statesData = await ApiSchools.statesData();
     res.render('index', {
       title: "Mochi",
       version: "1.0.0",
@@ -38,7 +38,7 @@ router.get('/cadastro', async (req, res) => {
 })
 
 router.post('/cadastro', (req, res) => {
-    dbController.saveForm(req.body);
+    db.saveForm(req.body);
 })
 
 export default router;

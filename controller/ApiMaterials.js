@@ -1,4 +1,4 @@
-import ApiMaterialsConnection from "./ApiMaterialsConnections.js";
+import ApiMaterialsConnection from "../connection/ApiMaterials.js";
 
 // Importando os dados dos produtos
 const materialsData = async () => {

@@ -1,9 +1,9 @@
-import registrationModel from "../db_model/registrationModel.js";
+import registration from "../model/registration.js";
 
 // Salvando os dados do Form na base de dados
 const saveForm = async (formData) => {
     try {
-        const registryDB = new registrationModel(formData); // ajustar com os identificadores dos campos do Form
+        const registryDB = new registration(formData); // ajustar com os identificadores dos campos do Form
         await registryDB.save();
         console.log("Cadastro inserido");
     } catch (err) {
@@ -14,7 +14,7 @@ const saveForm = async (formData) => {
 // Importando dados da base de dados
 const getAllStudentsByCity = async (city) => {
     try {
-        const fechData = await registrationModel.find({ city_id: city });
+        const fechData = await registration.find({ city_id: city });
         const allStudents = fechData.map(kid => {
             const { _id, std_name, std_nickname, std_grade } = kid;
             return {
@@ -33,7 +33,7 @@ const getAllStudentsByCity = async (city) => {
 
 const getStudentById = async (id) => {
     try {
-        const fechData = await registrationModel.findById({ _id: id });
+        const fechData = await registration.findById({ _id: id });
         console.log(fechData);
         return fechData;
     } catch (e) {

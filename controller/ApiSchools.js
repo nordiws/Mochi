@@ -1,4 +1,4 @@
-import APIconnection from "./ApiSchoolsConnections.js";
+import APIconnection from "../connection/ApiSchools.js";
 
 // Filtra os dados da API de escolas para enviar ao front / Estados
 const statesData = () => {
