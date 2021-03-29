@@ -23,13 +23,12 @@ router.get('/', async (req, res, send) => {
 })
 
 // View model form submit route (front to back)
-router.get('/cadastro', async (req, res) => {
+router.get('/register', async (req, res) => {
   try {
-    res.render('cadastro', {
+    res.render('register', {
       materials: await materials.materialsData(),
       title: "Mochi",
       version: "0.0.1",
-      action: "/cadastro",
       fields: [guardian, student, school]
     });
   } catch (err) {
@@ -37,7 +36,7 @@ router.get('/cadastro', async (req, res) => {
   }
 })
 
-router.post('/cadastro', (req, res) => {
+router.post('/register', (req, res) => {
     db.saveForm(req.body);
 })
 
