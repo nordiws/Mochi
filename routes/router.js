@@ -67,7 +67,8 @@ router.get('/cadastro', async (req, res) => {
 })
 
 router.post('/cadastro', (req, res) => {
-    db.saveForm(req.body);
+    console.log(req.body);
+    //db.saveForm(req.body);
 })
 
 export default router;
