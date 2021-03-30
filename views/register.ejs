@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/css/materialize.min.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-  rel="stylesheet">
+    rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="/js/inputCheckSeletion.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,75 +28,96 @@
         <div class="container">
           <div class="row">
             <form class="col s12">
-              <% if (fields[0].length) { %>
-                <% fields[0].forEach((guardian) => { %>
-                  <div class="row">
+              <div class="row">
+                <% if (fields[0].length) { %>
+                  <% fields[0].forEach((guardian)=> { %>
                     <div class="input-field col s6">
-                      <input type="<%= guardian.type %>" name="<%= guardian.name %>" placeholder="<%= guardian.placeholder %>" class="validate" >
-                      <label for="last_name"><%= guardian.label %></label>
+                      <input type="<%= guardian.type %>" name="<%= guardian.name %>"
+                        placeholder="<%= guardian.placeholder %>" class="validate">
+                      <label for="last_name">
+                        <%= guardian.label %>
+                      </label>
                     </div>
-                  </div>
+                    <% }) %>
+                      <% } %>
+              </div>
+              <h3 class="center-align"><b>Cadastro do Estudante </b></h3>
+              <% if (fields[1].length) { %>
+
+                <div class="row">
+                  <% fields[1].forEach((student)=> { %>
+                    <% if ( String(student.name)=="std_grade" ) { %>
+                      <div class="input-field col s6">
+                        <select>
+                          <option value="" disabled selected>
+                            <%= student.label %>
+                          </option>
+                          <% student.options.forEach((grade)=> { %>
+                            <option value="<% grade.toString() %>">
+                              <%= grade.toString() %>
+                            </option>
+                            <% }) %>
+                        </select>
+                        <label>
+                          <%= student.label %>
+                        </label>
+                      </div>
+                      <% } else { %>
+                        <div class="input-field col s6">
+                          <input "<%= student.property %>" type="<%= student.type %>" name="<%= student.name %>"
+                            placeholder="<%= student.placeholder %>" class="validate">
+                          <label for="last_name">
+                            <%= student.label %>
+                          </label>
+                        </div>
+                        <% } }) %>
+                          <% } %>
+                </div>
+                <div class="row">
+                  <% if (fields[2].length) { %>
+                    <% fields[2].forEach((school)=> { %>
+                      <div class="input-field col s6">
+                        <input type="<%= school.type %>" name="<%= school.name %>"
+                          placeholder="<%= school.placeholder %>" class="validate">
+                        <label for="last_name">
+                          <%= school.label %>
+                        </label>
+                      </div>
+                      <% }) %>
+                        <% } %>
+                </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <div class="row">
+          <div class="col s8">
+            <ul class="collection">
+              <% if (materials.length) { %>
+                <% materials.forEach((material)=> { %>
+                  <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
+                    class="collection-item avatar">
+                    <img src="<%= material.image %>" alt="" class="circle">
+                    <h6><b>
+                        <%= material.Grupo %>
+                      </b></h6>
+                    <label class="secondary-content">
+                      <input id="input_<%= material.Codigo %>" type="checkbox"
+                        onclick="event.stopImmediatePropagation();" name="" autocomplete="off" />
+                      <span></span>
+                    </label>
+                  </li>
                   <% }) %>
-                  <% } %>
-                  <h3 class="center-align"><b>Cadastro do Estudante </b></h3>
-                  <% if (fields[1].length) { %>
-                    <% fields[1].forEach((student) => { %>
-                      <% if ( String(student.name) == "std_grade") { %>
-                        <div class="input-field col s12">
-                          <select>
-                            <option value="" disabled selected><%= student.label %></option>
-                            <% student.options.forEach((grade) => { %>
-                              <option value="<% grade.toString() %>">  <%= grade.toString() %> </option>
-                              <% }) %>
-                            </select>
-                            <label><%= student.label %></label>
-                          </div>
-                          <% } else { %>
-                            <div class="row">
-                              <div class="input-field col s6">
-                                <input "<%= student.property %>" type="<%= student.type %>" name="<%= student.name %>" placeholder="<%= student.placeholder %>" class="validate" >
-                                <label for="last_name"><%= student.label %></label>
-                              </div>
-                            </div>
-                            <% } }) %>
-                            <% } %>
-                            <% if (fields[2].length) { %>
-                              <% fields[2].forEach((school) => { %>
-                                <div class="row">
-                                  <div class="input-field col s6">
-                                    <input type="<%= school.type %>" name="<%= school.name %>" placeholder="<%= school.placeholder %>" class="validate" >
-                                    <label for="last_name"><%= school.label %></label>
-                                  </div>
-                                </div>
-                                <% }) %>
-                                <% } %>
-                              </form>
-                            </div>
-                          </div>
-                        </section>
-                        <div class="container">
-                          <div class="row">
-                            <div class="col s8">
-                              <ul class="collection">
-                                <% if (materials.length) { %>
-                                  <% materials.forEach((material) => { %>
-                                    <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')" class="collection-item avatar">
-                                      <img src="<%= material.image %>" alt="" class="circle">
-                                      <h6><b><%= material.Grupo %></b></h6>
-                                      <label class="secondary-content">
-                                        <input  id="input_<%= material.Codigo %>" type="checkbox" onclick="event.stopImmediatePropagation();" name=""  autocomplete="off"/>
-                                        <span></span>
-                                      </label>
-                                    </li>
-                                    <% }) %>
-                                    <% } %>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <script src="/js/materialize.min.js"></script>
-                            <script>
-                            M.AutoInit();
-                            </script>
-                          </body>
-                          </html>
+                    <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <script src="/js/materialize.min.js"></script>
+      <script>
+        M.AutoInit();
+      </script>
+</body>
+
+</html>
