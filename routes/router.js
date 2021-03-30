@@ -1,15 +1,18 @@
 import express from "express";
-import dbController from "../controller/DBController.js";
-const router = express.Router();
-import materials from "../controller/ApiMaterialsController.js";
-import ApiSchoolsController from "../controller/ApiSchoolsController.js";
-import guardian from "../db_model/form/Guardian.js";
+import db from "../controller/DB.js";
+import materials from "../controller/ApiMaterials.js";
+import ApiSchools from "../controller/ApiSchools.js";
+import guardian from "../model/form/Guardian.js";
+import school from "../model/form/School.js";
+import student from "../model/form/Student.js";
 
+// Instanciando o roteador
+const router = express.Router();
 
 // View Model index route (frontend)
 router.get('/', async (req, res, send) => {
   try {
-    const statesData = await ApiSchoolsController.statesData();
+    const statesData = await ApiSchools.statesData();
     res.render('index', {
       title: "Mochi",
       version: "1.0.0",
@@ -20,15 +23,43 @@ router.get('/', async (req, res, send) => {
   }
 })
 
+// View Model pagina listagem de escolas
+router.get('/escolas', async (req, res) => {
+  try {
+    const schoolsData = await ApiSchools.schoolsData(req.body);
+    res.render('schools', {
+      title: "Mochi - Escolas",
+      schools: schoolsData
+    });
+  } catch (error) {
+    res.status(400).json(err)
+  }
+})
+
+//View Model pagina listagem de alunos
+router.get('/alunos', async (req, res) => {
+  try {
+    const studentData = await db.getAllStudentsByCity(req.body);
+    res.render('students', {
+      title: "Mochi - Alunos",
+      students: studentData
+    });
+  } catch (error) {
+    res.status(400).json(err)
+  }
+})
+
+router.get('/alunos', (req, res) => {
+  res.render('students', {title: "Alunos"});
+})
+
 // View model form submit route (front to back)
 router.get('/cadastro', async (req, res) => {
   try {
-    res.render('cadastro', {
+    res.render('register', {
       materials: await materials.materialsData(),
-      title: "Mochi",
-      version: "0.0.1",
-      action: "/cadastro",
-      fields: guardian
+      title: "Mochi - Cadastro",
+      fields: [guardian, student, school]
     });
   } catch (err) {
     res.status(400).json(err)
@@ -36,7 +67,7 @@ router.get('/cadastro', async (req, res) => {
 })
 
 router.post('/cadastro', (req, res) => {
-    dbController.saveForm(req.body);
+    db.saveForm(req.body);
 })
 
 export default router;

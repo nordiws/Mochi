@@ -7,13 +7,15 @@ student.push({
   placeholder: "",
   type: "text",
   label: "Nome do Estudante",
+  property : ""
 });
 
 student.push({
   name: "std_nickname",
   placeholder: "",
   type: "text",
-  label: "Apelido do Estudante",
+  label: "Sobrenome do Estudante",
+  property : ""
 });
 
 student.push({
@@ -21,13 +23,13 @@ student.push({
   placeholder: "",
   type: "number",
   label: "Idade",
+  property : "min=0 step=1"
 });
 
 student.push({
   name: "std_grade",
-  placeholder: "",
-  type: "text",
   label: "Serie",
+  options: [ "first grade", "second grade", "third grade" ]
 });
 
 export default student;

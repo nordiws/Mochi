@@ -31,27 +31,6 @@ guardian.push({
 });
 
 guardian.push({
-  name: "cep",
-  placeholder: "99999-000",
-  type: "text",
-  label: "CEP",
-});
-
-guardian.push({
-  name: "street",
-  placeholder: "Rua/Av",
-  type: "text",
-  label: "Rua",
-});
-
-guardian.push({
-  name: "number",
-  placeholder: "",
-  type: "number",
-  label: "Número",
-});
-
-guardian.push({
   name: "state",
   placeholder: "",
   type: "text",
@@ -59,10 +38,31 @@ guardian.push({
 });
 
 guardian.push({
+  name: "cep",
+  placeholder: "99999-000",
+  type: "text",
+  label: "CEP"
+});
+
+guardian.push({
   name: "city",
   placeholder: "",
   type: "text",
-  label: "Cidade",
+  label: "Cidade/Bairro"
+});
+
+guardian.push({
+  name: "street",
+  placeholder: "Rua/Av",
+  type: "text",
+  label: "Rua"
+});
+
+guardian.push({
+  name: "number",
+  placeholder: "",
+  type: "number",
+  label: "Número"
 });
 
 export default guardian;

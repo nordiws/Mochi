@@ -92,6 +92,6 @@ let schema = mongoose.Schema({
     }]
 });
 // Criando o modelo
-const registrationModel = mongoose.model('mochi', schema, 'mochi');
+const registration = mongoose.model('mochi', schema, 'mochi');
 
-export default registrationModel;
+export default registration;
