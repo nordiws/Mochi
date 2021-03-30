@@ -9,8 +9,7 @@ main {
 }
 
 header {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12),
-    0px 1px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .search-bar {
@@ -88,6 +87,11 @@ header {
   height: 21.22px;
   top: 1694.7px;
   margin-left: 10px;
+}
+
+footer ul {
+  display: flex;
+  justify-content:space-between; 
 }
 
 .my {
