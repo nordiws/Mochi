@@ -11,6 +11,9 @@
     rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="/js/inputCheckSeletion.js"></script>
+  <script src="/js/jquery.mask.min.js"></script>
+  <script src="/js/inputMask.js"></script>
+  <script src="/js/sendRegister.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <title>
@@ -27,12 +30,12 @@
       <section id="main-content" class="grey lighten-1">
         <div class="container">
           <div class="row">
-            <form class="col s12">
+            <form method="post" action="/cadastro"  class="col s12">
               <div class="row">
                 <% if (fields[0].length) { %>
                   <% fields[0].forEach((guardian)=> { %>
                     <div class="input-field col s6">
-                      <input type="<%= guardian.type %>" name="<%= guardian.name %>"
+                      <input type="<%= guardian.type %>" name="<%= guardian.name %>" id="<%= guardian.id %>"
                         placeholder="<%= guardian.placeholder %>" class="validate">
                       <label for="last_name">
                         <%= guardian.label %>
@@ -48,7 +51,7 @@
                   <% fields[1].forEach((student)=> { %>
                     <% if ( String(student.name)=="std_grade" ) { %>
                       <div class="input-field col s6">
-                        <select>
+                        <select id="<%= student.id %>">
                           <option value="" disabled selected>
                             <%= student.label %>
                           </option>
@@ -64,8 +67,8 @@
                       </div>
                       <% } else { %>
                         <div class="input-field col s6">
-                          <input "<%= student.property %>" type="<%= student.type %>" name="<%= student.name %>"
-                            placeholder="<%= student.placeholder %>" class="validate">
+                          <input type="<%= student.type %>" name="<%= student.name %>"
+                            id="<%= student.id %>" placeholder="<%= student.placeholder %>" class="validate">
                           <label for="last_name">
                             <%= student.label %>
                           </label>
@@ -78,7 +81,7 @@
                     <% fields[2].forEach((school)=> { %>
                       <div class="input-field col s6">
                         <input type="<%= school.type %>" name="<%= school.name %>"
-                          placeholder="<%= school.placeholder %>" class="validate">
+                          id="<%= school.id %>" placeholder="<%= school.placeholder %>" class="validate">
                         <label for="last_name">
                           <%= school.label %>
                         </label>
@@ -86,9 +89,6 @@
                       <% }) %>
                         <% } %>
                 </div>
-            </form>
-          </div>
-        </div>
       </section>
       <div class="container">
         <div class="row">
@@ -104,7 +104,7 @@
                       </b></h6>
                     <label class="secondary-content">
                       <input id="input_<%= material.Codigo %>" type="checkbox"
-                        onclick="event.stopImmediatePropagation();" name="" autocomplete="off" />
+                        onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
                       <span></span>
                     </label>
                   </li>
@@ -114,6 +114,14 @@
           </div>
         </div>
       </div>
+
+      <button class="btn waves-effect waves-light" type="submit" onclick="event.preventDefault();registerForm()" name="action">Submit
+  <i class="material-icons right">send</i>
+</button>
+</form>
+</div>
+</div>
+
       <script src="/js/materialize.min.js"></script>
       <script>
         M.AutoInit();
