@@ -1,28 +1,28 @@
 function registerForm(){
 
   $form = [
-      $("#guardian_name").val(),
-      $("#guardian_lastname").val(),
-      $("#cpf").val(),
-      $("#phone").val(),
-      $("#state").val(),
-      $("#cep").val(),
-      $("#city").val(),
-      $("#street").val(),
-      $("#number").val(),
-      $("#school_state").val(),
-      $("#school_city").val(),
-      $("#school_name").val(),
-      $("#std_name").val(),
-      $("#std_nickname").val(),
-      $("#std_age").val(),
-      $("#std_grade").val()
+      { guardian_name : $("#guardian_name").val() },
+      { guardian_lastname : $("#guardian_lastname").val() },
+      { cpf : $("#cpf").val() },
+      { phone : $("#phone").val() },
+      { state : $("#state").val() },
+      { cep :  $("#cep").val() },
+      { city : $("#city").val() },
+      { street : $("#street").val() },
+      { number : $("#number").val() },
+      { school_state :  $("#school_state").val() },
+      { school_city : $("#school_city").val() },
+      { school_name : $("#school_name").val() },
+      { std_name : $("#std_name").val() },
+      { std_nickname : $("#std_nickname").val() },
+      { std_age : $("#std_age").val() },
+      { std_grade : $("#std_grade").val() }
   ];
 
   $.ajax({
     type: "POST",
     url: "/cadastro",
-    data: JSON.stringify([$form, allChecked()]),//, $kit_data]),
+    data: JSON.stringify([$form, {product_id : allChecked()}]),//, $kit_data]),
     contentType: "application/json",
     success: window.location.reload()
    });
