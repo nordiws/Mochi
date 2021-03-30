@@ -54,7 +54,7 @@ guardian.push({
   name: "city",
   placeholder: "",
   type: "text",
-  label: "Cidade/Bairro",
+  label: "Bairro",
   id : "city"
 });
 

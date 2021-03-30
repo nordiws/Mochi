@@ -29,7 +29,8 @@ student.push({
 student.push({
   name: "std_grade",
   label: "Serie",
-  options: [ "first grade", "second grade", "third grade" ]
+  options: [ "first grade", "second grade", "third grade" ],
+  id : "std_grade"
 });
 
 export default student;

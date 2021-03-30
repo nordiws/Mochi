@@ -13,6 +13,7 @@
   <script src="/js/inputCheckSeletion.js"></script>
   <script src="/js/jquery.mask.min.js"></script>
   <script src="/js/inputMask.js"></script>
+  <script src="/js/sendRegister.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <title>
@@ -29,7 +30,7 @@
       <section id="main-content" class="grey lighten-1">
         <div class="container">
           <div class="row">
-            <form class="col s12">
+            <form method="post" action="/cadastro"  class="col s12">
               <div class="row">
                 <% if (fields[0].length) { %>
                   <% fields[0].forEach((guardian)=> { %>
@@ -50,7 +51,7 @@
                   <% fields[1].forEach((student)=> { %>
                     <% if ( String(student.name)=="std_grade" ) { %>
                       <div class="input-field col s6">
-                        <select>
+                        <select id="<%= student.id %>">
                           <option value="" disabled selected>
                             <%= student.label %>
                           </option>
@@ -88,9 +89,6 @@
                       <% }) %>
                         <% } %>
                 </div>
-            </form>
-          </div>
-        </div>
       </section>
       <div class="container">
         <div class="row">
@@ -116,6 +114,14 @@
           </div>
         </div>
       </div>
+
+      <button class="btn waves-effect waves-light" type="submit" onclick="event.preventDefault();registerForm()" name="action">Submit
+  <i class="material-icons right">send</i>
+</button>
+</form>
+</div>
+</div>
+
       <script src="/js/materialize.min.js"></script>
       <script>
         M.AutoInit();
