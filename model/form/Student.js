@@ -7,7 +7,7 @@ student.push({
   placeholder: "",
   type: "text",
   label: "Nome do Estudante",
-  property : ""
+  id : "std_name"
 });
 
 student.push({
@@ -15,15 +15,15 @@ student.push({
   placeholder: "",
   type: "text",
   label: "Sobrenome do Estudante",
-  property : ""
+  id : "std_nickname"
 });
 
 student.push({
   name: "std_age",
   placeholder: "",
-  type: "number",
+  type: "text",
   label: "Idade",
-  property : "min=0 step=1"
+  id : "std_age"
 });
 
 student.push({

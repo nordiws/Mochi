@@ -34,7 +34,7 @@
                 <% if (fields[0].length) { %>
                   <% fields[0].forEach((guardian)=> { %>
                     <div class="input-field col s6">
-                      <input type="<%= guardian.type %>" name="<%= guardian.name %>"
+                      <input type="<%= guardian.type %>" name="<%= guardian.name %>" id="<%= guardian.id %>"
                         placeholder="<%= guardian.placeholder %>" class="validate">
                       <label for="last_name">
                         <%= guardian.label %>
@@ -66,8 +66,8 @@
                       </div>
                       <% } else { %>
                         <div class="input-field col s6">
-                          <input "<%= student.property %>" type="<%= student.type %>" name="<%= student.name %>"
-                            placeholder="<%= student.placeholder %>" class="validate">
+                          <input type="<%= student.type %>" name="<%= student.name %>"
+                            id="<%= student.id %>" placeholder="<%= student.placeholder %>" class="validate">
                           <label for="last_name">
                             <%= student.label %>
                           </label>
@@ -80,7 +80,7 @@
                     <% fields[2].forEach((school)=> { %>
                       <div class="input-field col s6">
                         <input type="<%= school.type %>" name="<%= school.name %>"
-                          placeholder="<%= school.placeholder %>" class="validate">
+                          id="<%= school.id %>" placeholder="<%= school.placeholder %>" class="validate">
                         <label for="last_name">
                           <%= school.label %>
                         </label>
@@ -106,7 +106,7 @@
                       </b></h6>
                     <label class="secondary-content">
                       <input id="input_<%= material.Codigo %>" type="checkbox"
-                        onclick="event.stopImmediatePropagation();" name="" autocomplete="off" />
+                        onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
                       <span></span>
                     </label>
                   </li>

@@ -7,6 +7,7 @@ guardian.push({
   placeholder: "",
   type: "text",
   label: "Nome do Responsável",
+  id : "guardian_name"
 });
 
 guardian.push({
@@ -14,6 +15,7 @@ guardian.push({
   placeholder: "",
   type: "text",
   label: "Sobrenome do Responsável",
+  id : "guardian_lastname"
 });
 
 guardian.push({
@@ -21,6 +23,7 @@ guardian.push({
   placeholder: "999.999.999-99",
   type: "text",
   label: "CPF",
+  id : "cpf"
 });
 
 guardian.push({
@@ -28,6 +31,7 @@ guardian.push({
   placeholder: "(55) 99999-9999",
   type: "text",
   label: "Telefone",
+  id : "phone"
 });
 
 guardian.push({
@@ -35,34 +39,39 @@ guardian.push({
   placeholder: "",
   type: "text",
   label: "Estado",
+  id : "state"
 });
 
 guardian.push({
   name: "cep",
   placeholder: "99999-000",
   type: "text",
-  label: "CEP"
+  label: "CEP",
+  id : "cep"
 });
 
 guardian.push({
   name: "city",
   placeholder: "",
   type: "text",
-  label: "Cidade/Bairro"
+  label: "Cidade/Bairro",
+  id : "city"
 });
 
 guardian.push({
   name: "street",
   placeholder: "Rua/Av",
   type: "text",
-  label: "Rua"
+  label: "Rua",
+  id : 'street'
 });
 
 guardian.push({
   name: "number",
   placeholder: "",
-  type: "number",
-  label: "Número"
+  type: "text",
+  label: "Número",
+  id : "number"
 });
 
 export default guardian;
