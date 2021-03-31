@@ -27,8 +27,28 @@ document.addEventListener('input', () => {
 
 searchBtn.addEventListener('click', () => {
 
-    const res = listCities[0].filter(item => item.name == elems.value);
+    if(elems.value.length == 0) {
+        const toastHTML = '<span>Digite algo</span>';
+        M.toast({html: toastHTML})
 
-    //window.location.href = `http://localhost:3000/`
-    console.log(`http://localhost:3000/escolas?id=${res[0].id}`)
+    }else {
+        const response = listCities[0].filter(item => {
+    
+            const city = item.city.toUpperCase();
+            const value = elems.value.toUpperCase();
+            
+            if(item.name == elems.value || city == value) {
+                return item;
+            }
+        });
+       
+        if(response.length !== 0) {
+            //window.location.href = `http://localhost:3000/?id=${response[0].id}` 
+            console.log(`http://localhost:3000/escolas?id=${response[0].id}`)
+        }else {
+            const toastHTML = '<span>Está cidade não existe</span>';
+            M.toast({html: toastHTML})
+        }
+    }
+
 })
