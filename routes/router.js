@@ -26,7 +26,8 @@ router.get('/', async (req, res, send) => {
 // View Model pagina listagem de escolas
 router.get('/escolas', async (req, res) => {
   try {
-    const schoolsData = await ApiSchools.schoolsData(req.body);
+    console.log(req.query.id);
+    const schoolsData = await ApiSchools.schoolsData(req.query.id);
     res.render('schools', {
       title: "Mochi - Escolas",
       schools: schoolsData
@@ -50,7 +51,7 @@ router.get('/alunos', async (req, res) => {
 })
 
 router.get('/alunos', (req, res) => {
-  res.render('students', {title: "Alunos"});
+  res.render('students', { title: "Alunos" });
 })
 
 // View model form submit route (front to back)
@@ -67,15 +68,15 @@ router.get('/cadastro', async (req, res) => {
 })
 
 router.post('/cadastro', (req, res) => {
-    console.log(req.body);
-    db.saveForm(req.body);
+  console.log(req.body);
+  db.saveForm(req.body);
 })
 
 // Rota para autocomplete
 router.get('/cities', async (req, res, send) => {
   try {
     const citiesData = await db.getTotalCities();
-    res.json({citiesData});
+    res.json({ citiesData });
   } catch (err) {
     res.status(400).json(err)
   }

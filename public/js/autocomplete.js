@@ -27,27 +27,27 @@ document.addEventListener('input', () => {
 
 searchBtn.addEventListener('click', () => {
 
-    if(elems.value.length == 0) {
+    if (elems.value.length == 0) {
         const toastHTML = '<span>Digite algo</span>';
-        M.toast({html: toastHTML})
+        M.toast({ html: toastHTML })
 
-    }else {
+    } else {
         const response = listCities[0].filter(item => {
-    
+
             const city = item.city.toUpperCase();
             const value = elems.value.toUpperCase();
-            
-            if(item.name == elems.value || city == value) {
+
+            if (item.name == elems.value || city == value) {
                 return item;
             }
         });
-       
-        if(response.length !== 0) {
-            //window.location.href = `http://localhost:3000/?id=${response[0].id}` 
+
+        if (response.length !== 0) {
+            window.location.href = `http://localhost:3000/escolas?id=${response[0].id}`
             console.log(`http://localhost:3000/escolas?id=${response[0].id}`)
-        }else {
+        } else {
             const toastHTML = '<span>Está cidade não existe</span>';
-            M.toast({html: toastHTML})
+            M.toast({ html: toastHTML })
         }
     }
 
