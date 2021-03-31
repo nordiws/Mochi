@@ -12,19 +12,11 @@ const router = express.Router();
 // View Model index route (frontend)
 router.get('/', async (req, res, send) => {
   try {
-<<<<<<< HEAD
-    //const citiesData = await db.getTotalCities();
-    res.render('index', {
-      title: "Mochi",
-      version: "1.0.0",
-      //cities_list: citiesData,
-=======
     const statesData = await ApiSchools.statesData();
     res.render('index', {
       title: "Mochi",
       version: "1.0.0",
       states: statesData,
->>>>>>> 11e7feb8027c6e0a87b2cdc28c46fc7d712c7de1
     });
   } catch (err) {
     res.status(400).json(err)

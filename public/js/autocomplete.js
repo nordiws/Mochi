@@ -20,5 +20,7 @@ window.onload = () => {
 
 document.addEventListener('input', () => {
     const elems = document.querySelector('.autocomplete');
-    const instances = M.Autocomplete.init(elems, { data: options, minLength: 2 });
+    const instances = M.Autocomplete.init(elems, { data: options, minLength: 2,limit: 5 });
 });
+
+
