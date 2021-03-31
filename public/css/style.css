@@ -1,6 +1,15 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 header {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12),
-    0px 1px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .search-bar {
@@ -61,11 +70,28 @@ header {
   border: 0 !important;
 }
 
+.card-image {
+  background: rgba(52, 152, 219, 0.1);
+}
+
+.card img {
+  height: 160px; padding: 10px;
+}
+
+.card #button {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
 .footer-icons {
   width: 25.92px;
   height: 21.22px;
   top: 1694.7px;
   margin-left: 10px;
+}
+
+footer ul {
+  display: flex;
+  justify-content:space-between; 
 }
 
 .my {
@@ -78,7 +104,7 @@ header {
 }
 
 .icon-center{
-    vertical-align: bottom !important;
+  vertical-align: bottom !important;
 }
 
 .text-medium { font-weight: 500; font-size: 28px;}
