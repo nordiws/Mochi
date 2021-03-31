@@ -1,34 +1,32 @@
 <%- include("./partials/head.ejs") %>
-<%- include("./partials/header.ejs") %>
+    <%- include("./partials/header.ejs") %>
 
-<section class="container">
+        <section class="container">
 
-    
-    <div class="row">
-        <div class="col s6">
-            <p>Inicio > Escolas > <b>Alunos</b></p>
-            <h1 class="text-medium">E. E. Prof. Primo Ferreira</h1>
-            <h2 class="text-bold blue-grey-text">Ajude a encher a mochila de:</h2>
-        </div>
-        <div class="col s6">
-            
-            <div class="city-search-bar grey lighten-1 my">
-                <input placeholder="Digite o nome da sua cidade..." id="city" type="text">
-                <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">
-                    <i class="material-icons">search</i>
-                </button>
+
+            <div class="row">
+                <div class="col s6">
+                    <p>Inicio > Escolas > <b>Alunos</b></p>
+                    <h1 class="text-medium">E. E. Prof. Primo Ferreira</h1>
+                    <h2 class="text-bold blue-grey-text">Ajude a encher a mochila de:</h2>
+                </div>
+                <div class="col s6">
+
+                    <div class="city-search-bar grey lighten-1 my">
+                        <input placeholder="Digite o nome da sua cidade..." id="city" type="text">
+                        <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
+
+                </div>
             </div>
-            
-        </div>
-    </div>
 
-    <div class="row my">
+            <div class="row my">
 
-        <%- include("./components/student-card.ejs") %>
-        <%- include("./components/student-card.ejs") %>
-        <%- include("./components/student-card.ejs") %>
+                <%- include("./components/student-card.ejs") %>
 
-    </div>
-</section>
+            </div>
+        </section>
 
-<%- include("./partials/footer.ejs") %>
+        <%- include("./partials/footer.ejs") %>
