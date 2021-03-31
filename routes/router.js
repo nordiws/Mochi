@@ -12,11 +12,11 @@ const router = express.Router();
 // View Model index route (frontend)
 router.get('/', async (req, res, send) => {
   try {
-    const citiesData = await db.getTotalCities();
+    //const citiesData = await db.getTotalCities();
     res.render('index', {
       title: "Mochi",
       version: "1.0.0",
-      cities_list: citiesData,
+      //cities_list: citiesData,
     });
   } catch (err) {
     res.status(400).json(err)
@@ -77,6 +77,16 @@ router.get('/teste-register', (req, res) => {
   res.render('teste-register', {
     title: "Mochi - Cadastro"
   })
+})
+
+// Rota para autocomplete
+router.get('/cities', async (req, res, send) => {
+  try {
+    const citiesData = await db.getTotalCities();
+    res.json({citiesData});
+  } catch (err) {
+    res.status(400).json(err)
+  }
 })
 
 export default router;
