@@ -10,8 +10,6 @@ body {
   position: relative;
 }
 
-
-
 #content {
   padding-bottom: 290px;
 }
@@ -71,7 +69,7 @@ header {
   border-radius: 10px;
   height: 50px;
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 5px;
   padding-left: 10px;
   background: #fafafa;
   background-color: #fcfcfc;

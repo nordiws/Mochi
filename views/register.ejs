@@ -34,6 +34,7 @@
               <div class="row">
                 <% if (fields[0].length) { %>
                   <% fields[0].forEach((guardian)=> { %>
+
                     <div class="input-field col s6">
                       <input type="<%= guardian.type %>" name="<%= guardian.name %>" id="<%= guardian.id %>"
                         placeholder="<%= guardian.placeholder %>" class="validate">
@@ -41,7 +42,8 @@
                         <%= guardian.label %>
                       </label>
                     </div>
-                    <% }) %>
+
+                  <% }) %>
                       <% } %>
               </div>
               <h3 class="center-align"><b>Cadastro do Estudante </b></h3>
