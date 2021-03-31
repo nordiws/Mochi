@@ -1,4 +1,5 @@
 import registration from "../model/registration.js";
+import schoolsModel from "../model/schoolsModel.js";
 
 // Salvando os dados do Form na base de dados
 const saveForm = async (formData) => {
@@ -26,8 +27,8 @@ const getAllStudentsByCity = async (city) => {
         });
         console.log(allStudents);
         return allStudents;
-    } catch (e) {
-        console.log(e);
+    } catch (error) {
+        console.log(error);
     }
 }
 
@@ -41,4 +42,22 @@ const getStudentById = async (id) => {
     }
 }
 
-export default { saveForm, getAllStudentsByCity, getStudentById };
+const getTotalCities = async () => {
+    try {
+        const fetchData = await schoolsModel.find();
+        const allCities = fetchData.map(city => {
+            const { id, name, state } = city;
+            return {
+                id,
+                name: name + " - " + state.acronym,
+                state_id: state.id,
+                state_name: state.name
+            }
+        })
+        return allCities;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export default { saveForm, getAllStudentsByCity, getStudentById, getTotalCities };
