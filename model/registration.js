@@ -54,7 +54,7 @@ let schema = mongoose.Schema({
         type: String,
         require: true,
     },
-    std_nickname: {
+    std_lastname: {
         type: String,
         require: false,
     },

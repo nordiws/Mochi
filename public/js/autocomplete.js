@@ -41,10 +41,9 @@ searchBtn.addEventListener('click', () => {
                 return item;
             }
         });
-
+        console.log(response);
         if (response.length !== 0) {
-            window.location.href = `http://localhost:3000/escolas?id=${response[0].id}`
-            console.log(`http://localhost:3000/escolas?id=${response[0].id}`)
+            window.location.href = `http://localhost:3000/escolas?id=${response[0].id}&name=${response[0].name}`
         } else {
             const toastHTML = '<span>Está cidade não existe</span>';
             M.toast({ html: toastHTML })

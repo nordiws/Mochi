@@ -10,43 +10,38 @@ import student from "../model/form/Student.js";
 const router = express.Router();
 
 // View Model index route (frontend)
-router.get('/', async (req, res, send) => {
-  try {
-    const statesData = await ApiSchools.statesData();
-    res.render('index', {
-      title: "Mochi",
-      version: "1.0.0",
-      states: statesData,
-    });
-  } catch (err) {
-    res.status(400).json(err)
-  }
+router.get('/', (req, res, send) => {
+  res.render('index', {
+    title: "Mochi",
+    version: "1.0.0",
+  });
 })
 
 // View Model pagina listagem de escolas
 router.get('/escolas', async (req, res) => {
   try {
-    console.log(req.query.id);
-    const schoolsData = await ApiSchools.schoolsData(req.query.id);
+    const { id, name } = req.query;
+    const schoolsData = await ApiSchools.schoolsData(id);
     res.render('schools', {
       title: "Mochi - Escolas",
-      schools: schoolsData
+      city_name: name,
+      schools: schoolsData,
     });
   } catch (error) {
-    res.status(400).json(err)
+    res.status(400).json(error)
   }
 })
 
 //View Model pagina listagem de alunos
 router.get('/alunos', async (req, res) => {
   try {
-    const studentData = await db.getAllStudentsByCity(req.body);
+    const studentData = await db.getAllStudentsOfSchool(req.query.id);
     res.render('students', {
       title: "Mochi - Alunos",
       students: studentData
     });
   } catch (error) {
-    res.status(400).json(err)
+    res.status(400).json(error)
   }
 })
 
@@ -62,8 +57,8 @@ router.get('/cadastro', async (req, res) => {
       title: "Mochi - Cadastro",
       fields: [guardian, student, school]
     });
-  } catch (err) {
-    res.status(400).json(err)
+  } catch (error) {
+    res.status(400).json(error)
   }
 })
 
@@ -77,8 +72,8 @@ router.get('/cities', async (req, res, send) => {
   try {
     const citiesData = await db.getTotalCities();
     res.json({ citiesData });
-  } catch (err) {
-    res.status(400).json(err)
+  } catch (error) {
+    res.status(400).json(error)
   }
 })
 
