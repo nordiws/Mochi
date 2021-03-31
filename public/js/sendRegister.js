@@ -16,7 +16,7 @@ function registerForm(){
       std_name : $("#std_name").val(),
       std_nickname : $("#std_nickname").val(),
       std_age : $("#std_age").val(),
-      std_grade : $("#std_grade option:selected").val()
+      std_grade : $("#std_grade option:selected").text().trim()
   };
 
   $.ajax({
