@@ -46,7 +46,7 @@ const getTotalCities = async () => {
     try {
         const fetchData = await schoolsModel.find();
         const allCities = fetchData.map(city => {
-            const { id, name } = city;
+            const { id, name, state } = city;
             return {
                 id,
                 name: name + " - " + state.acronym,
