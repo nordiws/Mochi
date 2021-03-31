@@ -43,7 +43,7 @@ let schema = mongoose.Schema({
         require: true,
     },
     city_id: {
-        type: Number,
+        type: String,
         require: true,
     },
     state: {
@@ -59,7 +59,7 @@ let schema = mongoose.Schema({
         require: false,
     },
     std_age: {
-        type: Number,
+        type: String,
         require: false,
     },
     std_grade: {
@@ -71,7 +71,7 @@ let schema = mongoose.Schema({
         require: true,
     },
     school_id: {
-        type: Number,
+        type: String,
         require: true,
     },
     school_address: {
