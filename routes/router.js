@@ -12,11 +12,11 @@ const router = express.Router();
 // View Model index route (frontend)
 router.get('/', async (req, res, send) => {
   try {
-    const citiesData = await db.getTotalCities();
+    const statesData = await ApiSchools.statesData();
     res.render('index', {
       title: "Mochi",
       version: "1.0.0",
-      cities_list: citiesData,
+      states: statesData,
     });
   } catch (err) {
     res.status(400).json(err)
@@ -50,7 +50,7 @@ router.get('/alunos', async (req, res) => {
 })
 
 router.get('/alunos', (req, res) => {
-  res.render('students', { title: "Alunos" });
+  res.render('students', {title: "Alunos"});
 })
 
 // View model form submit route (front to back)
@@ -67,16 +67,8 @@ router.get('/cadastro', async (req, res) => {
 })
 
 router.post('/cadastro', (req, res) => {
-  console.log(req.body);
-  //db.saveForm(req.body);
-})
-
-
-
-router.get('/teste-register', (req, res) => {
-  res.render('teste-register', {
-    title: "Mochi - Cadastro"
-  })
+    console.log(req.body);
+    db.saveForm(req.body);
 })
 
 export default router;
