@@ -36,10 +36,10 @@ router.get('/escolas', async (req, res) => {
 router.get('/alunos/', async (req, res) => {
   try {
     const { id } = req.query;
-    const studentData = await db.getAllStudentsBySchools(id);
     res.render('students', {
       title: "Mochi - Alunos",
-      students: studentData
+      students: await db.getAllStudentsBySchools(id),
+      materials: await materials.materialsData()
     });
   } catch (error) {
     res.status(400).json(err)
@@ -60,7 +60,7 @@ router.get('/cadastro', async (req, res) => {
 })
 
 router.post('/cadastro', (req, res) => {
-  console.log(req.body);
+//  console.log(req.body);
   db.saveForm(req.body);
 })
 
