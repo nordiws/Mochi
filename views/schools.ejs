@@ -1,32 +1,38 @@
 <%- include("./partials/head.ejs") %>
-<%- include("./partials/header.ejs") %>
+    <%- include("./partials/header.ejs") %>
 
-<section class="container">
+        <section class="container">
 
-    
-    <div class="row">
-        <div class="col s6">
-            <h1 class="text-medium">Escolas precisando de doações em:</h1>
-            <h2 class="text-bold blue-grey-text">SANTOS - SP</h2>
-        </div>
-        <div class="col s6">
-            
-            <div class="city-search-bar grey lighten-1 my">
-                <input placeholder="Digite o nome da sua cidade..." id="city" type="text">
-                <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">
-                    <i class="material-icons">search</i>
-                </button>
+
+            <div class="row">
+                <div class="col s6">
+                    <h1 class="text-medium">Escolas precisando de doações em:</h1>
+                    <h2 class="text-bold blue-grey-text">
+                        <%=city_name%>
+                    </h2>
+                </div>
+                <div class="col s6">
+
+                    <div class="city-search-bar grey lighten-1 my">
+                        <input type="text" id="city" class="autocomplete" placeholder="Digite o nome da sua cidade...">
+                        <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
+
+                </div>
             </div>
-            
-        </div>
-    </div>
 
-    <div class="row my">
-        <!--Add cards-->
-        <%- include("./components/cards.ejs") %>
-        <%- include("./components/cards.ejs") %>
-        <%- include("./components/cards.ejs") %>
-    </div>
-</section>
+            <div class="row my">
+                <!--Add cards-->
+                <% if (students[0] !=null) { %>
+                    <% students.forEach((student)=> { %>
+                        <%- include("./components/cards.ejs", {student: student, city_name: city_name}) %>
+                            <% }) %>
+                                <% } else { %>
+                                    <h3> As mochilas desta escola não estão precisando de materiais. </h3>
+                                    <% } %>
+            </div>
+        </section>
 
-<%- include("./partials/footer.ejs") %>
+        <%- include("./partials/footer.ejs") %>

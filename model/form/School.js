@@ -1,4 +1,3 @@
-
 //Objeto school para popular o form
 var school = []
 
