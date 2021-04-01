@@ -37,7 +37,7 @@ const getCitiesWithStudents = async (city) => {
 
 const getAllStudentsBySchools = async (school) => {
     try {
-        var select_fields = {"_id": 1, "std_name": 1, "std_nickname":1, "std_grade": 1, "school_name": 1}
+        var select_fields = {"_id": 1, "std_name": 1, "std_nickname":1, "std_grade": 1, "school_name": 1, "products_list": 1}
         return await registration.find({ "school_id" : school }, select_fields);
     } catch (error) {
         console.log(error);

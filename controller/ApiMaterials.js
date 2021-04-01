@@ -11,11 +11,14 @@ const materialsData = async () => {
 }
 
 // Filtrando os produtos pelos codigos
-const selectedMaterialsData = async (selection) => {
+const selectedMaterialsData = async (students) => {
   try {
-    const response = await ApiMaterialsConnection.getAllMaterials();
-    const filteredMaterials = response.filter(material => material.Codigo.includes(selection));
-    return filteredMaterials;
+    var listMaterialsByStudentID = [];
+    for(const item of students){
+      const response = await ApiMaterialsConnection.getSpecificMaterials({products_list : item.products_list});
+      listMaterialsByStudentID.push({id: item._id,  products_list: response });
+    }
+    return listMaterialsByStudentID;
   } catch (err) {
     console.log(err);
   }
