@@ -135,3 +135,53 @@ footer ul {
   padding: 0px;
   background: #FAFAFA;
 }
+
+
+/* Cadastro */
+
+.mb {
+  margin-bottom: 50px;
+}
+
+.form-control {
+  margin: 50px auto;
+  width: 75%;
+  min-width: 320px;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-control { width: 100%; }
+}
+
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 0.8;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #FFC93C;
+}
+
+#scroll {
+  overflow: auto;
+  max-height: 400px;
+}
