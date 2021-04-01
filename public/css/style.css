@@ -120,15 +120,15 @@ footer ul {
 .text-semibold { font-weight: 600; }
 .text-bold { font-weight: 700; }
 
-.center-modal {
+/* .center-modal {
   display: flex;
-}
+} */
 
 .center-modal #modal {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  padding: 30px 35px;
-  overflow-x: hidden;
+  margin: 3opx 35px;
+  /*padding: 30px 35px;*/
 }
 
 .center-modal #modal .modal-content {
