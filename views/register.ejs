@@ -46,6 +46,7 @@
                   <% }) %>
                       <% } %>
               </div>
+              
               <h3 class="center-align"><b>Cadastro do Estudante </b></h3>
               <% if (fields[1].length) { %>
 
@@ -78,6 +79,7 @@
                         <% } }) %>
                           <% } %>
                 </div>
+
                 <div class="row">
                   <% if (fields[2].length) { %>
                     <% fields[2].forEach((school)=> { %>
@@ -88,10 +90,12 @@
                           <%= school.label %>
                         </label>
                       </div>
-                      <% }) %>
-                        <% } %>
+                    <% }) %>
+                  <% } %>
                 </div>
-      </section>
+
+        </section>
+        
       <div class="container">
         <div class="row">
           <div class="col s8">

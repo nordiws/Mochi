@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="/css/teste-materialize.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -16,10 +16,7 @@
     <title>Materialize</title>
 
     <style>
-        .my {
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
+
         .mb {
             margin-bottom: 50px;
         }
@@ -28,14 +25,17 @@
             margin-top: 25px;
         }
 
-        /* Style the form */
-        #regForm {
+        .form-control {
             margin: 100px auto;
-            padding: 40px;
-            width: 70%;
-            min-width: 300px;
+            width: 75%;
+            min-width: 320px;
         }
 
+        @media only screen and (max-width: 600px) {
+            .form-control { width: 100%; }
+        }
+
+        
         /* Hide all steps by default: */
         .tab {
             display: none;
@@ -55,12 +55,17 @@
 
         /* Mark the active step: */
         .step.active {
-            opacity: 1;
+            opacity: 0.8;
         }
 
         /* Mark the steps that are finished and valid: */
         .step.finish {
-            background-color: #3498DB;
+            background-color: #FFC93C;
+        }
+
+        #scroll {
+            overflow: auto;
+            max-height: 400px;
         }
     </style>
 </head>
@@ -69,284 +74,141 @@
 
     <div class="container">
 
-        <form id="regForm" action="" class="row">
+        <form action="" class="row form-control">
 
             <div class="col s12">
+                <div class="card-panel z-depth-3">
 
-                <div class="card-panel">
+                     <!-- Circles which indicates the steps of the form: -->
+                     <div style="text-align:right;">
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                    </div>
+
                     <!-- One "tab" for each step in the form: -->
                     <div class="tab">
                         <div class="row">
-                            <h5 class="mb"><b>Dados do responsável</b></h5>
-                            <div class="input-field col s6">
-                                <input placeholder="" id="first_name" type="text" class="validate">
-                                <label for="first_name">Nome *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="" id="last_name" type="text" class="validate">
-                                <label for="last_name">Sobrenome *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="xxx.xxx.xxx-xx" id="cpf" type="text" class="validate">
-                                <label for="cpf">CPF *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="(xx) x xxxx-xxxx" id="cel" type="text" class="validate">
-                                <label for="cel">Celular *</label>
-                            </div>
+                            <h4 class="mb"><b>Dados do responsável</b></h4>
+                            
+                            <% if (fields[0].length) { %>
+                                <% fields[0].forEach(guardian => { %>
+              
+                                  <div class="input-field col s6">
+                                    <input type="<%= guardian.type %>" name="<%= guardian.name %>" id="<%= guardian.id %>"
+                                      placeholder="<%= guardian.placeholder %>" class="validate">
+                                    <label for="last_name">
+                                      <%= guardian.label %>
+                                    </label>
+                                  </div>
+              
+                                <% }) %>
+                            <% } %>
+
                         </div>
                     </div>
-
+    
                     <div class="tab">
                         <div class="row">
-                            <h5 class="mb"><b>Endereço do responsável</b></h5>
-                            <div class="input-field col s6">
-                                <input placeholder="xxxx-xxx" id="cep" type="text" class="validate">
-                                <label for="cep">CEP *</label>
-                            </div>
+                            <h4 class="mb"><b>Dados do estudante</b></h4>
+                            <% fields[1].forEach(student => { %>
+                                <% if (String(student.name)=="std_grade" ) { %>
+                                    <div class="input-field col s6">
+                                        <select id="<%= student.id %>">
+                                            <option value="" disabled selected>
+                                                <%= student.label %>
+                                            </option>
+                                            <% student.options.forEach(grade => { %>
+                                                <option value="<% grade.toString() %>">
+                                                    <%= grade.toString() %>
+                                                </option>
+                                            <% }) %>
+                                        </select>
 
-                            <div class="input-field col s6">
-                                <input placeholder="" id="state" type="text" class="validate">
-                                <label for="state">Estado *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="" id="city" type="text" class="validate">
-                                <label for="city">Cidade *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="Rua/Av" id="street" type="text" class="validate">
-                                <label for="street">Endereço *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="" id="number" type="text" class="validate">
-                                <label for="number">Número *</label>
-                            </div>
-                        </div>
-                    </div>
+                                        <label><%= student.label %></label>
+                                    </div>
+                                <% } else { %>
+                                    <div class="input-field col s6">
+                                        <input type="<%= student.type %>" name="<%= student.name %>" id="<%= student.id %>" placeholder="<%= student.placeholder %>" class="validate">
 
-                    <div class="tab">
-                        <div class="row">
-                            <h5 class="mb"><b>Dados do estudante</b></h5>
-                            <div class="input-field col s6">
-                                <input placeholder="" id="nome-estudante" type="text" class="validate">
-                                <label for="nome-estudante">Nome do Estudante *</label>
-                            </div>
+                                        <label for="last_name"><%= student.label %></label>
+                                    </div>
+                                <% } %>
+                            <% }) %>
 
-                            <div class="input-field col s6">
-                                <input placeholder="" id="sobrenome-estudante" type="text" class="validate">
-                                <label for="sobrenome-estudante">Sobrenome do estudante *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="" id="age" type="text" class="validate">
-                                <label for="age">Idade *</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab">
-                        <div class="row">
-                            <h5 class="mb"><b>Dados da escola</b></h5>
-                            <div class="input-field col s6">
-                                <input placeholder="" id="school-name" type="text" class="validate">
-                                <label for="school-name">Nome da escola *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="" id="school-state" type="text" class="validate">
-                                <label for="school-state">Estado da escola *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="" id="school-city" type="text" class="validate">
-                                <label for="school-city">Cidade da escola *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <select class="validate">
-                                    <optgroup label="1° até 5°ano">
-                                      <option value="">Ensino Fundamental I</option>     
-                                    </optgroup>
-                                    <optgroup label="6° até 9°ano">
-                                      <option value="">Ensino Fundamental II</option>
-                                    </optgroup>
-                                    <optgroup label="Outros">
-                                        <option value="">Ensino médio</option>
-                                      </optgroup>
-                                  </select>
-                                <label for="turma">Turma *</label>
-                            </div>
+                            <% if (fields[2].length) { %>
+                                <% fields[2].forEach((school)=> { %>
+                                  <div class="input-field col s6">
+                                    <input type="<%= school.type %>" name="<%= school.name %>"
+                                      id="<%= school.id %>" placeholder="<%= school.placeholder %>" class="validate">
+                                    <label for="">
+                                      <%= school.label %>
+                                    </label>
+                                  </div>
+                                <% }) %>
+                            <% } %>
                         </div>
                     </div>
 
                     <div class="tab">
                         <div class="row">
                             <h5 class="mb"><b>O que falta na sua mochila?</b></h5>
-                            <ul class="collection">
-                                <li class="collection-item avatar">
-                                    <img src="https://img.kalunga.com.br/fotosdeprodutos/178534d.jpg" alt="" class="circle">
-                                    <h6><b>Caneta esferográfica</b></h6>
-                                    <p>R$X,00 ou usado em bom estado</p>
-                                    <label class="secondary-content">
-                                        <input type="checkbox" />
-                                        <span></span>
-                                    </label>
-                                </li>
-               
-                                <li class="collection-item avatar">
-                                    <img src="https://img.kalunga.com.br/fotosdeprodutos/139100d.jpg" alt="" class="circle">
-                                    <h6><b>Caderno universitário capa dura</b></h6>
-                                    <p>R$X,00 ou usado em bom estado</p>
-                                    <label class="secondary-content">
-                                        <input type="checkbox" />
-                                        <span></span>
-                                    </label>
-                                </li>
-               
-                                <li class="collection-item avatar">
-                                    <img src="https://img.kalunga.com.br/fotosdeprodutos/178534d.jpg" alt="" class="circle">
-                                    <h6><b>Caneta esferográfica</b></h6>
-                                    <p>R$X,00 ou usado em bom estado</p>
-                                    <label class="secondary-content">
-                                        <input type="checkbox" />
-                                        <span></span>
-                                    </label>
-                                </li>
-                            </ul>
+                            
+                            <div class="col s12" id="scroll">
+                                <ul class="collection">
+                                    <% if (materials.length) { %>
+                                        <% materials.forEach(material => { %>
+                                            <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')" class="collection-item avatar">
+
+                                                <img src="<%= material.image %>" alt="" class="circle">
+
+                                                <h6><b><%= material.Grupo %></b></h6>
+
+                                                <label class="secondary-content">
+                                                    <input id="input_<%= material.Codigo %>" type="checkbox"
+                                                    onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
+                                                    <span></span>
+                                                </label>
+                                            </li>
+                                        <% }) %>
+                                    <% } %>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
-
-
-                    <!-- Circles which indicates the steps of the form: -->
-                    <div style="text-align:center;margin-top:50px;">
-                        <span class="step"></span>
-                        <span class="step"></span>
-                        <span class="step"></span>
-                        <span class="step"></span>
-                    </div>
-
+    
+            
                 </div>
 
-                <div style="float: right;">
+                <div style="float: left;">
+    
+                    <button type="button" class="waves-effect waves-light btn-large grey white-text" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
+    
+                    <button type="button" class="waves-effect waves-light btn-large black white-text" id="nextBtn"
+                    onclick="nextPrev(1)">Próximo</button>
 
-                    <button type="button"  class="waves-effect waves-light btn-large grey white-text" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                    <button type="button" class="waves-effect waves-light btn-large blue white-text" id="nextBtn"
-                        onclick="nextPrev(1)">Próximo</button>
-
+                    <button type="submit" class="waves-effect waves-light btn-large amber" id="submitBtn" onclick="event.preventDefault();registerForm()" name="action">Enviar
+                        <i class="material-icons right">send</i>
+                    </button>
+    
                 </div>
-
-
+    
             </div>
 
         </form>
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/inputCheckSeletion.js"></script>
+    <script src="/js/jquery.mask.min.js"></script>
+    <script src="/js/inputMask.js"></script>
+    <script src="/js/sendRegister.js"></script>
+    <script src="/js/multiForm.js"></script>
+    <script src="/js/materialize.min.js"></script>
     <script>
-
-        const options = {};
-
-        console.log(options);
-        window.onload = () => {
-
-            axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
-                .then(function (response) {
-                    // handle success
-
-                    response.data.map(element => {
-                        const name = element.nome;
-                        options[name] = null;
-                    });
-
-
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-        }
-
         M.AutoInit();
-
-
-        document.addEventListener('input', function () {
-            var elems = document.querySelector('.autocomplete');
-            var instances = M.Autocomplete.init(elems, { data: options });
-        });
-
-
-    </script>
-    <script>
-        var currentTab = 0; // Current tab is set to be the first tab (0)
-        showTab(currentTab); // Display the current tab
-
-        function showTab(n) {
-            // This function will display the specified tab of the form ...
-            var x = document.getElementsByClassName("tab");
-            x[n].style.display = "block";
-            // ... and fix the Previous/Next buttons:
-            if (n == 0) {
-                document.getElementById("prevBtn").style.display = "none";
-            } else {
-                document.getElementById("prevBtn").style.display = "inline";
-            }
-            if (n == (x.length - 1)) {
-                document.getElementById("nextBtn").innerHTML = "Submit";
-            } else {
-                document.getElementById("nextBtn").innerHTML = "Próximo";
-            }
-            // ... and run a function that displays the correct step indicator:
-            fixStepIndicator(n)
-        }
-
-        function nextPrev(n) {
-            // This function will figure out which tab to display
-            var x = document.getElementsByClassName("tab");
-            // Exit the function if any field in the current tab is invalid:
-            if (n == 1 && !validateForm()) return false;
-            // Hide the current tab:
-            x[currentTab].style.display = "none";
-            // Increase or decrease the current tab by 1:
-            currentTab = currentTab + n;
-            // if you have reached the end of the form... :
-            if (currentTab >= x.length) {
-                //...the form gets submitted:
-                document.getElementById("regForm").submit();
-                return false;
-            }
-            // Otherwise, display the correct tab:
-            showTab(currentTab);
-        }
-
-        function validateForm() {
-            // This function deals with validation of the form fields
-            var x, y, i, valid = true;
-            x = document.getElementsByClassName("tab");
-            y = x[currentTab].getElementsByTagName("input");
-            // A loop that checks every input field in the current tab:
-            for (i = 0; i < y.length; i++) {
-                // If a field is empty...
-                if (y[i].value == "") {
-                    // add an "invalid" class to the field:
-                    y[i].className += " invalid";
-                    // and set the current valid status to false:
-                    valid = false;
-                }
-            }
-            // If the valid status is true, mark the step as finished and valid:
-            if (valid) {
-                document.getElementsByClassName("step")[currentTab].className += " finish";
-            }
-            return valid; // return the valid status
-        }
-
-        function fixStepIndicator(n) {
-            // This function removes the "active" class of all steps...
-            var i, x = document.getElementsByClassName("step");
-            for (i = 0; i < x.length; i++) {
-                x[i].className = x[i].className.replace(" active", "");
-            }
-            //... and adds the "active" class to the current step:
-            x[n].className += " active";
-        }
     </script>
 </body>
 

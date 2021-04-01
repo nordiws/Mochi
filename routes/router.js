@@ -35,14 +35,15 @@ router.get('/escolas', async (req, res) => {
 //View Model pagina listagem de alunos
 router.get('/alunos/', async (req, res) => {
   try {
-    const { id } = req.query;
+    const studentData = await db.getAllStudentsBySchools(req.query.id);
+    const materialsData =  await materials.selectedMaterialsData(studentData);
     res.render('students', {
       title: "Mochi - Alunos",
-      students: await db.getAllStudentsBySchools(id),
-      materials: await materials.materialsData()
+      students: studentData,
+      materials: materialsData
     });
   } catch (error) {
-    res.status(400).json(err)
+    res.status(400).json(error)
   }
 })
 
@@ -60,7 +61,6 @@ router.get('/cadastro', async (req, res) => {
 })
 
 router.post('/cadastro', (req, res) => {
-//  console.log(req.body);
   db.saveForm(req.body);
 })
 
@@ -72,6 +72,13 @@ router.get('/cities', async (req, res, send) => {
   } catch (error) {
     res.status(400).json(error)
   }
+})
+
+router.get("/teste", async (req, res) => {
+  res.render("teste-register", {
+    materials: await materials.materialsData(),
+    fields: [guardian, student, school]
+  })
 })
 
 export default router;

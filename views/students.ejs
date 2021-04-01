@@ -1,46 +1,49 @@
 <%- include("./partials/head.ejs") %>
-<%- include("./partials/header.ejs") %>
+  <%- include("./partials/header.ejs") %>
 
-<section class="container">
-    <div class="row">
+    <section class="container">
+      <div class="row">
         <div class="col s6">
-            <p>Inicio > Escolas > <b>Alunos</b></p>
-            <h1 class="text-medium"><%= students[0].school_name %></h1>
-            <h2 class="text-bold blue-grey-text">Ajude a encher a mochila de:</h2>
+          <p>Inicio > Escolas > <b>Alunos</b></p>
+          <h1 class="text-medium">
+            <%= students[0].school_name %>
+          </h1>
+          <h2 class="text-bold blue-grey-text">Ajude a encher a mochila de:</h2>
         </div>
         <div class="col s6">
 
-            <div class="city-search-bar grey lighten-1 my">
-                <input placeholder="Digite o nome da sua cidade..." id="city" type="text">
-                <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">
-                    <i class="material-icons">search</i>
-                </button>
-            </div>
+          <div class="city-search-bar grey lighten-1 my">
+            <input placeholder="Digite o nome da sua cidade..." id="city" type="text">
+            <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">
+              <i class="material-icons">search</i>
+            </button>
+          </div>
 
         </div>
-    </div>
+      </div>
 
-    <div class="row my">
-      <% students.forEach((student)=> { %>
-        <%- include("./components/student-card.ejs", {student: student}) %>
-      <% }); %>
-    </div>
-</section>
+      <div class="row my">
+        <% students.forEach((student)=> { %>
+          <%- include("./components/student-card.ejs", {student: student}) %>
+            <% }); %>
+      </div>
+    </section>
+
 
 <!--Modal-->
 
-<div id="modal" class="modal modal-fixed-footer">
-  <div class="modal-content">
-    <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
-    <p><b>Ensino Fundamental - Anos Iniciais</b></p>
+    <div class="center-modal">
+      <div id="modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+
+<% materials.forEach((materialList)=> { %>
+  <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
+  <p><%= materialList.id %></p>
 
     <div class="materials-list">
-      <div class="container">
-        <div class="row">
-          <div class="col s8">
             <ul class="collection">
-              <% if (materials.length) { %>
-                <% materials.forEach((material)=> { %>
+              <% if (materialList.products_list.length) { %>
+                <% materialList.products_list.forEach((material)=> { %>
                   <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
                     class="collection-item avatar">
                     <img src="<%= material.image %>" alt="" class="circle">
@@ -58,13 +61,15 @@
             </ul>
           </div>
         </div>
+        <div class="modal-footer">
+          <div class="buttons center-align">
+          <button href="#!" class="waves-effect waves-light btn-flat">Cancelar</button>
+          <button href="#!" class="waves-effect waves-light btn-flat">Doar materiais</button>
+        </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat ambar">Doar materiais</a>
-  </div>
-</div>
+    <% }); %>
 
-<%- include("./partials/footer.ejs") %>
+    <%- include("./partials/footer.ejs") %>
