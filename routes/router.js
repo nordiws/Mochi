@@ -33,20 +33,17 @@ router.get('/escolas', async (req, res) => {
 })
 
 //View Model pagina listagem de alunos
-router.get('/alunos', async (req, res) => {
+router.get('/alunos/', async (req, res) => {
   try {
-    const studentData = await db.getAllStudentsOfSchool(req.query.id);
+    const { id } = req.query;
+    const studentData = await db.getAllStudentsBySchools(id);
     res.render('students', {
       title: "Mochi - Alunos",
       students: studentData
     });
   } catch (error) {
-    res.status(400).json(error)
+    res.status(400).json(err)
   }
-})
-
-router.get('/alunos', (req, res) => {
-  res.render('students', { title: "Alunos" });
 })
 
 // View model form submit route (front to back)

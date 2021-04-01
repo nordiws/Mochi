@@ -1,19 +1,13 @@
-<% Students.forEach(student => { %> 
-
-<div id="student-card">
 <div class="col s12 m6 l4">
     <div class="card">
         <div class="card-image">
-            <img style="height: 160px; padding: 10px;" class="responsive-img" src="assets/mochi.svg">
+            <img style="height: 160px; padding: 10px;" class="responsive-img" src="../assets/mochi.svg">
             <a id=button class="btn-floating halfway-fab waves-effect waves-light ambar"><i
                     class="material-icons black-text">visibility</i></a>
         </div>
         <div class="card-content grey lighten-1">
-            <h5><b> <%= student.std_name %>  </b></h5>
-            <p><i class="material-icons icon-center">school</i> <%= student.std_grade %>  </p>
+            <h5><b> <%= student.std_name %> <%= student.std_nickname %> </b></h5>
+            <p><i class="material-icons icon-center">school</i> <%= student.std_grade %></p>
         </div>
     </div>
 </div>
-</div>
-
-<% }) %> 

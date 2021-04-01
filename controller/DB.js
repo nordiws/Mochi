@@ -35,24 +35,15 @@ const getCitiesWithStudents = async (city) => {
 }
 
 
-const getAllStudentsOfSchool = async (school) => {
+const getAllStudentsBySchools = async (school) => {
     try {
-        const fechData = await registration.find({ school_id: school });
-        const allStudents = fechData.map(kid => {
-            const { _id, std_name, std_nickname, std_grade } = kid;
-            return {
-                _id,
-                std_name,
-                std_nickname,
-                std_grade
-            }
-        });
-        console.log(allStudents);
-        return allStudents;
+        var select_fields = {"_id": 1, "std_name": 1, "std_nickname":1, "std_grade": 1, "school_name": 1}
+        return await registration.find({ "school_id" : school }, select_fields);
     } catch (error) {
         console.log(error);
     }
 }
+
 
 const getStudentById = async (id) => {
     try {
@@ -81,4 +72,4 @@ const getTotalCities = async () => {
     }
 }
 
-export default { saveForm, getAllStudentsOfSchool, getStudentById, getTotalCities, getCitiesWithStudents };
+export default { saveForm, getAllStudentsBySchools, getStudentById, getTotalCities, getCitiesWithStudents };
