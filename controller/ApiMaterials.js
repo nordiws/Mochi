@@ -13,15 +13,25 @@ const materialsData = async () => {
 // Filtrando os produtos pelos codigos
 const selectedMaterialsData = async (students) => {
   try {
-    var listMaterialsByStudentID = [];
-    for(const item of students){
-      const response = await ApiMaterialsConnection.getSpecificMaterials({products_list : item.products_list});
-      listMaterialsByStudentID.push({id: item._id,  products_list: response });
-    }
-    return listMaterialsByStudentID;
+    const response = await ApiMaterialsConnection.getAllMaterials();
+    var materialsLists = [];
+     students.forEach((student) => {
+      materialsLists.push({id: student._id,  products_list: getListByStudent(response, student["products_list"]) });
+    });
+    return materialsLists;
   } catch (err) {
     console.log(err);
   }
+}
+
+function getListByStudent(response, list){
+  var filteredMaterials = [];
+  response.forEach((item, i) => {
+     if (list.includes(item.Codigo)) {
+       filteredMaterials.push(item);
+     }
+  });
+  return filteredMaterials;
 }
 
 export default { materialsData, selectedMaterialsData };
