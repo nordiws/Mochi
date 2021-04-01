@@ -35,13 +35,15 @@ router.get('/escolas', async (req, res) => {
 //View Model pagina listagem de alunos
 router.get('/alunos/', async (req, res) => {
   try {
+    const studentData = await db.getAllStudentsBySchools(req.query.id);
+    const materialsData =  await materials.selectedMaterialsData(studentData);
     res.render('students', {
       title: "Mochi - Alunos",
-      students: await db.getAllStudentsBySchools(req.query.id),
-      materials: await materials.materialsData()
+      students: studentData,
+      materials: materialsData
     });
   } catch (error) {
-    res.status(400).json(err)
+    res.status(400).json(error)
   }
 })
 
@@ -59,7 +61,6 @@ router.get('/cadastro', async (req, res) => {
 })
 
 router.post('/cadastro', (req, res) => {
-//  console.log(req.body);
   db.saveForm(req.body);
 })
 
