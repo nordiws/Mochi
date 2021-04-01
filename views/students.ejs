@@ -27,6 +27,7 @@
     </div>
 </section>
 
+
 <!--Modal-->
 
 <div id="modal" class="modal modal-fixed-footer">
@@ -34,13 +35,16 @@
     <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
     <p><b>Ensino Fundamental - Anos Iniciais</b></p>
 
+<% materials.forEach((materialList)=> { %>
+  <h2 class="text-bold blue-grey-text">"<%= materialList.id %>"</h2>
+
     <div class="materials-list">
       <div class="container">
         <div class="row">
           <div class="col s8">
             <ul class="collection">
-              <% if (materials.length) { %>
-                <% materials.forEach((material)=> { %>
+              <% if (materialList.products_list.length) { %>
+                <% materialList.products_list.forEach((material)=> { %>
                   <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
                     class="collection-item avatar">
                     <img src="<%= material.image %>" alt="" class="circle">
@@ -61,6 +65,7 @@
       </div>
     </div>
   </div>
+    <% }); %>
   <div class="modal-footer">
     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
     <a href="#!" class="modal-close waves-effect waves-green btn-flat ambar">Doar materiais</a>
