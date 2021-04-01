@@ -119,3 +119,11 @@ footer ul {
 .text-medium { font-weight: 500; font-size: 28px;}
 .text-semibold { font-weight: 600; }
 .text-bold { font-weight: 700; }
+
+.center-modal {
+  display: flex;
+}
+
+.center-modal .modal {
+  width: auto;
+}
