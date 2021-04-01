@@ -13,21 +13,22 @@ const saveForm = async (formData) => {
 }
 
 // Importando dados da base de dados
-const getAllStudentsByCity = async (city) => {
+const getCitiesWithStudents = async (city) => {
     try {
-        const fechData = await registration.find({ city_id: city });
-        console.log(fetchData);
-        //if (fechData)
-        const allStudents = fechData.map(kid => {
-            const { _id, std_name, std_nickname, std_grade } = kid;
-            return {
-                _id,
-                std_name,
-                std_nickname,
-                std_grade
-            }
-        });
-        return allStudents;
+        const fechData = await registration.find({ city_id: city }, null, { limit: 1 });
+        if (fechData == []) {
+            fechData[0] = null;
+        } else {
+            const allStudents = fechData.map(student => {
+                const { school_name, school_id, city_id } = student;
+                return {
+                    school_name,
+                    school_id,
+                    city_id
+                }
+            });
+            return allStudents;
+        }
     } catch (error) {
         console.log(error);
     }
@@ -80,4 +81,4 @@ const getTotalCities = async () => {
     }
 }
 
-export default { saveForm, getAllStudentsOfSchool, getStudentById, getTotalCities };
+export default { saveForm, getAllStudentsOfSchool, getStudentById, getTotalCities, getCitiesWithStudents };

@@ -1,7 +1,6 @@
 import express from "express";
 import db from "../controller/DB.js";
 import materials from "../controller/ApiMaterials.js";
-import ApiSchools from "../controller/ApiSchools.js";
 import guardian from "../model/form/Guardian.js";
 import school from "../model/form/School.js";
 import student from "../model/form/Student.js";
@@ -20,12 +19,13 @@ router.get('/', (req, res, send) => {
 // View Model pagina listagem de escolas
 router.get('/escolas', async (req, res) => {
   try {
-    const { id, name } = req.query;
-    const schoolsData = await ApiSchools.schoolsData(id);
+    const { id, city } = req.query;
+    const studentData = await db.getCitiesWithStudents(id);
+    console.log(studentData);
     res.render('schools', {
       title: "Mochi - Escolas",
-      city_name: name,
-      schools: schoolsData,
+      city_name: city,
+      students: studentData,
     });
   } catch (error) {
     res.status(400).json(error)
