@@ -73,4 +73,11 @@ router.get('/cities', async (req, res, send) => {
   }
 })
 
+router.get("/teste", async (req, res) => {
+  res.render("teste-register", {
+    materials: await materials.materialsData(),
+    fields: [guardian, student, school]
+  })
+})
+
 export default router;

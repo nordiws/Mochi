@@ -8,12 +8,12 @@ function select(str_){
   console.log(tagNam);
   console.log("#input_" + str_);
   if ($checkbox.is(":checked")){
-      $ctx.removeClass("blue-grey");
+      $ctx.removeClass("grey lighten-1");
       togglecheckbox($checkbox, false);
 
   }
   else {
-     $ctx.addClass("blue-grey");
+     $ctx.addClass("grey lighten-1");
      togglecheckbox($checkbox, true);
   }
 }
