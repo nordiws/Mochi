@@ -27,28 +27,43 @@
     </div>
 </section>
 
-<div class="container">
-  <div class="row">
-    <div class="col s8">
-      <ul class="collection">
-        <% if (materials.length) { %>
-          <% materials.forEach((material)=> { %>
-            <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
-              class="collection-item avatar">
-              <img src="<%= material.image %>" alt="" class="circle">
-              <h6><b>
-                  <%= material.Grupo %>
-                </b></h6>
-              <label class="secondary-content">
-                <input id="input_<%= material.Codigo %>" type="checkbox"
-                  onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
-                <span></span>
-              </label>
-            </li>
-            <% }) %>
-              <% } %>
-      </ul>
+<!--Modal-->
+
+<div id="modal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
+    <p><b>Ensino Fundamental - Anos Iniciais</b></p>
+
+    <div class="materials-list">
+      <div class="container">
+        <div class="row">
+          <div class="col s8">
+            <ul class="collection">
+              <% if (materials.length) { %>
+                <% materials.forEach((material)=> { %>
+                  <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
+                    class="collection-item avatar">
+                    <img src="<%= material.image %>" alt="" class="circle">
+                    <h6><b>
+                        <%= material.Grupo %>
+                      </b></h6>
+                    <label class="secondary-content">
+                      <input id="input_<%= material.Codigo %>" type="checkbox"
+                        onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
+                      <span></span>
+                    </label>
+                  </li>
+                  <% }) %>
+                    <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat ambar">Doar materiais</a>
   </div>
 </div>
 
