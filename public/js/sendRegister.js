@@ -16,13 +16,16 @@ function registerForm(){
       std_name : $("#std_name").val(),
       std_nickname : $("#std_nickname").val(),
       std_age : $("#std_age").val(),
-      std_grade : $("#std_grade option:selected").text().trim()
+      std_grade : $("#std_grade option:selected").text().trim(),
+      school_id : "183016",
+      city_id : "2309",
+      products_list : allChecked(),
   };
 
   $.ajax({
     type: "POST",
     url: "/cadastro",
-    data: JSON.stringify([$form, {product_id : allChecked()}]),//, $kit_data]),
+    data: JSON.stringify($form),
     contentType: "application/json",
     success: window.location.reload()
    });

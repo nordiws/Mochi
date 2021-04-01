@@ -35,10 +35,9 @@ router.get('/escolas', async (req, res) => {
 //View Model pagina listagem de alunos
 router.get('/alunos/', async (req, res) => {
   try {
-    const { id } = req.query;
     res.render('students', {
       title: "Mochi - Alunos",
-      students: await db.getAllStudentsBySchools(id),
+      students: await db.getAllStudentsBySchools(req.query.id),
       materials: await materials.materialsData()
     });
   } catch (error) {
