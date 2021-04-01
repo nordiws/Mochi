@@ -13,24 +13,37 @@ const saveForm = async (formData) => {
 }
 
 // Importando dados da base de dados
-const getAllStudentsByCity = async (city) => {
+const getCitiesWithStudents = async (city) => {
     try {
-        const fechData = await registration.find({ city_id: city });
-        const allStudents = fechData.map(kid => {
-            const { _id, std_name, std_nickname, std_grade } = kid;
-            return {
-                _id,
-                std_name,
-                std_nickname,
-                std_grade
-            }
-        });
-        console.log(allStudents);
-        return allStudents;
+        const fechData = await registration.find({ city_id: city }, null, { limit: 1 });
+        if (fechData == []) {
+            fechData[0] = null;
+        } else {
+            const allStudents = fechData.map(student => {
+                const { school_name, school_id, city_id } = student;
+                return {
+                    school_name,
+                    school_id,
+                    city_id
+                }
+            });
+            return allStudents;
+        }
     } catch (error) {
         console.log(error);
     }
 }
+
+
+const getAllStudentsBySchools = async (school) => {
+    try {
+        var select_fields = {"_id": 1, "std_name": 1, "std_nickname":1, "std_grade": 1, "school_name": 1}
+        return await registration.find({ "school_id" : school }, select_fields);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 const getStudentById = async (id) => {
     try {
@@ -50,8 +63,7 @@ const getTotalCities = async () => {
             return {
                 id,
                 name: name + " - " + state.acronym,
-                state_id: state.id,
-                state_name: state.name
+                city: name
             }
         })
         return allCities;
@@ -60,4 +72,4 @@ const getTotalCities = async () => {
     }
 }
 
-export default { saveForm, getAllStudentsByCity, getStudentById, getTotalCities };
+export default { saveForm, getAllStudentsBySchools, getStudentById, getTotalCities, getCitiesWithStudents };
