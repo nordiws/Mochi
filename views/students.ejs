@@ -35,16 +35,12 @@
     <div class="center-modal">
       <div id="modal" class="modal modal-fixed-footer">
         <div class="modal-content">
-          <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
-          <p><b>Ensino Fundamental - Anos Iniciais</b></p>
 
 <% materials.forEach((materialList)=> { %>
-  <h2 class="text-bold blue-grey-text">"<%= materialList.id %>"</h2>
+  <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
+  <p><%= materialList.id %></p>
 
     <div class="materials-list">
-      <div class="container">
-        <div class="row">
-          <div class="col s8">
             <ul class="collection">
               <% if (materialList.products_list.length) { %>
                 <% materialList.products_list.forEach((material)=> { %>
@@ -66,17 +62,14 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</button>
-          <button href="#!" class="modal-close waves-effect waves-green btn-flat">Doar materiais</button>
+          <div class="buttons center-align">
+          <button href="#!" class="waves-effect waves-light btn-flat">Cancelar</button>
+          <button href="#!" class="waves-effect waves-light btn-flat">Doar materiais</button>
+        </div>
         </div>
       </div>
     </div>
   </div>
     <% }); %>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat ambar">Doar materiais</a>
-  </div>
-</div>
 
     <%- include("./partials/footer.ejs") %>
