@@ -1,5 +1,5 @@
 </div>
-<% if (title !== "Mochi - Cadastro") { %>
+<% if (title !=="Mochi - Cadastro" ) { %>
     <footer class="page-footer grey lighten-1">
         <div class="container">
             <div class="row">
@@ -13,7 +13,7 @@
                         <img class="footer-icons" src="/assets/instagram-icon.png" alt="Instagram Logo" />
                     </div>
                 </div>
-    
+
                 <div class="links row">
                     <div class="col l4 offset-l2 s12">
                         <ul>
@@ -27,39 +27,40 @@
             </div>
         </div>
         <div class="footer-copyright blue-grey-text grey lighten-1">
-          <div class="container">
-            © MOCHI. Todos os direitos reservados.
-          </div>
+            <div class="container">
+                © MOCHI. Todos os direitos reservados.
+            </div>
         </div>
-      </footer>
+    </footer>
     </div>
-<% } %>
+    <% } %>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="/js/materialize.min.js"></script>
-<script>
-    M.AutoInit();
-</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="/js/materialize.min.js"></script>
+        <script>
+            M.AutoInit();
+        </script>
 
-<!--Recursos para Home/Escolas-->
-<% if (title == "Mochi" || title == "Mochi - Escolas") { %>
-    <script src="/js/autocomplete.js"></script>
-<% } %>
+        <!--Recursos para Home/Escolas-->
+        <% if (title=="Mochi" || title=="Mochi - Escolas" ) { %>
+            <script type="module" src="/js/autocomplete.js"></script>
+            <% } %>
 
-<% if (title == "Mochi - Alunos") { %>
-    <script src="/js/inputCheckSeletion.js"></script>
-<% } %>
+                <% if (title=="Mochi - Alunos" ) { %>
+                    <script src="/js/inputCheckSeletion.js"></script>
+                    <% } %>
 
-<!--Recursos para Cadastro-->
-<% if (title == "Mochi - Cadastro") { %>
-    <script src="/js/inputCheckSeletion.js"></script>
-    <script src="/js/jquery.mask.min.js"></script>
-    <script src="/js/inputMask.js"></script>
-    <script src="/js/sendRegister.js"></script>
-    <script src="/js/multiForm.js"></script>
-<% } %>
+                        <!--Recursos para Cadastro-->
+                        <% if (title=="Mochi - Cadastro" ) { %>
+                            <script src="/js/inputCheckSeletion.js"></script>
+                            <script src="/js/jquery.mask.min.js"></script>
+                            <script src="/js/inputMask.js"></script>
+                            <script src="/js/sendRegister.js"></script>
+                            <script src="/js/multiForm.js"></script>
+                            <% } %>
 
-</div>
-</body>
-</html>
+                                </div>
+                                </body>
+
+                                </html>
