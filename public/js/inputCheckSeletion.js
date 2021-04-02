@@ -5,8 +5,6 @@ function select(str_){
   var tagNam = '#' + str_;
   var $ctx = $(tagNam);
   var $checkbox = $("#input_" + str_);
-  console.log(tagNam);
-  console.log("#input_" + str_);
   if ($checkbox.is(":checked")){
       $ctx.removeClass("grey lighten-1");
       togglecheckbox($checkbox, false);
@@ -21,11 +19,4 @@ function select(str_){
 function togglecheckbox($checkbox, $bool) {
   $checkbox.prop('checked', $bool);
   $checkbox.data('waschecked', $bool);
-}
-
-function untoggle(str_) {
-  $checkbox = $("#input_" + str_);
-  console.log('has');
-  $checkbox.prop('checked', false);
-  $checkbox.data('waschecked', false);
 }
