@@ -1,5 +1,5 @@
 const elems = document.querySelector('.autocomplete');
-const school_city = document.getElementById("school_city");
+const school_name = document.getElementById("school_name");
 const city_id = document.getElementById("city_id");
 const options = {};
 const listCities = [];
@@ -27,10 +27,10 @@ document.addEventListener('input', () => {
     const instances = M.Autocomplete.init(elems, { data: options, minLength: 2, limit: 5 });
 });
 
-school_city.addEventListener('focusout', () => {
+school_name.addEventListener('click', () => {
 
     if (elems.value.length == 0) {
-        const toastHTML = '<span>Digite algo</span>';
+        const toastHTML = '<span>Informe a cidade</span>';
         M.toast({ html: toastHTML })
 
     } else {
