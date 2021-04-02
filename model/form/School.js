@@ -14,7 +14,8 @@ school.push({
   placeholder: "",
   type: "text",
   label: "Cidade",
-  id: "school_city"
+  id: "school_city",
+  class: "autocomplete"
 });
 
 school.push({
