@@ -1,11 +1,27 @@
+// Inputs
 const elems = document.querySelector('.autocomplete');
 const school_name = document.getElementById("school_name");
 const city_id = document.getElementById("city_id");
+
+
 const options = {};
 const listCities = [];
 
+// Buscando dados
+window.onload = async () => {
 
-window.onload = () => {
+    /*
+    try {
+        const response = await axios.get(`/cities`);
+        const cities = response.data.citiesData;
+
+        listCities.push(cities);
+       
+        cities.map(element => options[element.name] = null );
+
+    } catch (error) {
+        console.log(error);
+    }*/
 
     axios.get(`/cities`)
         .then(response => {
@@ -43,6 +59,7 @@ school_name.addEventListener('click', () => {
                 return item;
             }
         });
+
         console.log(response);
         if (response.length !== 0) {
             city_id.value = response[0].id;
