@@ -6,7 +6,7 @@
         </div>
         <div class="card-content grey lighten-1">
             <h5><b>
-                    <% if(student.school_name.length>= 35){ %>
+                    <% if(student.school_name.length>=35){ %>
                         <%= student.school_name.substring(0, 35) + "..." %>
                             <% } else {%>
                                 <%= student.school_name %>
@@ -29,5 +29,3 @@
             </div>
         </div>
     </div>
-
-<% }) %>

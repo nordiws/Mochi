@@ -29,7 +29,7 @@ student.push({
 student.push({
   name: "std_grade",
   label: "Serie",
-  options: [ "first grade", "second grade", "third grade" ],
+  options: [ "Ensino fundamental I (1° até 5°ano)", "Ensino fundamental II (6° até 9° ano)", "Ensino médio (1°,2° e 3°ano)", "EJA (Educação para adultos)" ],
   id : "std_grade"
 });
 

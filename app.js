@@ -45,7 +45,7 @@ mongoose.connect(
 const { connection } = mongoose;
 connection.once('open', () => console.log('Conectado ao MongoDB'));
 // Levantando o servidor
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Servidor iniciado na porta ${PORT}`);
 });
