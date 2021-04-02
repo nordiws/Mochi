@@ -1,6 +1,6 @@
 import student from "../model/form/Student.js";
 import registration from "../model/registration.js";
-import schoolsModel from "../model/schoolsModel.js";
+import citiesModel from "../model/citiesModel";
 
 // Salvando os dados do Form na base de dados
 const saveForm = async (formData) => {
@@ -93,7 +93,7 @@ const getStudentById = async (id) => {
 
 const getTotalCities = async () => {
     try {
-        const fetchData = await schoolsModel.find();
+        const fetchData = await citiesModel.find();
         const allCities = fetchData.map(city => {
             const { id, name, state } = city;
             return {
