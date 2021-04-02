@@ -22,7 +22,7 @@
                         <% if (fields[0].length) { %>
                             <% fields[0].forEach(guardian => { %>
 
-                                <div class="input-field col s6">
+                                <div class="input-field col l6 s12">
                                     <input type="<%= guardian.type %>" name="<%= guardian.name %>" id="<%= guardian.id %>" placeholder="<%= guardian.placeholder %>" class="validate">
 
                                     <label for="<%= guardian.name %>"><%= guardian.label %></label>
@@ -39,11 +39,9 @@
                       <h4 class="mb"><b>Dados do estudante</b></h4>
                       <% fields[1].forEach(student => { %>
                           <% if (String(student.name)=="std_grade" ) { %>
-                              <div class="input-field col s6">
+                              <div class="input-field col l6 s12">
                                   <select id="<%= student.id %>">
-                                      <option value="" disabled selected>
-                                          <%= student.label %>
-                                      </option>
+                                      <option value="" disabled selected><%= student.label %></option>
                                       <% student.options.forEach(grade => { %>
                                           <option value="<% grade.toString() %>"><%= grade.toString() %></option>
                                       <% }) %>
@@ -52,7 +50,7 @@
                                   <label><%= student.label %></label>
                               </div>
                           <% } else { %>
-                              <div class="input-field col s6">
+                              <div class="input-field col l6 s12">
                                   <input type="<%= student.type %>" name="<%= student.name %>" id="<%= student.id %>" placeholder="<%= student.placeholder %>" class="validate">
 
                                   <label for="last_name"><%= student.label %></label>
@@ -62,7 +60,7 @@
 
                       <% if (fields[2].length) { %>
                           <% fields[2].forEach((school)=> { %>
-                            <div class="input-field col s6">
+                            <div class="input-field col l6 s12">
                               <input type="<%= school.type %>" name="<%= school.name %>"
                                 id="<%= school.id %>" placeholder="<%= school.placeholder %>" class="validate">
                               <label for="">

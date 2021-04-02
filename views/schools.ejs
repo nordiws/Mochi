@@ -4,7 +4,7 @@
         <section class="container">
 
 
-            <div class="row">
+            <div class="row my">
                 <div class="col s6">
                     <h1 class="text-medium">Escolas precisando de doações em:</h1>
                     <h2 class="text-bold blue-grey-text">
@@ -13,12 +13,7 @@
                 </div>
                 <div class="col s6">
 
-                    <div class="city-search-bar grey lighten-1 my">
-                        <input type="text" id="city" class="autocomplete" placeholder="Digite o nome da sua cidade...">
-                        <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">
-                            <i class="material-icons">search</i>
-                        </button>
-                    </div>
+                    <%- include("./components/autocomplete.ejs") %>
 
                 </div>
             </div>
