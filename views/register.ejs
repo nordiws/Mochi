@@ -18,16 +18,16 @@
                 <div class="tab">
                     <div class="row">
                         <h4 class="mb"><b>Dados do responsável</b></h4>
-                      
+
                         <% if (fields[0].length) { %>
                             <% fields[0].forEach(guardian => { %>
-        
+
                                 <div class="input-field col s6">
                                     <input type="<%= guardian.type %>" name="<%= guardian.name %>" id="<%= guardian.id %>" placeholder="<%= guardian.placeholder %>" class="validate">
 
                                     <label for="<%= guardian.name %>"><%= guardian.label %></label>
                                 </div>
-        
+
                             <% }) %>
                         <% } %>
 
@@ -45,9 +45,7 @@
                                           <%= student.label %>
                                       </option>
                                       <% student.options.forEach(grade => { %>
-                                          <option value="<% grade.toString() %>">
-                                              <%= grade.toString() %>
-                                          </option>
+                                          <option value="<% grade.toString() %>"><%= grade.toString() %></option>
                                       <% }) %>
                                   </select>
 
@@ -79,7 +77,7 @@
               <div class="tab">
                   <div class="row">
                       <h5 class="mb"><b>O que falta na sua mochila?</b></h5>
-                      
+
                       <div class="col s12" id="scroll">
                           <ul class="collection">
                               <% if (materials.length) { %>
@@ -124,6 +122,6 @@
   </form>
 
 </div>
-  
+
 
 <%- include("./partials/footer.ejs") %>
