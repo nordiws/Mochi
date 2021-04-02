@@ -1,3 +1,4 @@
+import student from "../model/form/Student.js";
 import registration from "../model/registration.js";
 import schoolsModel from "../model/schoolsModel.js";
 
@@ -15,10 +16,12 @@ const saveForm = async (formData) => {
 // Importando dados da base de dados
 const getCitiesWithStudents = async (city) => {
     try {
-        const fechData = await registration.find({ city_id: city }, null, { limit: 1 });
+        const fechData = await registration.find({ city_id: city });
+        let current = "";
         if (fechData == []) {
             fechData[0] = null;
         } else {
+            // Seleciona os valores a utilizar
             const allStudents = fechData.map(student => {
                 const { school_name, school_id, city_id } = student;
                 return {
@@ -27,18 +30,51 @@ const getCitiesWithStudents = async (city) => {
                     city_id
                 }
             });
-            return allStudents;
+
+            allStudents.sort((a, b) => (a.school_id > b.school_id) ? 1 : -1);
+            // Conta quantas crinaças por escola existem no registro
+            let currentId = "";
+            const schoolsId = [];
+            allStudents.forEach(student => {
+                if (student.school_id != currentId) {
+                    currentId = student.school_id;
+                    schoolsId.push(currentId)
+                } else {
+                    return
+                }
+            })
+            const totalStudents = [];
+            for (let i = 0; i < schoolsId.length; i++) {
+                let count = 0;
+                allStudents.forEach(student => (student.school_id == schoolsId[i] && count++))
+                const obj = {};
+                obj['school_id'] = schoolsId[i];
+                obj['total_std'] = count;
+                totalStudents.push(obj);
+            }
+            console.log(totalStudents);
+            // Filtra um aluno por escola
+            const selectedStudents = [];
+            allStudents.forEach(student => {
+                if (student.school_id != current) {
+                    current = student.school_id;
+                    selectedStudents.push(student);
+                } else {
+                    return;
+                }
+            })
+            //console.log(selectedStudents);
+            return [selectedStudents, totalStudents];
         }
     } catch (error) {
         console.log(error);
     }
 }
 
-
 const getAllStudentsBySchools = async (school) => {
     try {
-        var select_fields = {"_id": 1, "std_name": 1, "std_nickname":1, "std_grade": 1, "school_name": 1, "products_list": 1}
-        return await registration.find({ "school_id" : school }, select_fields);
+        var select_fields = { "_id": 1, "std_name": 1, "std_nickname": 1, "std_grade": 1, "school_name": 1, "products_list": 1 }
+        return await registration.find({ "school_id": school }, select_fields);
     } catch (error) {
         console.log(error);
     }

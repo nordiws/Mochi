@@ -6,25 +6,31 @@
         </div>
         <div class="card-content grey lighten-1">
             <h5><b>
-                    <% if(student.school_name.length>=35){ %>
-                        <%= student.school_name.substring(0, 35) + "..." %>
+                    <% if(std.school_name.length>=35){ %>
+                        <%= std.school_name.substring(0, 35) + "..." %>
                             <% } else {%>
-                                <%= student.school_name %>
+                                <%= std.school_name %>
                                     <% } %>
                 </b></h5>
             <p><i class="material-icons icon-center">fmd_good</i>
-                <%= city_name %>
+                <%= city %>
             </p>
         </div>
         <div class="card-action">
             <div class="row">
                 <div class="col s12 m12 l12 xl6">
-                    <h5><b>4 mochilas</b><br>
-                        <span style="font-size: 14px;">precisam da sua doação</span>
-                    </h5>
+                    <% ttl.forEach(school=> { %>
+                        <% if (school[school_id]==std.school_id) <% }) { %>
+                            <h5><b>
+                                    <%= school[total_std]%> mochilas
+                                </b><br>
+                                <% }%>
+                                    <% }%>
+                                        <span style="font-size: 14px;">precisam da sua doação</span>
+                            </h5>
                 </div>
                 <div class="col s12 m12 l12 xl6">
-                    <a href="#" class="btn btn-align-center" id="<%=student.school_id%>">Quero doar</a>
+                    <a href="#" class="btn btn-align-center" id="<%=std.school_id%>">Quero doar</a>
                 </div>
             </div>
         </div>

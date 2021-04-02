@@ -19,10 +19,9 @@
             </div>
 
             <div class="row my">
-                <!--Add cards-->
                 <% if (students[0] !=null) { %>
                     <% students.forEach((student)=> { %>
-                        <%- include("./components/cards.ejs", {student: student, city_name: city_name}) %>
+                        <%- include("./components/cards.ejs", {std: student, city: city_name, ttl: totalStudents} ) %>
                             <% }) %>
                                 <% } else { %>
                                     <h3> As mochilas desta escola não estão precisando de materiais. </h3>
