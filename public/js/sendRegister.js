@@ -1,4 +1,6 @@
-function registerForm(){
+function registerForm(event){
+
+  preventDefault()
 
   $form = {
       guardian_name : $("#guardian_name").val() ,
