@@ -70,7 +70,7 @@ const setCityId = async inputValue => {
 const setSchoolId = async inputValue => {
     const response = await schools[0].filter(item => {
             
-        const schoolUpperCase = item.school_name.toUpperCase();
+        const schoolUpperCase = item.school_name.toUpperCase().trim();
     
         if(schoolUpperCase === inputValue.toUpperCase()) {
             return item;
