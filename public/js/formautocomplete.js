@@ -1,72 +1,109 @@
 // Inputs
-const elems = document.querySelector('.autocomplete');
+const school_city = document.getElementById("school_city");
 const school_name = document.getElementById("school_name");
 const city_id = document.getElementById("city_id");
+const school_id = document.getElementById("school_id");
+
+// Listas para cidade
+const optionsCities = {};
+const cities = [];
+
+//Lista para escola
+const optionsSchools = {};
+const schools = [];
 
 
-const options = {};
-const listCities = [];
-
-// Buscando dados
-window.onload = async () => {
-
-    /*
-    try {
-        const response = await axios.get(`/cities`);
-        const cities = response.data.citiesData;
-
-        listCities.push(cities);
-       
-        cities.map(element => options[element.name] = null );
-
-    } catch (error) {
-        console.log(error);
-    }*/
-
-    axios.get(`/cities`)
-        .then(response => {
-            const cities = response.data.citiesData;
-            listCities.push(cities);
-            // handle success
-            cities.map(element => {
-                const city_state = element.name;
-                options[city_state] = null;
-            });
-        })
-        .catch(error => {
-            // handle error
-            console.log(error);
-        })
-}
-
-document.addEventListener('input', () => {
-    const instances = M.Autocomplete.init(elems, { data: options, minLength: 2, limit: 5 });
+// Inicializando autocomplete
+school_city.addEventListener('input', () => {
+    M.Autocomplete.init(school_city, { data: optionsCities, minLength: 2, limit: 5 });  
 });
 
-school_name.addEventListener('click', () => {
+school_name.addEventListener('input', () => { 
+    M.Autocomplete.init(school_name, { data: optionsSchools, minLength: 2, limit: 5 });
+});
 
-    if (elems.value.length == 0) {
-        const toastHTML = '<span>Informe a cidade</span>';
+
+// autocomplete - Nome da escola
+school_name.addEventListener('focusin', async () => {
+
+    if (school_city.value.length == 0) {
+        school_city.className += " invalid"
+        const toastHTML = '<span>Informe a cidade primeiro</span>';
         M.toast({ html: toastHTML })
 
     } else {
-        const response = listCities[0].filter(item => {
+        await setCityId(school_city.value);
+    }
+})
 
-            const city = item.city.toUpperCase();
-            const value = elems.value.toUpperCase();
 
-            if (item.name == elems.value || city == value) {
-                return item;
-            }
-        });
+// Filtrando, validando e pegando ID
+const setCityId = async inputValue => {
+    const response = await cities[0].filter(item => {
+            
+        const cityUpperCase = item.city.toUpperCase();
 
-        console.log(response);
-        if (response.length !== 0) {
-            city_id.value = response[0].id;
-        } else {
-            const toastHTML = '<span>Está cidade não existe</span>';
-            M.toast({ html: toastHTML })
+        if(item.name == inputValue || cityUpperCase == inputValue.toUpperCase()) {
+            return item;
         }
+    })
+
+    if(response.length !== 0) {
+        await getSchools(response[0].id);
+        city_id.value = response[0].id;
+    }else {
+        school_city.className += " invalid"
+        const toastHTML = '<span>Está cidade não existe</span>';
+        M.toast({ html: toastHTML })
+    }
+    
+    
+}
+
+const setSchoolId = async inputValue => {
+    const response = await schools[0].filter(item => {
+            
+        const schoolUpperCase = item.school_name.toUpperCase();
+
+        if(schoolUpperCase == inputValue.toUpperCase()) {
+            return item;
+        }
+    })
+
+    if(response.length !== 0) {
+        school_id.value = response[0].id;
+    }else {
+        school_name.className += " invalid"
     }
 
-})
+}
+
+// Buscando cidades
+window.onload = async () => { 
+    try {
+        const response = await axios.get(`/cities`);
+        const list = response.data.citiesData;
+
+        cities.push(list);
+       
+        list.map(element => optionsCities[element.name] = null);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// Buscando escolas
+const getSchools = async id => {
+    try {
+        const response = await axios.get(`/schools/${id}`);
+        const list = response.data.schoolsData;
+
+        schools.push(list[0]);
+    
+        list[0].map(element => optionsSchools[element.school_name] = null);
+
+    } catch (error) {
+        console.log(error)
+    }
+}

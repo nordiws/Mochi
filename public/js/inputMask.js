@@ -24,10 +24,6 @@ $(document).ready(function(){
   justString($('#school_name'));
 
 
-  $("#school_state").focusout(function(){
-    $(this).css("background-color", "blue");
-  });
-
 
   function justString(tag){
     tag.mask('A', {
