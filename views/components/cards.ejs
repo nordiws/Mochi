@@ -23,17 +23,17 @@
 
                     <% ttl.forEach((school)=> { %>
 
-                        <% if (school.school_id==std.school_id)  { %>
+                        <% if (school.school_id==std.school_id) { %>
                             <h5><b>
                                     <%= school.total_std%> mochilas
 
-                                <% }%>
-                                    <% })%>
-                                        <span style="font-size: 14px;">precisam da sua doação</span>
+                                        <% }%>
+                                            <% })%>
+                                                <span style="font-size: 14px;">precisam da sua doação</span>
                             </h5>
                 </div>
                 <div class="col s12 m12 l12 xl6">
-                    <a href="#" class="btn btn-align-center" id="<%=std.school_id%>">Quero doar</a>
+                    <a href="/alunos?id=<%=std.school_id%> " class="btn btn-align-center">Quero doar</a>
                 </div>
             </div>
         </div>

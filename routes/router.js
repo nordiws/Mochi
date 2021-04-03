@@ -33,7 +33,7 @@ router.get('/escolas', async (req, res) => {
 })
 
 //View Model pagina listagem de alunos
-router.get('/alunos/', async (req, res) => {
+router.get('/alunos', async (req, res) => {
   try {
     const studentData = await db.getAllStudentsBySchools(req.query.id);
     const materialsData = await materials.selectedMaterialsData(studentData);
