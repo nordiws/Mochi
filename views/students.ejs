@@ -34,7 +34,7 @@
 
     <% materials.forEach((materialList)=> { %>
       <div id="<%= materialList.id %>" class="modal modal-fixed-footer">
-        <div id="content<%= materialList.id %>" class="modal-content">
+        <div id="content<%= materialList.id %>" class="modal-content center-align">
           <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
           <div class="materials-list">
             <ul class="collection">
@@ -59,12 +59,13 @@
             </ul>
           </div>
         </div>
-        <div class="modal-content" id="agree<%= materialList.id %>" style="display:none;">
-          <h4 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h4>
+
+        <div id="agree<%= materialList.id %>" class="thank-you-content center-align">
+          <h2 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h2>
           <img src="/assets/thanks-mochi.png" alt="Thank you!">
         </div>
 
-        <div class="modal-footer" id="contentFooter<%= materialList.id %>">
+        <div class="modal-footer">
           <div class="buttons center-align">
             <a href="#" class="modal-close waves-effect waves-light btn-flat">Cancelar</a>
             <a href="#" id="<%= materialList.id %>" onclick="modalEffect('<%= materialList.id %>')"
@@ -76,41 +77,46 @@
         <div class="modal-footer" style="display:none;" id="agreeFooter<%= materialList.id %>">
           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
+
+        <div class="secondary-modal-footer">
+          <div class="buttons center-align">
+            <a href="/" class="return-home-button waves-effect waves-light btn ambar">Voltar a home</a>
+          </div>
+        </div>
       </div>
 
       <% }); %>
 
-
-
         <script>
+          const openModalButton = document.querySelector('.open-modal-button');
+          const modalContent = document.querySelector('.modal-content');
+          const donateButton = document.querySelector('.donate-button');
+          const thankYouContent = document.querySelector('.thank-you-content');
+          const modalFooter = document.querySelector('.modal-footer');
+          const secondaryModalFooter = document.querySelector('.secondary-modal-footer');
 
+          openModalButton.addEventListener('click', showMaterialList);
 
-          function modalEffect(str_) {
-            var content = '#content' + str_;
-            var contentFooter = '#contentFooter' + str_;
-
-            var $content = $(content);
-            var $contentFooter = $(contentFooter);
-
-            $content.css("display", "none");
-            $contentFooter.css("display", "none");
-
-            /////////////////////////////////////second modal content
-            var content = '#agree' + str_;
-            var contentFooter = '#agreeFooter' + str_;
-
-            var $content = $(content);
-            var $contentFooter = $(contentFooter); //first modal
-
-            $content.css("display", "block");
-            $contentFooter.css("display", "block");
+          function showMaterialList() {
+            thankYouContent.classList.remove("show");
+            thankYouContent.classList.add("hide");
+            modalContent.classList.add("show");
+            modalContent.classList.remove("hide");
+            secondaryModalFooter.classList.add('hide');
           }
 
+          donateButton.addEventListener('click', showthankYouContent);
 
-          /*
-            modalContent.hide();
-            newContent.show();
-          }) */
+          function showthankYouContent() {
+            thankYouContent.classList.remove("hide");
+            thankYouContent.classList.add("show");
+            modalContent.classList.remove("show");
+            modalContent.classList.add("hide");
+            modalFooter.classList.add("hide");
+            secondaryModalFooter.classList.remove("hide");
+            secondaryModalFooter.classList.add("show");
+          }
+
         </script>
 
         <%- include("./partials/footer.ejs") %>
