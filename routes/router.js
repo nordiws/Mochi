@@ -20,12 +20,12 @@ router.get('/', (req, res, send) => {
 router.get('/escolas', async (req, res) => {
   try {
     const { id, city } = req.query;
-    const studentData = await db.getCitiesWithStudents(id);
-    console.log(studentData);
+    const [selectedStudents, totalStudents] = await db.getCitiesWithStudents(id);
     res.render('schools', {
       title: "Mochi - Escolas",
       city_name: city,
-      students: studentData,
+      students: selectedStudents,
+      totalStudents: totalStudents
     });
   } catch (error) {
     res.status(400).json(error)
@@ -36,7 +36,7 @@ router.get('/escolas', async (req, res) => {
 router.get('/alunos/', async (req, res) => {
   try {
     const studentData = await db.getAllStudentsBySchools(req.query.id);
-    const materialsData =  await materials.selectedMaterialsData(studentData);
+    const materialsData = await materials.selectedMaterialsData(studentData);
     res.render('students', {
       title: "Mochi - Alunos",
       students: studentData,
@@ -72,13 +72,6 @@ router.get('/cities', async (req, res, send) => {
   } catch (error) {
     res.status(400).json(error)
   }
-})
-
-router.get("/teste", async (req, res) => {
-  res.render("teste-register", {
-    materials: await materials.materialsData(),
-    fields: [guardian, student, school]
-  })
 })
 
 export default router;

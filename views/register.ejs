@@ -18,16 +18,16 @@
                 <div class="tab">
                     <div class="row">
                         <h4 class="mb"><b>Dados do responsável</b></h4>
-                      
+
                         <% if (fields[0].length) { %>
                             <% fields[0].forEach(guardian => { %>
-        
+
                                 <div class="input-field col l6 s12">
                                     <input type="<%= guardian.type %>" name="<%= guardian.name %>" id="<%= guardian.id %>" placeholder="<%= guardian.placeholder %>" class="validate">
 
                                     <label for="<%= guardian.name %>"><%= guardian.label %></label>
                                 </div>
-        
+
                             <% }) %>
                         <% } %>
 
@@ -62,20 +62,22 @@
                           <% fields[2].forEach((school)=> { %>
                             <div class="input-field col l6 s12">
                               <input type="<%= school.type %>" name="<%= school.name %>"
-                                id="<%= school.id %>" placeholder="<%= school.placeholder %>" class="validate">
+                                id="<%= school.id %>" placeholder="<%= school.placeholder %>" class="<%= school.class %> validate">
                               <label for="">
                                 <%= school.label %>
                               </label>
                             </div>
                           <% }) %>
                       <% } %>
+
+                      <input type="hidden" name="city_id" id="city_id">
                   </div>
               </div>
 
               <div class="tab">
                   <div class="row">
                       <h5 class="mb"><b>O que falta na sua mochila?</b></h5>
-                      
+
                       <div class="col s12" id="scroll">
                           <ul class="collection">
                               <% if (materials.length) { %>
@@ -88,7 +90,7 @@
 
                                           <label class="secondary-content">
                                               <input id="input_<%= material.Codigo %>" type="checkbox"
-                                              onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
+                                              onclick="select('<%= material.Codigo %>')" name="<%= material.Codigo %>" autocomplete="off" />
                                               <span></span>
                                           </label>
                                       </li>
@@ -120,6 +122,6 @@
   </form>
 
 </div>
-  
+
 
 <%- include("./partials/footer.ejs") %>
