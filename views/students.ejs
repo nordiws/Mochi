@@ -34,7 +34,7 @@
 
     <% materials.forEach((materialList)=> { %>
       <div id="<%= materialList.id %>" class="modal modal-fixed-footer">
-        <div class="modal-content">
+        <div id="modal-content" class="modal-content">
           <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
           <div class="materials-list">
             <ul class="collection">
@@ -62,30 +62,34 @@
         <div class="modal-footer">
           <div class="buttons center-align">
             <a href="#" class="modal-close waves-effect waves-light btn-flat">Cancelar</a>
-            <button href="#" id="<%= materialList.id %>" onclick="modalEffect('<%= materialList.id %>')" class="waves-effect waves-light btn ambar">Doar materiais</button>
+            <a href="#" id="<%= materialList.id %>" onclick="modalEffect('<%= materialList.id %>')"
+              class="donate-button waves-effect waves-light btn ambar">Doar materiais</a>
           </div>
         </div>
       </div>
 
       <% }); %>
 
+            <div class="modal-content-new">
+              <h4 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h4>
+              <img src="/assets/thanks-mochi.png" alt="Thank you!">
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+
         <script>
-          const donateButton = document.querySelector('#donate-button');
-          const content = document.querySelector('.modal-content');
+          const donateButton = document.querySelector('.donate-button');
+          const modalContent = document.querySelector('.modal-content');
 
           donateButton.addEventListener('click', function () {
-            content.textContent = 'Agradecemos sua contribuição!'
-                })
-        </script>
+          modalContent.innerHTML='<h4>Agradecemos sua contribuição!</h4>';
+          })  
 
-        <!-- <div id="modal2" class="modal modal-fixed-footer">
-        <div class="modal-content">
-          <h4 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h4>
-          <img src="/assets/thanks-mochi.png" alt="Thank you!">
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-      </div> -->
+          /*
+            modalContent.hide();
+            newContent.show();
+          }) */
+        </script>
 
         <%- include("./partials/footer.ejs") %>
