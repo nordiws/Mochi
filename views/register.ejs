@@ -62,13 +62,15 @@
                           <% fields[2].forEach((school)=> { %>
                             <div class="input-field col l6 s12">
                               <input type="<%= school.type %>" name="<%= school.name %>"
-                                id="<%= school.id %>" placeholder="<%= school.placeholder %>" class="validate">
+                                id="<%= school.id %>" placeholder="<%= school.placeholder %>" class="<%= school.class %> validate">
                               <label for="">
                                 <%= school.label %>
                               </label>
                             </div>
                           <% }) %>
                       <% } %>
+
+                      <input type="hidden" name="city_id" id="city_id">
                   </div>
               </div>
 
@@ -88,7 +90,7 @@
 
                                           <label class="secondary-content">
                                               <input id="input_<%= material.Codigo %>" type="checkbox"
-                                              onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
+                                              onclick="select('<%= material.Codigo %>')" name="<%= material.Codigo %>" autocomplete="off" />
                                               <span></span>
                                           </label>
                                       </li>
