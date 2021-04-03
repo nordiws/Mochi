@@ -71,7 +71,6 @@ router.post('/cadastro', (req, res) => {
 // Rota para autocomplete
 router.get('/cities', async (req, res, send) => {
   try {
-    const citiesData = await db.getTotalCities();
     res.json({ citiesData });
   } catch (error) {
     res.status(400).json(error)
