@@ -34,7 +34,7 @@
 
     <% materials.forEach((materialList)=> { %>
       <div id="<%= materialList.id %>" class="modal modal-fixed-footer">
-        <div id="modal-content" class="modal-content">
+        <div id="content<%= materialList.id %>" class="modal-content">
           <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
           <div class="materials-list">
             <ul class="collection">
@@ -59,33 +59,54 @@
             </ul>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-content" id="agree<%= materialList.id %>" style="display:none;">
+          <h4 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h4>
+          <img src="/assets/thanks-mochi.png" alt="Thank you!">
+        </div>
+
+        <div class="modal-footer" id="contentFooter<%= materialList.id %>">
           <div class="buttons center-align">
             <a href="#" class="modal-close waves-effect waves-light btn-flat">Cancelar</a>
             <a href="#" id="<%= materialList.id %>" onclick="modalEffect('<%= materialList.id %>')"
               class="donate-button waves-effect waves-light btn ambar">Doar materiais</a>
           </div>
+
+        </div>
+
+        <div class="modal-footer" style="display:none;" id="agreeFooter<%= materialList.id %>">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
       </div>
 
       <% }); %>
 
-            <div class="modal-content-new">
-              <h4 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h4>
-              <img src="/assets/thanks-mochi.png" alt="Thank you!">
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+
 
         <script>
-          const donateButton = document.querySelector('.donate-button');
-          const modalContent = document.querySelector('.modal-content');
 
-          donateButton.addEventListener('click', function () {
-          modalContent.textContent='Agradecemos sua contribuição!';
-          })  
 
+          function modalEffect(str_){
+            var content = '#content' + str_;
+            var contentFooter = '#contentFooter' + str_;
+
+            var $content = $(content);
+            var $contentFooter = $(contentFooter);
+
+            $content.css("display", "none");
+            $contentFooter.css("display", "none");
+
+              /////////////////////////////////////second modal content
+            var content = '#agree' + str_;
+            var contentFooter = '#agreeFooter' + str_;
+
+            var $content = $(content);
+            var $contentFooter = $(contentFooter); //first modal
+
+            $content.css("display", "block");
+            $contentFooter.css("display", "block");
+          }
+
+          
           /*
             modalContent.hide();
             newContent.show();
