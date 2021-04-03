@@ -1,3 +1,6 @@
+const validateBtn = document.getElementById("validateBtn");
+const next = document.getElementById("nextBtn");
+
 // Inputs
 const school_city = document.getElementById("school_city");
 const school_name = document.getElementById("school_name");
@@ -14,17 +17,17 @@ const schools = [];
 
 
 // Inicializando autocomplete
-school_city.addEventListener('input', () => {
+document.addEventListener('input', () => {
     M.Autocomplete.init(school_city, { data: optionsCities, minLength: 2, limit: 5 });  
 });
 
-school_name.addEventListener('input', () => { 
+document.addEventListener('input', () => { 
     M.Autocomplete.init(school_name, { data: optionsSchools, minLength: 2, limit: 5 });
 });
 
 
 // autocomplete - Nome da escola
-school_name.addEventListener('focusin', async () => {
+school_name.addEventListener('click', async () => {
 
     if (school_city.value.length == 0) {
         school_city.className += " invalid"
@@ -36,6 +39,10 @@ school_name.addEventListener('focusin', async () => {
     }
 })
 
+validateBtn.addEventListener('click', async () => {
+    await setCityId(school_city.value);
+    await setSchoolId(school_name.value);
+})
 
 // Filtrando, validando e pegando ID
 const setCityId = async inputValue => {
@@ -64,16 +71,23 @@ const setSchoolId = async inputValue => {
     const response = await schools[0].filter(item => {
             
         const schoolUpperCase = item.school_name.toUpperCase();
-
-        if(schoolUpperCase == inputValue.toUpperCase()) {
+    
+        if(schoolUpperCase === inputValue.toUpperCase()) {
             return item;
         }
     })
 
+    console.log(response);
     if(response.length !== 0) {
-        school_id.value = response[0].id;
+        school_id.value = response[0].school_id;
+        validateBtn.style.display = "none";
+        next.style.display = "inline"
+        const toastHTML = '<span>Tudo OK!</span>';
+        M.toast({ html: toastHTML })
     }else {
         school_name.className += " invalid"
+        const toastHTML = '<span>Escola invalida</span>';
+        M.toast({ html: toastHTML })
     }
 
 }

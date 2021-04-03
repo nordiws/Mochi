@@ -10,7 +10,7 @@ function registerForm(){
       city : $("#city").val(),
       street : $("#street").val(),
       number : $("#number").val(),
-      school_state :  $("#school_state").val(),
+      //school_state :  $("#school_state").val(),
       school_city : $("#city_id").val(),
       school_name : $("#school_name").val(),
       std_name : $("#std_name").val(),
