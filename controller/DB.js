@@ -1,6 +1,5 @@
-import student from "../model/form/Student.js";
 import registration from "../model/registration.js";
-import citiesModel from "../model/citiesModel";
+import citiesModel from "../model/citiesModel.js";
 
 // Salvando os dados do Form na base de dados
 const saveForm = async (formData) => {
@@ -52,7 +51,6 @@ const getCitiesWithStudents = async (city) => {
                 obj['total_std'] = count;
                 totalStudents.push(obj);
             }
-            console.log(totalStudents);
             // Filtra um aluno por escola
             const selectedStudents = [];
             allStudents.forEach(student => {
@@ -84,7 +82,6 @@ const getAllStudentsBySchools = async (school) => {
 const getStudentById = async (id) => {
     try {
         const fechData = await registration.findById({ _id: id });
-        console.log(fechData);
         return fechData;
     } catch (e) {
         console.log(e);
