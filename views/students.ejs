@@ -35,27 +35,29 @@
     <% materials.forEach((materialList)=> { %>
       <div id="<%= materialList.id %>" class="modal modal-fixed-footer">
         <div class="modal-content">
-            <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
-              <div class="materials-list">
-                <ul class="collection">
-                  <% if (materialList.products_list.length) { %>
-                    <% materialList.products_list.forEach((material)=> { %>
-                      <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
-                        class="collection-item avatar">
+          <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
+          <div class="materials-list">
+            <ul class="collection">
+              <% if (materialList.products_list.length) { %>
+                <% materialList.products_list.forEach((material)=> { %>
+                  <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
+                    class="collection-item avatar">
 
-                        <img src="<%= material.image %>" alt="" class="circle">
-                        <h6><b><%= material.Grupo %></b></h6>
+                    <img src="<%= material.image %>" alt="" class="circle">
+                    <h6><b>
+                        <%= material.Grupo %>
+                      </b></h6>
 
-                        <label class="secondary-content">
-                          <input id="input_<%= material.Codigo %>" type="checkbox"
-                          onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
-                          <span></span>
-                        </label>
-                      </li>
-                    <% }) %>
-                  <% } %>
-                </ul>
-              </div>
+                    <label class="secondary-content">
+                      <input id="input_<%= material.Codigo %>" type="checkbox"
+                        onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
+                      <span></span>
+                    </label>
+                  </li>
+                  <% }) %>
+                    <% } %>
+            </ul>
+          </div>
         </div>
         <div class="modal-footer">
           <div class="buttons center-align">
@@ -67,4 +69,23 @@
 
       <% }); %>
 
-      <%- include("./partials/footer.ejs") %>
+        <script>
+          const donateButton = document.querySelector('#donate-button');
+          const content = document.querySelector('.modal-content');
+
+          donateButton.addEventListener('click', function () {
+            content.textContent = 'Agradecemos sua contribuição!'
+                })
+        </script>
+
+        <!-- <div id="modal2" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h4>
+          <img src="/assets/thanks-mochi.png" alt="Thank you!">
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div> -->
+
+        <%- include("./partials/footer.ejs") %>
