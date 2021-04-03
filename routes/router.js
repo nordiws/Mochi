@@ -74,4 +74,16 @@ router.get('/cities', async (req, res, send) => {
   }
 })
 
+router.get('/schools/:id', async (req, res, send) => {
+    try {
+      const { id } = req.params;
+      const schoolsData = await db.getCitiesWithStudents(id);
+
+      res.json({schoolsData});
+
+    } catch (error) {
+      res.status(400).json(error)
+    }
+})
+
 export default router;

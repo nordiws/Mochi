@@ -1,13 +1,13 @@
 //Objeto school para popular o form
 var school = []
 
-school.push({
+/*school.push({
   name: "school_state",
   placeholder: "",
   type: "text",
   label: "Estado da Escola",
   id: "school_state"
-});
+});*/
 
 school.push({
   name: "school_city",
@@ -23,7 +23,8 @@ school.push({
   placeholder: "",
   type: "text",
   label: "Nome da Escola",
-  id: "school_name"
+  id: "school_name",
+  class: "autocomplete"
 });
 
 export default school;

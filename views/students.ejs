@@ -34,7 +34,7 @@
 
     <% materials.forEach((materialList)=> { %>
       <div id="<%= materialList.id %>" class="modal modal-fixed-footer">
-        <div id="modal-content" class="modal-content center-align">
+        <div id="content<%= materialList.id %>" class="modal-content center-align">
           <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
           <div class="materials-list">
             <ul class="collection">
@@ -60,7 +60,7 @@
           </div>
         </div>
 
-        <div id="thank-you-content" class="thank-you-content center-align">
+        <div id="agree<%= materialList.id %>" class="thank-you-content center-align">
           <h2 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h2>
           <img src="/assets/thanks-mochi.png" alt="Thank you!">
         </div>
@@ -71,6 +71,11 @@
             <a href="#" id="<%= materialList.id %>" onclick="modalEffect('<%= materialList.id %>')"
               class="donate-button waves-effect waves-light btn ambar">Doar materiais</a>
           </div>
+
+        </div>
+
+        <div class="modal-footer" style="display:none;" id="agreeFooter<%= materialList.id %>">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
 
         <div class="secondary-modal-footer">
