@@ -4,7 +4,7 @@
     <section class="container">
       <div class="row">
         <div class="col s6">
-          <p>Inicio > Escolas > <b>Alunos</b></p>
+          <p><a href="/">Inicio</a> > <a href="/escolas?id=<%=city_id%> ">Escolas</a> > <b>Alunos</b></p>
           <h1 class="text-medium">
             <%= students[0].school_name %>
           </h1>
@@ -85,7 +85,7 @@
         <script>
 
 
-          function modalEffect(str_){
+          function modalEffect(str_) {
             var content = '#content' + str_;
             var contentFooter = '#contentFooter' + str_;
 
@@ -95,7 +95,7 @@
             $content.css("display", "none");
             $contentFooter.css("display", "none");
 
-              /////////////////////////////////////second modal content
+            /////////////////////////////////////second modal content
             var content = '#agree' + str_;
             var contentFooter = '#agreeFooter' + str_;
 
@@ -106,7 +106,7 @@
             $contentFooter.css("display", "block");
           }
 
-          
+
           /*
             modalContent.hide();
             newContent.show();
