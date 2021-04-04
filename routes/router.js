@@ -9,11 +9,18 @@ import student from "../model/form/Student.js";
 const router = express.Router();
 
 // View Model index route (frontend)
-router.get('/', (req, res, send) => {
-  res.render('index', {
-    title: "Mochi",
-    version: "1.0.0",
-  });
+router.get('/', async (req, res, send) => {
+  try {
+    const [selectedSchools, totalSchools] = await db.getRandomSchools();
+    res.render('index', {
+      title: "Mochi",
+      version: "1.0.0",
+      schools: selectedSchools,
+      total_std: totalSchools
+    });
+  } catch (error) {
+    res.status(400).json(error)
+  }
 })
 
 // View Model pagina listagem de escolas
@@ -21,12 +28,15 @@ router.get('/escolas', async (req, res) => {
   try {
     const { id, city } = req.query;
     const [selectedStudents, totalStudents] = await db.getCitiesWithStudents(id);
+    const [selectedSchools, totalSchools] = await db.getRandomSchools();
     res.render('schools', {
       title: "Mochi - Escolas",
       c_id: id,
       c_name: city,
       students: selectedStudents,
-      totalStudents: totalStudents
+      totalStudents: totalStudents,
+      schools: selectedSchools,
+      ttl_std: totalSchools
     });
   } catch (error) {
     res.status(400).json(error)

@@ -14,8 +14,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // Configurando dotenv
 dotenv.config();
 
+// Intanciamento da variavel global com os dados do autocomplete
 global.citiesData = {};
-
 const fetchData = async () => {
     try {
         citiesData = await db.getTotalCities();
@@ -61,4 +61,5 @@ app.listen(PORT, () => {
     console.log(`Servidor iniciado na porta ${PORT}`);
 });
 
+// Chamada da função para popular os dados do autocomplete
 fetchData();
