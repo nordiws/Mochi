@@ -78,48 +78,52 @@
           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
 
-        <div class="secondary-modal-footer">
+        <div class="secondary-modal-footer" id="secondaryAgreeFooter<%= materialList.id %>">
           <div class="buttons center-align">
             <a href="/" class="return-home-button waves-effect waves-light btn ambar">Voltar a home</a>
           </div>
         </div>
       </div>
 
-      <% }); %>
+    <% }); %>
 
-        <script>
-          const openModalButton = document.querySelector('.open-modal-button');
-          const modalContent = document.querySelector('.modal-content');
-          const donateButton = document.querySelector('.donate-button');
-          const thankYouContent = document.querySelector('.thank-you-content');
-          const modalFooter = document.querySelector('.modal-footer');
-          const secondaryModalFooter = document.querySelector('.secondary-modal-footer');
+    <script>
+      const openModalButtons = document.querySelectorAll('.open-modal-button');
+      const donateButtons = document.querySelectorAll('.donate-button');
+      const modalContent = document.querySelector('.modal-content'.id);
+      const thankYouContent = document.querySelector('.thank-you-content'.id);
+      const modalFooter = document.querySelector('.modal-footer'.id);
+      const secondaryModalFooter = document.querySelector('.secondary-modal-footer'.id);
 
-          openModalButton.addEventListener('click', showMaterialList);
+      for (let i = 0; i < openModalButtons.length; i++) {
+        openModalButtons[i].addEventListener('click', showMaterialList);
+      }
 
-          function showMaterialList() {
-            thankYouContent.classList.remove("show");
-            thankYouContent.classList.add("hide");
-            modalContent.classList.add("show");
-            modalContent.classList.remove("hide");
-            secondaryModalFooter.classList.add('hide');
-            secondaryModalFooter.classList.remove('show');
-            modalFooter.classList.remove('hide');
-            modalFooter.classList.add('show');
-          } 
+      for (let i =0; i < donateButtons.length; i++) {
+        donateButtons[i].addEventListener('click', showthankYouContent);
+      }
+        
+      function showMaterialList() {
+        thankYouContent.classList.remove("show");
+        thankYouContent.classList.add("hide");
+        modalContent.classList.add("show");
+        modalContent.classList.remove("hide");
+        secondaryModalFooter.classList.add('hide');
+        secondaryModalFooter.classList.remove('show');
+        modalFooter.classList.remove('hide');
+        modalFooter.classList.add('show');
+      }
+      
+      function showthankYouContent() {
+        thankYouContent.classList.remove("hide");
+        thankYouContent.classList.add("show");
+        modalContent.classList.remove("show");
+        modalContent.classList.add("hide");
+        modalFooter.classList.add("hide");
+        secondaryModalFooter.classList.remove("hide");
+        secondaryModalFooter.classList.add("show");
+      }
 
-          donateButton.addEventListener('click', showthankYouContent);
+    </script>
 
-          function showthankYouContent() {
-            thankYouContent.classList.remove("hide");
-            thankYouContent.classList.add("show");
-            modalContent.classList.remove("show");
-            modalContent.classList.add("hide");
-            modalFooter.classList.add("hide");
-            secondaryModalFooter.classList.remove("hide");
-            secondaryModalFooter.classList.add("show");
-          }
-
-        </script>
-
-        <%- include("./partials/footer.ejs") %>
+    <%- include("./partials/footer.ejs") %>
