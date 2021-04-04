@@ -103,7 +103,10 @@
             modalContent.classList.add("show");
             modalContent.classList.remove("hide");
             secondaryModalFooter.classList.add('hide');
-          }
+            secondaryModalFooter.classList.remove('show');
+            modalFooter.classList.remove('hide');
+            modalFooter.classList.add('show');
+          } 
 
           donateButton.addEventListener('click', showthankYouContent);
 
