@@ -88,21 +88,17 @@
     <% }); %>
 
     <script>
-      const openModalButtons = document.querySelectorAll('.open-modal-button');
-      const donateButtons = document.querySelectorAll('.donate-button');
-      const modalContent = document.querySelector('.modal-content'.id);
-      const thankYouContent = document.querySelector('.thank-you-content'.id);
-      const modalFooter = document.querySelector('.modal-footer'.id);
-      const secondaryModalFooter = document.querySelector('.secondary-modal-footer'.id);
+      const openModalButton = document.querySelector('.open-modal-button');
+      const modalContent = document.querySelector('.modal-content');
+      const donateButton = document.querySelector('.donate-button');
+      const thankYouContent = document.querySelector('.thank-you-content');
+      const modalFooter = document.querySelector('.modal-footer');
+      const secondaryModalFooter = document.querySelector('.secondary-modal-footer');
 
       for (let i = 0; i < openModalButtons.length; i++) {
         openModalButtons[i].addEventListener('click', showMaterialList);
       }
 
-      for (let i =0; i < donateButtons.length; i++) {
-        donateButtons[i].addEventListener('click', showthankYouContent);
-      }
-        
       function showMaterialList() {
         thankYouContent.classList.remove("show");
         thankYouContent.classList.add("hide");
@@ -112,6 +108,10 @@
         secondaryModalFooter.classList.remove('show');
         modalFooter.classList.remove('hide');
         modalFooter.classList.add('show');
+      }
+
+      for (let i =0; i < donateButtons.length; i++) {
+        donateButtons[i].addEventListener('click', showthankYouContent);
       }
       
       function showthankYouContent() {

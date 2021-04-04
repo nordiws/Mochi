@@ -27,7 +27,7 @@ $(document).ready(function(){
   function justString(tag){
     tag.mask('A', {
       translation: {
-        A: { pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/g, recursive: true },
+        A: { pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'~´`^s]+$/g, recursive: true },
       },
     });
   }
