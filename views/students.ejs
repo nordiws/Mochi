@@ -88,6 +88,7 @@
       <% }); %>
       
       <script>
+
           const openModalButton = document.querySelector('.open-modal-button');
           const modalContent = document.querySelector('.modal-content');
           const donateButton = document.querySelector('.donate-button');
@@ -103,6 +104,9 @@
             modalContent.classList.add("show");
             modalContent.classList.remove("hide");
             secondaryModalFooter.classList.add('hide');
+            secondaryModalFooter.classList.remove('show');
+            modalFooter.classList.remove('hide');
+            modalFooter.classList.add('show');
           } 
 
           donateButton.addEventListener('click', showthankYouContent);
