@@ -7,10 +7,12 @@ import ApiSchools from "./ApiSchools.js"
 const saveForm = async (formData) => {
     try {
         const registryDB = new registration(formData); // ajustar com os identificadores dos campos do Form
-        await registryDB.save();
-        console.log("Cadastro inserido");
+        await registryDB.save(function(err){
+            return true;
+        });
+        return false;
     } catch (err) {
-        console.log("Falha ao inserir o cadastro. " + err);
+        return false;
     }
 }
 
