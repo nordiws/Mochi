@@ -18,7 +18,7 @@
                         <!-- One "tab" for each step in the form: -->
                         <div class="tab">
                             <div class="row">
-                                <h4 class="mb"><b>Dados do responsável</b></h4>
+                                <h3 class="mb blue-grey-text"><b>Dados do responsável</b></h3>
 
                                 <% if (fields[0].length) { %>
                                     <% fields[0].forEach(guardian=> { %>
@@ -41,7 +41,7 @@
 
                         <div class="tab">
                             <div class="row">
-                                <h4 class="mb"><b>Dados do estudante</b></h4>
+                                <h3 class="mb blue-grey-text"><b>Dados do estudante</b></h3>
                                 <% fields[1].forEach(student=> { %>
                                     <% if (String(student.name)=="std_grade" ) { %>
                                         <div class="input-field col l6 s12">
@@ -90,7 +90,7 @@
 
                         <div class="tab">
                             <div class="row">
-                                <h5 class="mb"><b>O que falta na sua mochila?</b></h5>
+                                <h3 class="mb blue-grey-text"><b>O que falta na sua mochila?</b></h3>
 
                                 <div class="col s12" id="scroll">
                                     <ul class="collection">
@@ -124,16 +124,15 @@
 
                     <div style="float: left; margin-top: 25px;">
 
-                        <button type="button" class="waves-effect waves-light btn-large grey white-text" id="prevBtn"
+                        <button type="button" class="waves-effect waves-light btn-flat" id="prevBtn"
                             onclick="nextPrev(-1)">Anterior</button>
 
-                        <button type="button" class="waves-effect waves-light btn-large black white-text" id="nextBtn"
+                        <button type="button" class="waves-effect waves-light btn-large amber" id="nextBtn"
                             onclick="nextPrev(1)">Próximo</button>
 
                         <button type="button" class="waves-effect waves-light btn-large light-green darken-1 white-text" id="validateBtn">Validar escola</button>
 
-                        <button type="submit" class="waves-effect waves-light btn-large amber" id="submitBtn" onclick="event.preventDefault();registerForm()" name="action">Enviar
-                            <i class="material-icons right">send</i>
+                        <button type="submit" class="waves-effect waves-light btn-large amber" id="submitBtn" onclick="event.preventDefault();registerForm()" name="action">Enviar    
                         </button>
 
                     </div>
