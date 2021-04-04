@@ -30,8 +30,8 @@ const getCitiesWithStudents = async (city) => {
                 }
             });
 
+            // Obtem os IDs das escolas no DB
             allStudents.sort((a, b) => (a.school_id > b.school_id) ? 1 : -1);
-            // Conta quantas crinaças por escola existem no registro
             let currentId = "";
             const schoolsId = [];
             allStudents.forEach(student => {
@@ -42,6 +42,8 @@ const getCitiesWithStudents = async (city) => {
                     return
                 }
             })
+
+            // Conta quantas crinaças por escola existem no registro
             const totalStudents = [];
             for (let i = 0; i < schoolsId.length; i++) {
                 let count = 0;
@@ -61,7 +63,6 @@ const getCitiesWithStudents = async (city) => {
                     return;
                 }
             })
-            //console.log(selectedStudents);
             return [selectedStudents, totalStudents];
         }
     } catch (error) {
@@ -105,4 +106,55 @@ const getTotalCities = async () => {
     }
 }
 
-export default { saveForm, getAllStudentsBySchools, getStudentById, getTotalCities, getCitiesWithStudents };
+const getRandomSchools = async () => {
+    try {
+        // Verifica a quantidade de escolas com alunos cadastrados e salva os IDs
+        const allStudents = await registration.find();
+        allStudents.sort((a, b) => (a.school_id > b.school_id) ? 1 : -1);
+        let currentId = "";
+        const schoolsId = [];
+        allStudents.forEach(student => {
+            if (student.school_id != currentId) {
+                currentId = student.school_id;
+                schoolsId.push(currentId)
+            } else {
+                return
+            }
+        })
+        // Puxa os dados de cada escola obtida no codigo anterior
+        const selectedSchools = [];
+        for (let id of schoolsId) {
+            try {
+                const stdData = await registration.find({ school_id: id }, null, { limit: 1 });
+                const mapedStudents = stdData.map(student => {
+                    const { school_name, school_id, city, city_id, state } = student;
+                    return {
+                        school_name,
+                        school_id,
+                        city,
+                        city_id,
+                        state
+                    }
+                })
+                selectedSchools.push(...mapedStudents);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        // Conta quantas crinaças por escola existem no registro
+        const totalSchools = [];
+        for (let i = 0; i < schoolsId.length; i++) {
+            let count = 0;
+            allStudents.forEach(student => (student.school_id == schoolsId[i] && count++))
+            const obj = {};
+            obj['school_id'] = schoolsId[i];
+            obj['total_std'] = count;
+            totalSchools.push(obj);
+        }
+        return [selectedSchools, totalSchools];
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export default { saveForm, getAllStudentsBySchools, getStudentById, getTotalCities, getCitiesWithStudents, getRandomSchools };
