@@ -1,7 +1,5 @@
-function registerForm(event){
-
-  preventDefault()
-
+function registerForm(){
+  
   $form = {
       guardian_name : $("#guardian_name").val() ,
       guardian_lastname : $("#guardian_lastname").val() ,
@@ -13,14 +11,14 @@ function registerForm(event){
       street : $("#street").val(),
       number : $("#number").val(),
       //school_state :  $("#school_state").val(),
-      school_city : $("#city_id").val(),
+      school_city : $("#school_city").val(),
       school_name : $("#school_name").val(),
       std_name : $("#std_name").val(),
       std_nickname : $("#std_nickname").val(),
       std_age : $("#std_age").val(),
       std_grade : $("#std_grade option:selected").text().trim(),
-      school_id : "183016",
-      city_id : "2309",
+      school_id : $("#school_id").val(),
+      city_id : $("#city_id").val(),
       products_list : allChecked(),
   };
 
