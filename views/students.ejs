@@ -4,7 +4,7 @@
     <section class="container">
       <div class="row">
         <div class="col s6">
-          <p>Inicio > Escolas > <b>Alunos</b></p>
+          <p><a href="/">Inicio</a> > <a href="/escolas?id=<%=city_id%> ">Escolas</a> > <b>Alunos</b></p>
           <h1 class="text-medium">
             <%= students[0].school_name %>
           </h1>
@@ -34,7 +34,7 @@
 
     <% materials.forEach((materialList)=> { %>
       <div id="<%= materialList.id %>" class="modal modal-fixed-footer">
-        <div id="modal-content" class="modal-content">
+        <div id="content<%= materialList.id %>" class="modal-content center-align">
           <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
           <div class="materials-list">
             <ul class="collection">
@@ -59,37 +59,71 @@
             </ul>
           </div>
         </div>
+
+        <div id="agree<%= materialList.id %>" class="thank-you-content center-align">
+          <h2 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h2>
+          <img src="/assets/thanks-mochi.png" alt="Thank you!">
+        </div>
+
         <div class="modal-footer">
           <div class="buttons center-align">
             <a href="#" class="modal-close waves-effect waves-light btn-flat">Cancelar</a>
             <a href="#" id="<%= materialList.id %>" onclick="modalEffect('<%= materialList.id %>')"
               class="donate-button waves-effect waves-light btn ambar">Doar materiais</a>
           </div>
+
+        </div>
+
+        <div class="modal-footer" style="display:none;" id="agreeFooter<%= materialList.id %>">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+
+        <div class="secondary-modal-footer" id="secondaryAgreeFooter<%= materialList.id %>">
+          <div class="buttons center-align">
+            <a href="/" class="return-home-button waves-effect waves-light btn ambar">Voltar a home</a>
+          </div>
         </div>
       </div>
 
-      <% }); %>
+    <% }); %>
 
-            <div class="modal-content-new">
-              <h4 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h4>
-              <img src="/assets/thanks-mochi.png" alt="Thank you!">
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+    <script>
+      const openModalButton = document.querySelector('.open-modal-button');
+      const modalContent = document.querySelector('.modal-content');
+      const donateButton = document.querySelector('.donate-button');
+      const thankYouContent = document.querySelector('.thank-you-content');
+      const modalFooter = document.querySelector('.modal-footer');
+      const secondaryModalFooter = document.querySelector('.secondary-modal-footer');
 
-        <script>
-          const donateButton = document.querySelector('.donate-button');
-          const modalContent = document.querySelector('.modal-content');
+      for (let i = 0; i < openModalButtons.length; i++) {
+        openModalButtons[i].addEventListener('click', showMaterialList);
+      }
 
-          donateButton.addEventListener('click', function () {
-          modalContent.textContent='Agradecemos sua contribuição!';
-          })  
+      function showMaterialList() {
+        thankYouContent.classList.remove("show");
+        thankYouContent.classList.add("hide");
+        modalContent.classList.add("show");
+        modalContent.classList.remove("hide");
+        secondaryModalFooter.classList.add('hide');
+        secondaryModalFooter.classList.remove('show');
+        modalFooter.classList.remove('hide');
+        modalFooter.classList.add('show');
+      }
 
-          /*
-            modalContent.hide();
-            newContent.show();
-          }) */
-        </script>
+      for (let i =0; i < donateButtons.length; i++) {
+        donateButtons[i].addEventListener('click', showthankYouContent);
+      }
+      
+      function showthankYouContent() {
+        thankYouContent.classList.remove("hide");
+        thankYouContent.classList.add("show");
+        modalContent.classList.remove("show");
+        modalContent.classList.add("hide");
+        modalFooter.classList.add("hide");
+        secondaryModalFooter.classList.remove("hide");
+        secondaryModalFooter.classList.add("show");
+      }
 
-        <%- include("./partials/footer.ejs") %>
+    </script>
+
+    <%- include("./partials/footer.ejs") %>

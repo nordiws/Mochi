@@ -8,7 +8,11 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
                         class="material-icons blue-grey-text">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="/cadastro" class="waves-effect waves-light btn">Cadastre-se</a></li>
+                    <% if(title !="Mochi - Cadastro" ) {%>
+                        <li><a href="/cadastro" class="waves-effect waves-light btn">Cadastre-se</a></li>
+                        <% } else { %>
+                            <li><a href="/" class="waves-effect waves-light btn">Inicio</a></li>
+                            <% } %>
                 </ul>
             </div>
         </nav>

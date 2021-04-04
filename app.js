@@ -4,6 +4,7 @@ import path from "path";
 import cors from "cors";
 import router from "./routes/router.js"
 import mongoose from "mongoose";
+import db from "./controller/DB.js"
 
 //Importando a pasta local
 import { dirname } from 'path';
@@ -12,6 +13,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Configurando dotenv
 dotenv.config();
+
+global.citiesData = {};
+
+const fetchData = async () => {
+    try {
+        citiesData = await db.getTotalCities();
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 // Declarando o roteador
 const app = express();
@@ -49,3 +60,5 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Servidor iniciado na porta ${PORT}`);
 });
+
+fetchData();

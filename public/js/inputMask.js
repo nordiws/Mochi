@@ -24,15 +24,10 @@ $(document).ready(function(){
   justString($('#school_name'));
 
 
-  $("#school_state").focusout(function(){
-    $(this).css("background-color", "blue");
-  });
-
-
   function justString(tag){
     tag.mask('A', {
       translation: {
-        A: { pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/g, recursive: true },
+        A: { pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'~´`^s]+$/g, recursive: true },
       },
     });
   }

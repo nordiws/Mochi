@@ -7,24 +7,28 @@ function showTab(n) {
     let x = document.getElementsByClassName("tab");
     x[n].style.display = "block";
 
+    const next = document.getElementById("nextBtn");
+    const prev = document.getElementById("prevBtn");
+    const submit = document.getElementById("submitBtn");
+    const validateBtn = document.getElementById("validateBtn");
+
     // ... and fix the Previous/Next buttons:
     if (n == 0) {
-        document.getElementById("prevBtn").style.display = "none";
-        document.getElementById("submitBtn").style.display = "none";
+        prev.style.display = "none";
+        validateBtn.style.display = "none";
+        submit.style.display = "none";
+        next.style.display = "inline";
         
-    } else {
-        document.getElementById("prevBtn").style.display = "inline";
-    }
-    
-    
-    if (n == (x.length - 1)) {
-        document.getElementById("submitBtn").style.display = "inline";
-        document.getElementById("nextBtn").style.display = "none";
-    } else if(n < (x.length - 1)) {
-        document.getElementById("nextBtn").style.display = "inline";
-        document.getElementById("submitBtn").style.display = "none";
-    } else {
-        document.getElementById("nextBtn").innerHTML = "Próximo";
+    } else if(n == (x.length - 1)) {
+        submit.style.display = "inline";
+        next.style.display = "none";
+    }else {
+        if(n == 1){
+            validateBtn.style.display = "inline";
+            next.style.display = "none";
+            submit.style.display = "none";
+        }
+        prev.style.display = "inline";
     }
 
     // ... and run a function that displays the correct step indicator:
@@ -40,12 +44,7 @@ function nextPrev(n) {
     x[currentTab].style.display = "none";
     // Increase or decrease the current tab by 1:
     currentTab = currentTab + n;
-    // if you have reached the end of the form... :
-    if (currentTab >= x.length) {
-        //...the form gets submitted:
-        document.getElementById("regForm").submit();
-        return false;
-    }
+    
     // Otherwise, display the correct tab:
     showTab(currentTab);
 }
