@@ -34,59 +34,63 @@
 
     <% materials.forEach((materialList)=> { %>
       <div id="<%= materialList.id %>" class="modal modal-fixed-footer">
-        <div id="content<%= materialList.id %>" >
-        <div class="modal-content center-align">
-          <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
-          <div class="materials-list">
-            <ul class="collection">
-              <% if (materialList.products_list.length) { %>
-                <% materialList.products_list.forEach((material)=> { %>
-                  <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
-                    class="collection-item avatar">
+        <div id="content<%= materialList.id %>">
+          <div class="modal-content center-align">
+            <h2 class="text-bold blue-grey-text">Lista de Materiais</h2>
+            <div class="materials-list">
+              <ul class="collection">
+                <% if (materialList.products_list.length) { %>
+                  <% materialList.products_list.forEach((material)=> { %>
+                    <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
+                      class="collection-item avatar">
 
-                    <img src="<%= material.image %>" alt="" class="circle">
-                    <h6><b>
-                        <%= material.Grupo %>
-                      </b></h6>
+                      <img src="<%= material.image %>" alt="" class="circle">
+                      <h6><b>
+                          <%= material.Grupo %>
+                        </b></h6>
 
-                    <label class="secondary-content">
-                      <input id="input_<%= material.Codigo %>" type="checkbox"
-                        onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>" autocomplete="off" />
-                      <span></span>
-                    </label>
-                  </li>
-                  <% }) %>
-                    <% } %>
-            </ul>
+                      <label class="secondary-content">
+                        <input id="input_<%= material.Codigo %>" type="checkbox"
+                          onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>"
+                          autocomplete="off" />
+                        <span></span>
+                      </label>
+                    </li>
+                    <% }) %>
+                      <% } %>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <div class="buttons center-align">
-            <a href="#" class="modal-close waves-effect waves-light btn-flat">Cancelar</a>
-            <a href="#" id="<%= materialList.id %>" onclick="modalEffect('<%= materialList.id %>')"
-              class="donate-button waves-effect waves-light btn ambar">Doar materiais</a>
-          </div>
+          <div class="modal-footer">
+            <div class="buttons center-align">
+              <a href="#" class="modal-close waves-effect waves-light btn-flat">Cancelar</a>
+              <a href="#" id="<%= materialList.id %>" onclick="modalEffect('<%= materialList.id %>')"
+                class="donate-button waves-effect waves-light btn ambar">Doar materiais</a>
+            </div>
           </div>
         </div>
 
 
         <div id="agree<%= materialList.id %>" style="display:none;">
-        <div  class="thank-you-content center-align my">
-          <h2 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h2>
-          <img src="/assets/thanks-mochi.png" alt="Thank you!">
-          <p>Você pode fazer a entrega dos materiais no endereço:</p>
-          <% var student = students[( Object.keys(students).find(key => students[key]["_id"] === materialList.id) )]; %>
-          <h4 class="text-bold blue-grey-text"> Escola: <%= student.school_name %></h4>
-          <h4 class="blue-grey-text">Rua tal tal</h3>
-        </div>
-        <div class="modal-footer">
-          <div class="button center-align">
-            <a href="/" class="modal-close waves-effect waves-glight btn ambar">Voltar a home</a>
+          <div class="thank-you-content center-align my">
+            <h2 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h2>
+            <img src="/assets/thanks-mochi.png" alt="Thank you!">
+            <p>Você pode fazer a entrega dos materiais no endereço:</p>
+            <% var student=students[( Object.keys(students).find(key=> students[key]["_id"] === materialList.id) )]; %>
+              <h4 class="text-bold blue-grey-text"> Escola: <%= school.name %>
+              </h4>
+              <h5 class="blue-grey-text">
+                <%= school.street%>, <%= school.number%> - CEP <%= school.cep%>
+                      </h3>
+          </div>
+          <div class="modal-footer">
+            <div class="button center-align">
+              <a href="/" class="modal-close waves-effect waves-glight btn ambar">Voltar a home</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <% }); %>
+      <% }); %>
 
-    <%- include("./partials/footer.ejs") %>
+        <%- include("./partials/footer.ejs") %>

@@ -47,13 +47,14 @@ router.get('/escolas', async (req, res) => {
 router.get('/alunos', async (req, res) => {
   try {
     const { id, city_id } = req.query;
-    const studentData = await db.getAllStudentsBySchools(req.query.id);
-    const materialsData = await materials.selectedMaterialsData(studentData);
+    const [studentsData, schoolData] = await db.getAllStudentsBySchools(id, city_id);
+    const materialsData = await materials.selectedMaterialsData(studentsData);
     res.render('students', {
       title: "Mochi - Alunos",
       school_id: id,
       city_id: city_id,
-      students: studentData,
+      students: studentsData,
+      school: schoolData[0],
       materials: materialsData
     });
   } catch (error) {

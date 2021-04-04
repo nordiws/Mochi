@@ -1,5 +1,7 @@
 import registration from "../model/registration.js";
 import citiesModel from "../model/citiesModel.js";
+import ApiSchools from "./ApiSchools.js"
+
 
 // Salvando os dados do Form na base de dados
 const saveForm = async (formData) => {
@@ -70,10 +72,17 @@ const getCitiesWithStudents = async (city) => {
     }
 }
 
-const getAllStudentsBySchools = async (school) => {
+const getAllStudentsBySchools = async (schoolId, city_id) => {
     try {
         var select_fields = { "_id": 1, "std_name": 1, "std_nickname": 1, "std_grade": 1, "school_name": 1, "products_list": 1 }
-        return await registration.find({ "school_id": school }, select_fields);
+        const studentsData = await registration.find({ "school_id": schoolId }, select_fields);
+        const fetchData = await ApiSchools.schoolsData(city_id);
+        const schoolData = fetchData.filter(school => {
+            if (school.id === schoolId) {
+                return school;
+            }
+        })
+        return [studentsData, schoolData];
     } catch (error) {
         console.log(error);
     }
