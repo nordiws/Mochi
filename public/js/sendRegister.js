@@ -1,9 +1,5 @@
 function registerForm(){
 
-
-  openModal()
-  
-  
   $form = {
       guardian_name : $("#guardian_name").val() ,
       guardian_lastname : $("#guardian_lastname").val() ,
@@ -31,6 +27,11 @@ function registerForm(){
     url: "/cadastro",
     data: JSON.stringify($form),
     contentType: "application/json",
+    success: function (result) {
+        if(result.status == 200){
+            openModal();
+        }
+      }
    });
 }
 
@@ -51,5 +52,3 @@ function openModal () {
 
     instances.open();
 }
-
-

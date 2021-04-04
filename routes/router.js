@@ -77,8 +77,12 @@ router.get('/cadastro', async (req, res) => {
   }
 })
 
-router.post('/cadastro', (req, res) => {
-  db.saveForm(req.body);
+router.post('/cadastro', async (req, res) => {
+  var response = await db.saveForm(req.body);
+  if (response) {
+    res.status(200);
+  }
+  res.status(400);
 })
 
 // Rota para autocomplete
