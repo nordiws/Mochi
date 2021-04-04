@@ -75,7 +75,8 @@
           <h2 class="text-bold blue-grey-text">Agradecemos sua contribuição!</h2>
           <img src="/assets/thanks-mochi.png" alt="Thank you!">
           <p>Você pode fazer a entrega dos materiais no endereço:</p>
-          <h4 class="text-bold blue-grey-text"> Escola tal </h4>
+          <% var student = students[( Object.keys(students).find(key => students[key]["_id"] === materialList.id) )]; %>
+          <h4 class="text-bold blue-grey-text"> Escola: <%= student.school_name %></h4>
           <h4 class="blue-grey-text">Rua tal tal</h3>
         </div>
         <div class="modal-footer">
