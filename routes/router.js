@@ -4,6 +4,8 @@ import materials from "../controller/ApiMaterials.js";
 import guardian from "../model/form/Guardian.js";
 import school from "../model/form/School.js";
 import student from "../model/form/Student.js";
+import ApiMaterials from "../controller/ApiMaterials.js";
+import ApiSchools from "../controller/ApiSchools.js";
 
 // Instanciando o roteador
 const router = express.Router();
@@ -95,7 +97,7 @@ router.get('/cities', async (req, res, send) => {
 router.get('/schools/:id', async (req, res, send) => {
   try {
     const { id } = req.params;
-    const schoolsData = await db.getCitiesWithStudents(id);
+    const schoolsData = await ApiSchools.schoolsData(id);
 
     res.json({ schoolsData });
 
