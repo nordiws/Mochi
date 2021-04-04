@@ -1,4 +1,8 @@
 function registerForm(){
+
+
+  openModal()
+  
   
   $form = {
       guardian_name : $("#guardian_name").val() ,
@@ -10,7 +14,7 @@ function registerForm(){
       city : $("#city").val(),
       street : $("#street").val(),
       number : $("#number").val(),
-      //school_state :  $("#school_state").val(),
+      school_state :  "São Paulo",
       school_city : $("#school_city").val(),
       school_name : $("#school_name").val(),
       std_name : $("#std_name").val(),
@@ -27,7 +31,6 @@ function registerForm(){
     url: "/cadastro",
     data: JSON.stringify($form),
     contentType: "application/json",
-    success: window.location.reload()
    });
 }
 
@@ -41,3 +44,12 @@ function allChecked(){
     });
   return $n;
 }
+
+function openModal () {
+    var elems = document.querySelector('#modal-success');
+    var instances = M.Modal.init(elems, { dismissible: false });
+
+    instances.open();
+}
+
+
