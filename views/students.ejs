@@ -10,16 +10,6 @@
           </h1>
           <h2 class="text-bold blue-grey-text">Ajude a encher a mochila de:</h2>
         </div>
-        <div class="col s6">
-
-          <div class="city-search-bar grey lighten-1 my">
-            <input placeholder="Digite o nome da sua cidade..." id="city-autocomplete" type="text">
-            <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">
-              <i class="material-icons">search</i>
-            </button>
-          </div>
-
-        </div>
       </div>
 
       <div class="row my">
@@ -43,18 +33,8 @@
                   <% materialList.products_list.forEach((material)=> { %>
                     <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
                       class="collection-item avatar">
-
                       <img src="<%= material.image %>" alt="" class="circle">
-                      <h6><b>
-                          <%= material.Grupo %>
-                        </b></h6>
-
-                      <label class="secondary-content">
-                        <input id="input_<%= material.Codigo %>" type="checkbox"
-                          onclick="event.stopImmediatePropagation();" name="<%= material.Codigo %>"
-                          autocomplete="off" />
-                        <span></span>
-                      </label>
+                      <h6><b><%= material.Grupo %></b></h6>
                     </li>
                     <% }) %>
                       <% } %>
@@ -80,8 +60,7 @@
               <h4 class="text-bold blue-grey-text"> Escola: <%= school.name %>
               </h4>
               <h5 class="blue-grey-text">
-                <%= school.street%>, <%= school.number%> - CEP <%= school.cep%>
-                      </h3>
+                <%= school.street%>, <%= school.number%> - CEP <%= school.cep%></h5>
           </div>
           <div class="modal-footer">
             <div class="button center-align">
