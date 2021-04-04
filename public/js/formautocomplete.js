@@ -27,7 +27,7 @@ document.addEventListener('input', () => {
 
 
 // autocomplete - Nome da escola
-school_name.addEventListener('click', async () => {
+school_name.addEventListener('focusin', async () => {
 
     if (school_city.value.length == 0) {
         school_city.className += " invalid"

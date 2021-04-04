@@ -186,3 +186,8 @@ footer ul {
   overflow: auto;
   max-height: 400px;
 }
+
+.img-center {
+    display: block;
+    margin: 0 auto;
+}
