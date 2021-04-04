@@ -46,13 +46,9 @@
                                     <% if (String(student.name)=="std_grade" ) { %>
                                         <div class="input-field col l6 s12">
                                             <select id="<%= student.id %>">
-                                                <option value="" disabled selected>
-                                                    <%= student.label %>
-                                                </option>
+                                                <option value="" disabled selected><%= student.label %></option>
                                                 <% student.options.forEach(grade=> { %>
-                                                    <option value="<% grade.toString() %>">
-                                                        <%= grade.toString() %>
-                                                    </option>
+                                                    <option value="<% grade.toString() %>"><%= grade.toString() %></option>
                                                     <% }) %>
                                             </select>
 
@@ -108,17 +104,16 @@
 
                                                     <h6><b>
                                                             <%= material.Grupo %>
-                                                        </b></h6>
+                                                        </b>
+                                                    </h6>
 
                                                     <label class="secondary-content">
-                                                        <input id="input_<%= material.Codigo %>" type="checkbox"
-                                                            onclick="select('<%= material.Codigo %>')"
-                                                            name="<%= material.Codigo %>" autocomplete="off" />
+                                                        <input id="input_<%= material.Codigo %>" type="checkbox" onclick="select('<%= material.Codigo %>')" name="<%= material.Codigo %>" autocomplete="off" />
                                                         <span></span>
                                                     </label>
                                                 </li>
-                                                <% }) %>
-                                                    <% } %>
+                                            <% }) %>
+                                        <% } %>
                                     </ul>
                                 </div>
 
@@ -135,8 +130,9 @@
                         <button type="button" class="waves-effect waves-light btn-large black white-text" id="nextBtn"
                             onclick="nextPrev(1)">Próximo</button>
 
-                        <button type="submit" class="waves-effect waves-light btn-large amber" id="submitBtn"
-                            onclick="event.preventDefault();registerForm()" name="action">Enviar
+                        <button type="button" class="waves-effect waves-light btn-large light-green darken-1 white-text" id="validateBtn">Validar escola</button>
+
+                        <button type="submit" class="waves-effect waves-light btn-large amber" id="submitBtn" onclick="registerForm(event);" name="action">Enviar
                             <i class="material-icons right">send</i>
                         </button>
 

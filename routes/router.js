@@ -23,7 +23,8 @@ router.get('/escolas', async (req, res) => {
     const [selectedStudents, totalStudents] = await db.getCitiesWithStudents(id);
     res.render('schools', {
       title: "Mochi - Escolas",
-      city_name: city,
+      c_id: id,
+      c_name: city,
       students: selectedStudents,
       totalStudents: totalStudents
     });
@@ -35,10 +36,13 @@ router.get('/escolas', async (req, res) => {
 //View Model pagina listagem de alunos
 router.get('/alunos', async (req, res) => {
   try {
+    const { id, city_id } = req.query;
     const studentData = await db.getAllStudentsBySchools(req.query.id);
     const materialsData = await materials.selectedMaterialsData(studentData);
     res.render('students', {
       title: "Mochi - Alunos",
+      school_id: id,
+      city_id: city_id,
       students: studentData,
       materials: materialsData
     });
@@ -67,7 +71,6 @@ router.post('/cadastro', (req, res) => {
 // Rota para autocomplete
 router.get('/cities', async (req, res, send) => {
   try {
-    const citiesData = await db.getTotalCities();
     res.json({ citiesData });
   } catch (error) {
     res.status(400).json(error)
@@ -75,15 +78,15 @@ router.get('/cities', async (req, res, send) => {
 })
 
 router.get('/schools/:id', async (req, res, send) => {
-    try {
-      const { id } = req.params;
-      const schoolsData = await db.getCitiesWithStudents(id);
+  try {
+    const { id } = req.params;
+    const schoolsData = await db.getCitiesWithStudents(id);
 
-      res.json({schoolsData});
+    res.json({ schoolsData });
 
-    } catch (error) {
-      res.status(400).json(error)
-    }
+  } catch (error) {
+    res.status(400).json(error)
+  }
 })
 
 export default router;

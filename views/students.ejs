@@ -4,7 +4,7 @@
     <section class="container">
       <div class="row">
         <div class="col s6">
-          <p>Inicio > Escolas > <b>Alunos</b></p>
+          <p><a href="/">Inicio</a> > <a href="/escolas?id=<%=city_id%> ">Escolas</a> > <b>Alunos</b></p>
           <h1 class="text-medium">
             <%= students[0].school_name %>
           </h1>
@@ -86,15 +86,14 @@
       </div>
 
       <% }); %>
-      
-      <script>
 
+        <script>
           const openModalButton = document.querySelector('.open-modal-button');
           const modalContent = document.querySelector('.modal-content');
           const donateButton = document.querySelector('.donate-button');
-          const thankYouContent = document.querySelector('.thank-you-content');  
+          const thankYouContent = document.querySelector('.thank-you-content');
           const modalFooter = document.querySelector('.modal-footer');
-          const secondaryModalFooter = document.querySelector('.secondary-modal-footer');      
+          const secondaryModalFooter = document.querySelector('.secondary-modal-footer');
 
           openModalButton.addEventListener('click', showMaterialList);
 

@@ -24,7 +24,6 @@ $(document).ready(function(){
   justString($('#school_name'));
 
 
-
   function justString(tag){
     tag.mask('A', {
       translation: {
