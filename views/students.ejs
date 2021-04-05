@@ -35,6 +35,10 @@
                       class="collection-item avatar">
                       <img src="<%= material.image %>" alt="" class="circle">
                       <h6><b><%= material.Grupo %></b></h6>
+                      <label class="secondary-content">
+                          <input id="input_<%= material.Codigo %>" type="checkbox" onclick="select('<%= material.Codigo %>')" name="<%= material.Codigo %>" autocomplete="off" />
+                          <span></span>
+                      </label>
                     </li>
                     <% }) %>
                       <% } %>
