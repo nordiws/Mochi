@@ -13,7 +13,8 @@ Nele, os responsáveis pelos alunos podem cadastrá-los e disponibilizar uma lis
 > * Este projeto utiliza o MongoDB com a biblioteca mongoose, será necessário cadastrar uma conta e obter o string de conexão.
 > * É necessário que seja utilizada a versão v14.16.0 do Node.js para rodar o projeto.
 
-1. Faça um clone desse repositório na sua máquina;
+
+1. Faça um clone deste repositório na sua máquina;
 `https://github.com/Mochi-squad9/Mochi.git`
 
 2. Após clonar o repositório, navegue até a pasta /Mochi e instale as dependências do projeto;
