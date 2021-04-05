@@ -1,5 +1,8 @@
-# Mochi
-Hackaton FCamara / Mochi - Squad 9
+<h1 align="center">
+<img src="./public/assets/mochi.png" alt="mochi-logo" width="250px"/>
+</h1>
+
+<h4 align="center">Hackaton FCamara / Mochi - Squad 9</h4>
 
 > **Aviso: Este projeto utiliza o MongoDB com a biblioteca mongoose, será necesario cadastrar uma conta e obter o string de conexão. ** 
 
