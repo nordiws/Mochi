@@ -1,5 +1,5 @@
 function registerForm(){
-  
+
   $form = {
       guardian_name : $("#guardian_name").val() ,
       guardian_lastname : $("#guardian_lastname").val() ,
@@ -10,7 +10,7 @@ function registerForm(){
       city : $("#city").val(),
       street : $("#street").val(),
       number : $("#number").val(),
-      //school_state :  $("#school_state").val(),
+      school_state :  "São Paulo",
       school_city : $("#school_city").val(),
       school_name : $("#school_name").val(),
       std_name : $("#std_name").val(),
@@ -22,13 +22,16 @@ function registerForm(){
       products_list : allChecked(),
   };
 
-  $.ajax({
-    type: "POST",
-    url: "/cadastro",
-    data: JSON.stringify($form),
-    contentType: "application/json",
-    success: window.location.reload()
-   });
+  if($form.guardian_name && $form.guardian_lastname){
+    console.log('hehehe');
+    $.ajax({
+      type: "POST",
+      url: "/cadastro",
+      data: JSON.stringify($form),
+      contentType: "application/json",
+      success: openModal()
+     });
+  }
 }
 
 function allChecked(){
@@ -40,4 +43,11 @@ function allChecked(){
         }
     });
   return $n;
+}
+
+function openModal () {
+    var elems = document.querySelector('#modal-success');
+    var instances = M.Modal.init(elems, { dismissible: false });
+
+    instances.open();
 }

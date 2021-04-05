@@ -5,14 +5,14 @@
 
 
             <div class="row my">
-                <div class="col s6">
+                <div class="col s12 m12 l6 xl6">
                     <p><a href="/">Inicio</a> > <b>Escolas</b></p>
                     <h1 class="text-medium">Escolas precisando de doações em:</h1>
                     <h2 class="text-bold blue-grey-text">
                         <%=c_name%>
                     </h2>
                 </div>
-                <div class="col s6">
+                <div class="col s12 m12 l6 xl6">
 
                     <%- include("./components/autocomplete.ejs") %>
 
@@ -26,7 +26,13 @@
                             <% }) %>
                                 <% } else { %>
                                     <h3> As mochilas desta escola não estão precisando de materiais. </h3>
-                                    <% } %>
+                                    </br>
+                                    </br>
+                                    <h4>Mochilas necesitadas:</h4>
+                                    <% schools.slice(0,3).forEach((school)=> { %>
+                                        <%- include("./components/cards-random.ejs", {school:school,ttl_std:ttl_std})%>
+                                            <% }) %>
+                                                <% } %>
             </div>
         </section>
 

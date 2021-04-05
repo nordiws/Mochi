@@ -27,7 +27,7 @@ document.addEventListener('input', () => {
 
 
 // autocomplete - Nome da escola
-school_name.addEventListener('click', async () => {
+school_name.addEventListener('focusin', async () => {
 
     if (school_city.value.length == 0) {
         school_city.className += " invalid"
@@ -70,16 +70,15 @@ const setCityId = async inputValue => {
 const setSchoolId = async inputValue => {
     const response = await schools[0].filter(item => {
             
-        const schoolUpperCase = item.school_name.toUpperCase().trim();
+        const schoolUpperCase = item.name.toUpperCase().trim();
     
         if(schoolUpperCase === inputValue.toUpperCase()) {
             return item;
         }
     })
 
-    console.log(response);
     if(response.length !== 0) {
-        school_id.value = response[0].school_id;
+        school_id.value = response[0].id;
         validateBtn.style.display = "none";
         next.style.display = "inline"
         const toastHTML = '<span>Tudo OK!</span>';
@@ -113,9 +112,9 @@ const getSchools = async id => {
         const response = await axios.get(`/schools/${id}`);
         const list = response.data.schoolsData;
 
-        schools.push(list[0]);
+        schools.push(list);
     
-        list[0].map(element => optionsSchools[element.school_name] = null);
+        list.map(element => optionsSchools[element.name] = null);
 
     } catch (error) {
         console.log(error)

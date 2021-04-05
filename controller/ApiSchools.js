@@ -39,10 +39,13 @@ const citiesData = (state) => {
 const schoolsData = (city) => {
     const data = APIconnection.getAllSchools(city).then((response) => {
         const schools = response.map(school => {
-            const { id, name } = school;
+            const { id, name, location } = school;
             return {
                 id,
-                name
+                name,
+                street: location.street,
+                number: location.number,
+                cep: location.cep
             }
         })
         return schools;

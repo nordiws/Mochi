@@ -19,15 +19,15 @@ $(document).ready(function(){
 
   //school
 
-  justString($('#school_state'));
-  justString($('#school_city'));
-  justString($('#school_name'));
+//  justString($('#school_state'));
+//  justString($('#school_city'));
+//  justString($('#school_name'));
 
 
   function justString(tag){
     tag.mask('A', {
       translation: {
-        A: { pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'~´`^s]+$/g, recursive: true },
+        A: { pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'~´` ^s]+$/g, recursive: true },
       },
     });
   }
