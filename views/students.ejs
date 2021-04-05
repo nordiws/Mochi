@@ -4,7 +4,8 @@
     <section class="container">
       <div class="row">
         <div class="col s6">
-          <p><a href="/">Inicio</a> > <a href="/escolas?id=<%=city_id%> ">Escolas</a> > <b>Alunos</b></p>
+          <p><a href="/">Inicio</a> > <a href="/escolas?id=<%=city_id%>&city=<%=students[0].city%>  ">Escolas</a> >
+            <b>Alunos</b></p>
           <h1 class="text-medium">
             <%= students[0].school_name %>
           </h1>
@@ -34,10 +35,13 @@
                     <li id="<%= material.Codigo %>" onclick="select('<%= material.Codigo %>')"
                       class="collection-item avatar">
                       <img src="<%= material.image %>" alt="" class="circle">
-                      <h6><b><%= material.Grupo %></b></h6>
+                      <h6><b>
+                          <%= material.Grupo %>
+                        </b></h6>
                       <label class="secondary-content">
-                          <input id="input_<%= material.Codigo %>" type="checkbox" onclick="select('<%= material.Codigo %>')" name="<%= material.Codigo %>" autocomplete="off" />
-                          <span></span>
+                        <input id="input_<%= material.Codigo %>" type="checkbox"
+                          onclick="select('<%= material.Codigo %>')" name="<%= material.Codigo %>" autocomplete="off" />
+                        <span></span>
                       </label>
                     </li>
                     <% }) %>
@@ -64,7 +68,8 @@
               <h4 class="text-bold blue-grey-text"> Escola: <%= school.name %>
               </h4>
               <h5 class="blue-grey-text">
-                <%= school.street%>, <%= school.number%> - CEP <%= school.cep%></h5>
+                <%= school.street%>, <%= school.number%> - CEP <%= school.cep%>
+              </h5>
           </div>
           <div class="modal-footer">
             <div class="button center-align">

@@ -75,7 +75,7 @@ const getCitiesWithStudents = async (city) => {
 
 const getAllStudentsBySchools = async (schoolId, city_id) => {
     try {
-        var select_fields = { "_id": 1, "std_name": 1, "std_nickname": 1, "std_grade": 1, "school_name": 1, "products_list": 1 }
+        var select_fields = { "_id": 1, "std_name": 1, "std_nickname": 1, "std_grade": 1, "school_name": 1, "city": 1, "products_list": 1 }
         const studentsData = await registration.find({ "school_id": schoolId }, select_fields);
         const fetchData = await ApiSchools.schoolsData(city_id);
         const schoolData = fetchData.filter(school => {
