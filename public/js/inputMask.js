@@ -19,9 +19,9 @@ $(document).ready(function(){
 
   //school
 
-  justString($('#school_state'));
-  justString($('#school_city'));
-  justString($('#school_name'));
+//  justString($('#school_state'));
+//  justString($('#school_city'));
+//  justString($('#school_name'));
 
 
   function justString(tag){
