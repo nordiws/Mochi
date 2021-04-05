@@ -2,9 +2,14 @@
 <img src="./public/assets/mochi.png" alt="mochi-logo" width="250px"/>
 </h1>
 
-<h4 align="center">Hackaton FCamara / Mochi - Squad 9</h4>
+<h4 align="center">Programa de Formação FCamara - Squad 9 - Mochi.</h4>
 
-> **Aviso: Este projeto utiliza o MongoDB com a biblioteca mongoose, será necesario cadastrar uma conta e obter o string de conexão. ** 
+## Sobre a Mochi :computer:
+
+## Instalando e rodando o projeto :gear:
+> **Avisos:
+> * Este projeto utiliza o MongoDB com a biblioteca mongoose, será necessário cadastrar uma conta e obter o string de conexão.
+> * É necessário que seja utilizada a versão v14.16.0 do Node.js para rodar o projeto.**
 
 1. Faça um clone desse repositório na sua máquina;
 `https://github.com/Mochi-squad9/Mochi.git`
@@ -15,7 +20,8 @@
 ```
 3.  Depois vá na pasta raiz do projeto, e crie um arquivo `.env`. Copie o string de conexão do MongoDB: 
 ```env
-   DB_CONNECTION=
+   DB_CONNECTION=mongodb+srv://mochiUser:mochiPassword@cluster0.1svvs.mongodb.net/mochidb?retryWrites=true&w=majority
+   PORT=3000
 ```
 
 4. Agora com tudo configurado. No seu terminal, navegue até a pasta principal do projeto, e execute o comando abaixo:
@@ -24,3 +30,11 @@
 ```
 
 5. Pronto! Agora é só ir no seu navegador favorito e acessar a rota [`http://localhost:3000`](http://localhost:3000/)
+
+## Equipe :star2:
+- [Joyce Guedes (UX)](https://www.linkedin.com/in/joyce-guedes/)
+- [Mirian Falconi (DEV)](https://www.linkedin.com/in/mirian-falconi-8a14a91aa/)
+- [Pablo González (DEV)](https://www.linkedin.com/in/pablo-agust%C3%ADn-gonz%C3%A1lez-4243a7b2/)
+- [Roberta Bononi (DEV)](https://www.linkedin.com/in/robertabononi/)
+- [Roni Campos (UX)](https://www.linkedin.com/in/ronicampos/)
+- [Samuel Lorena (DEV)](https://www.linkedin.com/in/samuel-wenceslau-lorena-18a008183/)
