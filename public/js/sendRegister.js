@@ -22,17 +22,16 @@ function registerForm(){
       products_list : allChecked(),
   };
 
-  $.ajax({
-    type: "POST",
-    url: "/cadastro",
-    data: JSON.stringify($form),
-    contentType: "application/json",
-    success: function (result) {
-        if(result.status == 200){
-            openModal();
-        }
-      }
-   });
+  if($form.guardian_name && $form.guardian_lastname){
+    console.log('hehehe');
+    $.ajax({
+      type: "POST",
+      url: "/cadastro",
+      data: JSON.stringify($form),
+      contentType: "application/json",
+      success: openModal()
+     });
+  }
 }
 
 function allChecked(){
