@@ -23,7 +23,7 @@
             <h1 class="my blue-grey-text"><b>Escolas com maior necessidade de doações:</b></h1>
             <div class="row">
                 <!--Add cards-->
-                <% schools.forEach((school)=> { %>
+                <% schools.slice(0, 3).forEach((school)=> { %>
                     <%- include("./components/cards-random.ejs", {school: school, ttl_std: total_std})%>
                         <% }) %>
             </div>

@@ -29,7 +29,7 @@
                                     </br>
                                     </br>
                                     <h4>Mochilas necesitadas:</h4>
-                                    <% schools.forEach((school)=> { %>
+                                    <% schools.slice(0,3).forEach((school)=> { %>
                                         <%- include("./components/cards-random.ejs", {school:school,ttl_std:ttl_std})%>
                                             <% }) %>
                                                 <% } %>

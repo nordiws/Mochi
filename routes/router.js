@@ -4,7 +4,6 @@ import materials from "../controller/ApiMaterials.js";
 import guardian from "../model/form/Guardian.js";
 import school from "../model/form/School.js";
 import student from "../model/form/Student.js";
-import ApiMaterials from "../controller/ApiMaterials.js";
 import ApiSchools from "../controller/ApiSchools.js";
 
 // Instanciando o roteador
@@ -14,6 +13,7 @@ const router = express.Router();
 router.get('/', async (req, res, send) => {
   try {
     const [selectedSchools, totalSchools] = await db.getRandomSchools();
+
     res.render('index', {
       title: "Mochi",
       version: "1.0.0",
