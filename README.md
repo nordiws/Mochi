@@ -5,8 +5,7 @@
 <h4 align="center">Programa de Formação FCamara - Squad 9 - Mochi.</h4>
 
 ## Sobre a Mochi :computer:
-Mochi é um site que ajuda os estudantes a terem maior aproveitamento das aulas através da doação de materiais.
-Nele, os responsáveis pelos alunos podem cadastrá-los e disponibilizar uma lista com os materiais que eles precisam. Já os doadores, acessam o site anonimamente e doam os materiais aos alunos, na instituição.
+Mochi é um site que facilita doações de materiais escolares online. Nele, os responsáveis pelos alunos podem cadastrá-los e disponibilizar uma lista com os materiais que eles precisam. Já os doadores, acessam o site anonimamente e doam os materiais aos alunos, na instituição.
 
 ## Instalando e rodando o projeto :gear:
 > Avisos:
@@ -29,7 +28,7 @@ Nele, os responsáveis pelos alunos podem cadastrá-los e disponibilizar uma lis
 
 4. Agora, com tudo configurado, no seu terminal, navegue até a pasta principal do projeto e execute o comando abaixo:
 ```sh
-   npm run dev
+   node app.js
 ```
 
 5. Pronto! Agora é só ir no seu navegador favorito e acessar a rota [`http://localhost:3000`](http://localhost:3000/)
