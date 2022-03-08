@@ -17,7 +17,7 @@ const api = axios.create({
     },
 });
 
-const api_materials = axios.create({
+/* const api_materials = axios.create({
     baseURL: 'https://young-mountain-02170.herokuapp.com/api/',
     headers: {
         'Accept': 'application/json, text/javascript, /; q=0.01',
@@ -26,6 +26,6 @@ const api_materials = axios.create({
         'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:86.0) Gecko/20100101 Firefox/86.0',
         'X-Requested-With': 'XMLHttpRequest'
     },
-});
+}); */
 
-export default { api, api_materials };
+export default { api,/*  api_materials */ };

@@ -14,7 +14,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // Configurando dotenv
 dotenv.config();
 
-// Intanciamento da variavel global com os dados do autocomplete
+// Intanciamento da variável global com os dados do autocomplete
 global.citiesData = {};
 const fetchData = async () => {
     try {
@@ -54,7 +54,7 @@ mongoose.connect(
     }
 );
 const { connection } = mongoose;
-connection.once('open', () => console.log('Conectado ao MongoDB'));
+connection.once('open', () => console.log('Conectado ao MongoDB')).then(fetchData());
 // Levantando o servidor
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
@@ -62,4 +62,3 @@ app.listen(PORT, () => {
 });
 
 // Chamada da função para popular os dados do autocomplete
-fetchData();
